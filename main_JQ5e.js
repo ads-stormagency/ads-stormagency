@@ -778,7 +778,7 @@ portfolio_desc_mobily: "Promotional ad for internet speeds and discounts.",
 portfolio_img_clear: "Clear Scalp",
 portfolio_desc_clear: "Natural and professional ad design for care products.",
 portfolio_img_ingezny: "Ingezny Services",
-"portfolio_desc_ingezny": "Identity design for express delivery and shipping services.",
+portfolio_desc_ingezny: "Identity design for express delivery and shipping services.",
 
 portfolio_vid_edu: "Educational Video",
 portfolio_desc_edu: "Visual and creative production reflecting agency services.",
