@@ -1852,3 +1852,24 @@ body {
     text-align: center !important;
   }
 }
+/* إصلاح وتوحيد هيدر وعنوان صفحة معرض الأعمال على الموبايل */
+@media (max-width: 768px) {
+  .portfolio-container,
+  .portfolio-header,
+  .portfolio-section,
+  #portfolio {
+    padding-top: 100px !important; /* مسافة أمان لمنع تداخل الهيدر مع العنوان */
+    margin-top: 0 !important;
+  }
+
+  /* ضبط العنوان الرئيسي لصفحة معرض الأعمال */
+  .portfolio-container h1,
+  .portfolio-container .section-title,
+  .portfolio-header h1 {
+    font-size: 24px !important;
+    line-height: 1.4 !important;
+    margin-top: 10px !important;
+    margin-bottom: 20px !important;
+    text-align: center !important;
+  }
+}
