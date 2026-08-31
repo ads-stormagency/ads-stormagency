@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طبيب المبيعات | Storm Agency</title>
+    <meta name="description" content="Sales Doctor - AI tool to audit landing pages and e-commerce stores, detect conversion gaps, and boost sales.">
+    <meta name="author" content="Storm Agency">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0B0F19">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style_JQ5e.css">
+</head>
+<body>
+<div class="mesh-bg">
+    <canvas id="meshCanvas" width="1366" height="643"></canvas>
+</div>
+<div class="logo-watermark">STORM</div>
+
+<nav class="navbar">
+    <div class="nav-left">
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <span class="page-title" data-i18n="sales_doc_title">طبيب المبيعات</span>
+    </div>
+    <div class="nav-right">
+        <div class="lang-switcher">
+            <button class="lang-btn">
+                <span class="current-lang">العربية</span>
+                <span class="arrow">▾</span>
+            </button>
+            <div class="lang-dropdown">
+                <div class="lang-option active" data-lang="ar">🇸🇦 العربية</div>
+                <div class="lang-option" data-lang="en">🇬🇧 English</div>
+                <div class="lang-option" data-lang="fr">🇫🇷 Français</div>
+            </div>
+        </div>
+        <button class="theme-toggle">
+            <span class="icon sun"><i class="fas fa-sun"></i></span>
+            <span class="icon moon"><i class="fas fa-moon"></i></span>
+        </button>
+    </div>
+</nav>
+
+<div class="sidebar-overlay"></div>
+<aside class="sidebar">
+    <div class="sidebar-logo">
+        <h2>
+            <span style="font-size:0.9rem;font-weight:400;opacity:0.8">Agency</span>
+            <span class="logo-sub">STORM</span>
+            <span class="logo-tagline">Digital Marketing Solutions</span>
+        </h2>
+    </div>
+    <a href="index.html"><i class="fas fa-home"></i><span data-i18n="home">الرئيسية</span></a>
+    <a href="strategies.html"><i class="fas fa-chess"></i><span data-i18n="strategies">استراتيجيات التسويق</span></a>
+    <a href="web.html"><i class="fas fa-code"></i><span data-i18n="web">تصميم المواقع</span></a>
+    <a href="media.html"><i class="fas fa-camera-retro"></i><span data-i18n="media">الانتاج والإبداع</span></a>
+    <a href="ads.html"><i class="fas fa-bullhorn"></i><span data-i18n="ads">الإعلانات</span></a>
+    <a href="data.html"><i class="fas fa-chart-line"></i><span data-i18n="data">تحليل البيانات</span></a>
+    <a href="ai-tools.html" class="active"><i class="fas fa-rocket"></i><span data-i18n="growth_lab">مختبر النمو</span></a>
+    <a href="portfolio.html"><i class="fas fa-briefcase"></i><span data-i18n="portfolio">معرض الأعمال</span></a>
+</aside>
+
+<!-- محتوى الصفحة الرئيسي -->
+<section class="service-page" style="padding: 60px 20px 40px 20px; max-width: 1000px; margin: 0 auto; position: relative; z-index: 3;">
+    
+    <!-- رأس الأداة -->
+    <div style="text-align: center; margin-bottom: 40px;">
+        <div style="width: 80px; height: 80px; background: rgba(0,85,255,0.1); border: 2px solid #0055ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; color: #0055ff; font-size: 2.2rem;">
+            <i class="fas fa-user-md"></i>
+        </div>
+        <h1 style="font-size: 34px; font-weight: bold; color: #ffffff; margin-bottom: 12px;" data-i18n="sales_doc_title">طبيب المبيعات الذكي</h1>
+        <p style="font-size: 16px; color: #cbd5e1; line-height: 1.6; max-width: 700px; margin: 0 auto;" data-i18n="sales_doc_desc">أدخل رابط متجرك واكتب طبيعة نشاطك، وسيقوم الذكاء الاصطناعي بتحليل الأداء واكتشاف الثغرات التي تمنع العملاء من إتمام الشراء.</p>
+    </div>
+
+    <!-- صندوق أداة الفحص -->
+    <div style="background: #ffffff; border-radius: 20px; padding: 40px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); margin-bottom: 40px; text-align: right; position: relative;">
+        
+        <!-- زر إغلاق (X) -->
+        <a href="ai-tools.html" title="العودة لمختبر النمو" style="position: absolute; top: 15px; left: 15px; background: #f1f5f9; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 1.1rem; text-decoration: none; transition: 0.2s; z-index: 10;" onmouseover="this.style.background='#fee2e2'; this.style.color='#ef4444';" onmouseout="this.style.background='#f1f5f9'; this.style.color='#64748b';">
+            <i class="fas fa-times"></i>
+        </a>
+
+        <!-- نموذج إدخال الرابط -->
+        <form id="auditForm" onsubmit="runAudit(event)" style="padding-top: 10px;">
+            <div style="margin-bottom: 25px;">
+                <label style="display: block; font-weight: bold; color: #0f172a; margin-bottom: 10px; font-size: 1rem;" data-i18n="store_url_label">
+                    <i class="fas fa-link" style="color: #0055ff; margin-left: 8px;"></i> رابط المتجر أو صفحة الهبوط:
+                </label>
+                <input type="url" id="storeUrl" required placeholder="https://yourstore.com" style="width: 100%; padding: 15px 20px; border-radius: 12px; border: 1px solid #cbd5e1; font-size: 1rem; outline: none; background: #f8fafc; color: #0f172a; box-sizing: border-box; transition: border-color 0.3s;" onfocus="this.style.borderColor='#0055ff'" onblur="this.style.borderColor='#cbd5e1'">
+            </div>
+
+            <div style="margin-bottom: 30px;">
+                <label style="display: block; font-weight: bold; color: #0f172a; margin-bottom: 10px; font-size: 1rem;" data-i18n="store_type_label">
+                    <i class="fas fa-store" style="color: #0055ff; margin-left: 8px;"></i> طبيعة النشاط التجاري:
+                </label>
+                <input type="text" id="storeType" required placeholder="مثال: متجر إلكتروني لبيع العطور..." style="width: 100%; padding: 15px 20px; border-radius: 12px; border: 1px solid #cbd5e1; font-size: 1rem; outline: none; background: #f8fafc; color: #0f172a; box-sizing: border-box; transition: border-color 0.3s;" onfocus="this.style.borderColor='#0055ff'" onblur="this.style.borderColor='#cbd5e1'">
+            </div>
+
+            <button type="submit" style="width: 100%; background: linear-gradient(135deg, #0055ff, #0088ff); color: white; border: none; padding: 16px; border-radius: 12px; font-size: 1.1rem; font-weight: bold; cursor: pointer; box-shadow: 0 5px 20px rgba(0,85,255,0.35); transition: transform 0.2s;" data-i18n="sales_submit_btn">
+                <i class="fas fa-stethoscope" style="margin-left: 8px;"></i> ابدأ التشخيص والفحص الشامل
+            </button>
+        </form>
+
+        <!-- منطقة التحميل -->
+        <div id="loadingBox" style="display: none; text-align: center; padding: 40px 0;">
+            <div class="spinner" style="width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid #0055ff; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px auto;"></div>
+            <h3 style="color: #0f172a; font-size: 1.2rem; margin-bottom: 8px;" data-i18n="sales_loading_title">جاري فحص المتجر وتحليل تجربة المستخدم...</h3>
+            <p style="color: #64748b; font-size: 0.95rem;" data-i18n="sales_loading_desc">نبحث عن ثغرات أزرار الشراء، سرعة التحميل، ونقاط التسرب.</p>
+        </div>
+
+        <!-- منطقة النتائج -->
+        <div id="resultsBox" style="display: none; padding-top: 10px; position: relative;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 15px; padding-left: 40px;">
+                <h3 style="color: #0f172a; font-size: 1.3rem; font-weight: bold; margin: 0;" data-i18n="sales_report_title">
+                    <i class="fas fa-clipboard-check" style="color: #10b981; margin-left: 8px;"></i> تقرير فحص وتشخيص المتجر
+                </h3>
+                <span id="scoreBadge" style="background: #dcfce7; color: #166534; padding: 6px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;" data-i18n="sales_score">كفاءة المتجر: 68%</span>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px;">
+                <div style="background: #fef2f2; border-right: 4px solid #ef4444; padding: 15px 20px; border-radius: 8px; color: #991b1b; font-size: 0.95rem; line-height: 1.6;" data-i18n="sales_res_1">
+                    <strong><i class="fas fa-exclamation-triangle"></i> ثغرة حرجة مكتشفة:</strong> زر "أضف للسلة" أو "اشترك الآن" يفتقر إلى التباين اللوني القوي، مما يقلل من نسبة نقر العملاء (CTR) بمتوسط 14%.
+                </div>
+                <div style="background: #fffbeb; border-right: 4px solid #f59e0b; padding: 15px 20px; border-radius: 8px; color: #92400e; font-size: 0.95rem; line-height: 1.6;" data-i18n="sales_res_2">
+                    <strong><i class="fas fa-bolt"></i> ملاحظة الأداء والسرعة:</strong> زمن استجابة صفحة الهبوط يتجاوز 3.2 ثانية، وهو ما يؤدي لخروج ما يقارب 30% من زوار الإعلانات قبل تحميل المحتوى.
+                </div>
+                <div style="background: #f0fdf4; border-right: 4px solid #10b981; padding: 15px 20px; border-radius: 8px; color: #166534; font-size: 0.95rem; line-height: 1.6;" data-i18n="sales_res_3">
+                    <strong><i class="fas fa-check-circle"></i> توصية طبيب المبيعات:</strong> إضافة آراء العملاء الحقيقية (Social Proof) مباشرة تحت السعر لزيادة معدل الثقة ومضاعفة المبيعات.
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="https://wa.me/201555983272?text=مرحباً%20Storm%20Agency،%20أريد%20طلباً%20لإصلاح%20ثغرات%20متجري%20بعد%20فحصه%20بطبيب%20المبيعات" target="_blank" style="background: #00c853; color: white; padding: 12px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; font-size: 1rem; box-shadow: 0 4px 15px rgba(0,200,83,0.3);" data-i18n="sales_whatsapp_btn">
+                    <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> اطلب جلسة إصلاح المتجر مع خبرائنا
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+</style>
+
+<script>
+function runAudit(event) {
+    event.preventDefault();
+    const form = document.getElementById('auditForm');
+    const loadingBox = document.getElementById('loadingBox');
+    const resultsBox = document.getElementById('resultsBox');
+
+    form.style.display = 'none';
+    loadingBox.style.display = 'block';
+    resultsBox.style.display = 'none';
+
+    setTimeout(() => {
+        loadingBox.style.display = 'none';
+        resultsBox.style.display = 'block';
+    }, 2500);
+}
+</script>
+
+<div style="text-align: center; margin-bottom: 50px;">
+    <a href="ai-tools.html" style="background: rgba(255,255,255,0.1); color: #ffffff; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; border: 1px solid rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 8px;" data-i18n="back_to_lab">
+        <i class="fas fa-arrow-right"></i> العودة إلى مختبر النمو
+    </a>
+</div>
+
+<!-- الفوتر -->
+<footer class="footer" style="background-color: #0b1120; color: #ffffff; padding: 50px 40px 20px 40px; border-top: 1px solid rgba(255,255,255,0.1); font-family: inherit; margin-top: 60px;">
+    <div style="max-width: 1300px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 40px;">
+        
+        <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; align-items: flex-start; padding-right: 80px;">
+            <div style="text-align: center;">
+                <h3 style="font-size: 22px; font-weight: bold; margin-bottom: 5px; color: #ffffff;">Agency STORM</h3>
+                <p data-i18n="footer_subtitle" style="font-size: 14px; color: #38bdf8; margin-bottom: 15px; font-weight: 500;">Digital Marketing Solutions</p>
+                <p data-i18n="footer_desc" style="font-size: 15px; color: #cbd5e1; line-height: 1.6; margin-bottom: 10px;">نقدم حلولاً تسويقية شاملة تضمن نمو مبيعاتك</p>
+                <p data-i18n="footer_services_list" style="font-size: 13px; color: #94a3b8; line-height: 1.5;">"بناء الاستراتيجيات - تصميم المواقع - الإنتاج الإبداعي - الإعلانات وتحليل البيانات"</p>
+            </div>
+        </div>
+
+        <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; align-items: center; text-align: center; padding-left: 40px;">
+            <h3 data-i18n="footer_contact" style="font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #ffffff; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                <i class="fas fa-headset" style="color: #38bdf8;"></i> تواصل معنا
+            </h3>
+            
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="https://wa.me/201555983272" target="_blank" title="WhatsApp" style="width: 45px; height: 45px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #25d366; font-size: 20px; transition: 0.3s;" onmouseover="this.style.background='#25d366'; this.style.color='#fff';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='#25d366';">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="mailto:ads.stormagency@gmail.com" target="_blank" title="Email" style="width: 45px; height: 45px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ea4335; font-size: 18px; transition: 0.3s;" onmouseover="this.style.background='#ea4335'; this.style.color='#fff';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='#ea4335';">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.facebook.com/share/1TFDtkXPCE/" target="_blank" title="Facebook" style="width: 45px; height: 45px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #1877f2; font-size: 18px; transition: 0.3s;" onmouseover="this.style.background='#1877f2'; this.style.color='#fff';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='#1877f2';">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/ads_stormagency" target="_blank" title="Instagram" style="width: 45px; height: 45px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e1306c; font-size: 18px; transition: 0.3s;" onmouseover="this.style.background='#e1306c'; this.style.color='#fff';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='#e1306c';">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com/@ads_stormagency?is_from_webapp=1&sender_device=pc" target="_blank" title="TikTok" style="width: 45px; height: 45px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 18px; transition: 0.3s;" onmouseover="this.style.background='#000000'; this.style.color='#fff'; this.style.borderColor='#fff';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='#ffffff'; this.style.borderColor='rgba(255,255,255,0.1)';">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div style="max-width: 1300px; margin: 40px auto 0 auto; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; font-size: 13px; color: #64748b; display: flex; flex-direction: column; gap: 8px; align-items: center;">
+        <p>© 2026 Agency STORM. All rights reserved Since 2021.</p>
+        <p style="color: #38bdf8; font-weight: 500;">Designed and Developed by Agency STORM</p>
+    </div>
+</footer>
+
+<!-- استدعاء ملف الترجمة الرئيسي وملف السكريبت العام -->
+<script src="translations.js"></script>
+<script src="main_JQ5e.js"></script>
+
+<!-- زر الواتساب العائم -->
+<a href="https://wa.me/201555983272" target="_blank" rel="noopener noreferrer" style="position: fixed; bottom: 25px; left: 25px; background-color: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 32px; box-shadow: 0px 4px 15px rgba(0,0,0,0.3); z-index: 9999; text-decoration: none; transition: transform 0.3s ease-in-out;">
+    <i class="fab fa-whatsapp"></i>
+</a>
+</body>
+</html>

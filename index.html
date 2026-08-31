@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+   <style>
+/* ضبط الاستجابة للشاشات الصغيرة والموبايل */
+@media (max-width: 768px) {
+    .hero {
+        background-size: contain !important;
+        min-height: 250px !important;
+        margin-top: 10px !important;
+    }
+
+    /* إصلاح استجابة الفوتر */
+    .footer {
+        padding: 40px 20px 20px 20px !important;
+    }
+    
+    .footer > div {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 30px !important;
+    }
+
+    .footer > div > div {
+        width: 100% !important;
+        min-width: unset !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        text-align: center !important;
+        align-items: center !important;
+    }
+}
+</style>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storm Agency | Cybersecurity, Web Development &amp; Digital Solutions</title>
+    <meta name="description" content="Storm Agency provides cybersecurity services, penetration testing, web development, SEO, digital marketing, branding, and website security solutions.">
+    <meta name="keywords" content="Storm Agency,Cybersecurity,Penetration Testing,Ethical Hacking,SEO,Digital Marketing,Web Development,Website Security">
+    <meta name="author" content="Storm Agency">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0B0F19">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style_JQ5e.css">
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"Organization",
+      "name":"Storm Agency",
+      "url":"index.html",
+      "logo":"images/logo-2.png",
+      "description":"Storm Agency provides Cybersecurity, SEO, Web Development, Digital Marketing and IT Solutions.",
+      "email":"ads.stormagency@gmail.com",
+      "sameAs":[
+        "https://www.facebook.com/share/1TFDtkXPCE/",
+        "https://www.instagram.com/ads_stormagency"
+      ]
+    }
+    </script>
+</head>
+<body>
+<div class="mesh-bg">
+    <canvas id="meshCanvas" width="1366" height="643"></canvas>
+</div>
+<div class="logo-watermark">STORM</div>
+<nav class="navbar">
+    <div class="nav-left">
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <span class="page-title" data-i18n="home">الرئيسية</span>
+    </div>
+    <div class="nav-right">
+        <div class="lang-switcher">
+            <button class="lang-btn">
+                <span class="current-lang">العربية</span>
+                <span class="arrow">▾</span>
+            </button>
+            <div class="lang-dropdown">
+                <div class="lang-option active" data-lang="ar">🇸🇦 العربية</div>
+                <div class="lang-option" data-lang="en">🇬🇧 English</div>
+                <div class="lang-option" data-lang="fr">🇫🇷 Français</div>
+            </div>
+        </div>
+        <button class="theme-toggle">
+            <span class="icon sun"><i class="fas fa-sun"></i></span>
+            <span class="icon moon"><i class="fas fa-moon"></i></span>
+        </button>
+    </div>
+</nav>
+
+<div class="sidebar-overlay"></div>
+<aside class="sidebar">
+    <div class="sidebar-logo">
+        <h2>
+            <span style="font-size:0.9rem;font-weight:400;opacity:0.8">Agency</span>
+            <span class="logo-sub">STORM</span>
+            <span class="logo-tagline">Digital Marketing Solutions</span>
+        </h2>
+    </div>
+    <a href="index.html" class="active"><i class="fas fa-home"></i><span data-i18n="home">الرئيسية</span></a>
+    <a href="strategies.html"><i class="fas fa-chess"></i><span data-i18n="strategies">استراتيجيات التسويق</span></a>
+    <a href="web.html"><i class="fas fa-code"></i><span data-i18n="web">تصميم المواقع</span></a>
+    <a href="media.html"><i class="fas fa-camera-retro"></i><span data-i18n="media">الانتاج والإبداع</span></a>
+    <a href="ads.html"><i class="fas fa-bullhorn"></i><span data-i18n="ads">الإعلانات</span></a>
+    <a href="data.html"><i class="fas fa-chart-line"></i><span data-i18n="data">تحليل البيانات</span></a>
+    <a href="ai-tools.html"><i class="fas fa-rocket"></i><span data-i18n="growth_lab">مختبر النمو</span></a>
+<a href="portfolio.html"><i class="fas fa-briefcase"></i><span data-i18n="portfolio">معرض الأعمال</span></a></aside>
+
+<!-- البانر الرئيسي -->
+<section class="hero" style="background: url('background.webp') center center / cover no-repeat; width: 100%; min-height: 80vh; margin-top: 20px;">
+</section>
+
+<!-- زر الاستشارة المجانية -->
+<div style="text-align: center; margin: 30px 0 50px 0;">
+    <a href="https://wa.me/201555983272" target="_blank" style="background-color: #00c853; color: white; padding: 14px 30px; border-radius: 30px; font-weight: bold; font-size: 18px; text-decoration: none; box-shadow: 0px 4px 15px rgba(0,200,83,0.35); display: inline-flex; align-items: center; gap: 10px; transition: 0.3s;">
+        <i class="fab fa-whatsapp" style="font-size: 22px;"></i>
+        <span data-i18n="cta_consultation">احصل على استشارتك المجانية</span>
+    </a>
+</div>
+
+<!-- قسم الإحصائيات -->
+<section style="padding: 40px 20px; background-color: #0b1120; color: white; text-align: center; border-radius: 15px; margin: 30px auto; max-width: 1150px; box-shadow: 0 8px 25px rgba(0,0,0,0.2); position: relative; z-index: 10;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 20px;">
+        <div style="flex: 1; min-width: 200px;">
+            <h3 style="font-size: 30px; color: #00c853; margin-bottom: 5px; font-weight: bold; direction: ltr;">+27,000$</h3>
+            <p data-i18n="stats_budget_desc" style="font-size: 15px; color: #cbd5e1; margin: 0;">ميزانيات إعلانية مُدارة بنجاح</p>
+        </div>
+        <div style="flex: 1; min-width: 180px;">
+            <h3 style="font-size: 32px; color: #00c853; margin-bottom: 5px; font-weight: bold;">+127</h3>
+            <p data-i18n="stats_campaigns_desc" style="font-size: 15px; color: #cbd5e1; margin: 0;">حملة إعلانية ناجحة</p>
+        </div>
+        <div style="flex: 1; min-width: 180px;">
+            <h3 style="font-size: 32px; color: #00c853; margin-bottom: 5px; font-weight: bold;">+17.7M</h3>
+            <p data-i18n="stats_impressions_desc" style="font-size: 15px; color: #cbd5e1; margin: 0;">انطباع وظهور إعلاني</p>
+        </div>
+        <div style="flex: 1; min-width: 180px;">
+            <h3 style="font-size: 32px; color: #00c853; margin-bottom: 5px; font-weight: bold;">+65,000</h3>
+            <p data-i18n="stats_messages_desc" style="font-size: 15px; color: #cbd5e1; margin: 0;">محادثة واستفسار مباشر</p>
+        </div>
+    </div>
+</section>
+
+<!-- قسم الخدمات -->
+<section id="services" style="position: relative; overflow: hidden; padding: 60px 0;">
+    <video autoplay loop muted playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;">
+        <source src="video_JQ5e.mp4" type="video/mp4">
+    </video>
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(11, 17, 32, 0.8); z-index: 2;"></div>
+
+    <div style="position: relative; z-index: 3; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <h2 data-i18n="services_title" style="text-align: center; font-size: 36px; font-weight: bold; color: #ffffff; margin-bottom: 40px; display: block; width: 100%;">خدماتنا</h2>
+        <div class="services-grid">
+            <a href="strategies.html" class="service-card animate animate-delay-1" style="text-decoration: none;">
+                <div class="card-icon"><i class="fas fa-chess"></i></div>
+                <h3 data-i18n="strategies_title">بناء استراتيجيات وخطط تسويقية</h3>
+                <p data-i18n="strategies_desc">نعمل على بناء استراتيجيات تسويقية متكاملة تساعد عملاءك على الوصول لجمهورهم المستهدف وتحقيق أهدافهم التسويقية</p>
+            </a>
+            <a href="web.html" class="service-card animate animate-delay-2" style="text-decoration: none;">
+                <div class="card-icon"><i class="fas fa-code"></i></div>
+                <h3 data-i18n="web_title">تصميم وتطوير المواقع وحمايتها الإلكترونية</h3>
+                <p data-i18n="web_desc">نصمم ونطور مواقع احترافية سريعة وآمنة بتجربة مستخدم مميزة تعكس هوية علامتك التجارية</p>
+            </a>
+            <a href="media.html" class="service-card animate animate-delay-3" style="text-decoration: none;">
+                <div class="card-icon"><i class="fas fa-camera-retro"></i></div>
+                <h3 data-i18n="media_title">تصوير وإنتاج وجرافيك ديزاين</h3>
+                <p data-i18n="media_desc">نقدم خدمات تصوير احترافية وإنتاج محتوى مرئي مبدع يجذب انتباه الجمهور ويعكس جودة علامتك التجارية</p>
+            </a>
+            <a href="ads.html" class="service-card animate animate-delay-4" style="text-decoration: none;">
+                <div class="card-icon"><i class="fas fa-bullhorn"></i></div>
+                <h3 data-i18n="ads_title">الإعلانات</h3>
+                <p data-i18n="ads_desc">نخطط وننفذ حملات إعلانية فعالة على جميع المنصات لتحقيق أقصى عائد على استثمارك الإعلاني</p>
+            </a>
+            <a href="data.html" class="service-card animate animate-delay-5" style="text-decoration: none;">
+                <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                <h3 data-i18n="data_title">تحليل البيانات</h3>
+                <p data-i18n="data_desc">نحلل بيانات حملاتك وسلوك جمهورك لاتخاذ قرارات تسويقية مدروسة وتحسين أداء حملاتك باستمرار</p>
+            </a>
+            <a href="ai-tools.html" class="service-card animate animate-delay-6" style="text-decoration: none;">
+                <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                <h3 data-i18n="growth_lab_title">مختبر النمو</h3>
+                <p data-i18n="growth_lab_desc">أدوات ذكية مجانية لفحص أمان موقعك، تحليل إعلاناتك، كتابة هوكات الريلز، وزيادة مبيعاتك.</p>
+            </a>
+        </div>
+
+        <!-- زر الانتقال لمعرض الأعمال -->
+        <div style="margin-top: 50px; text-align: center;">
+            <a href="portfolio.html" style="background: linear-gradient(90deg, #044dd4, #0ea5e9); color: #ffffff; padding: 14px 35px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 18px; box-shadow: 0 4px 20px rgba(56, 189, 248, 0.4); display: inline-flex; align-items: center; gap: 10px; transition: transform 0.3s ease;">
+                <i class="fas fa-briefcase"></i>
+<span data-i18n="portfolio_btn">شاهد معرض أعمالنا السابقة</span>            </a>
+        </div>
+    </div>
+</section>
+
+<!-- قسم شركاء النجاح -->
+<section id="partners" style="padding: 60px 0; background-color: #0b1120; position: relative; z-index: 3; overflow: hidden;">
+    <style>
+        .slider-container {
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            position: relative;
+            direction: ltr;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+        .slider-track {
+            display: flex;
+            gap: 20px;
+            width: max-content;
+            animation: continuousScroll 25s linear infinite;
+            will-change: transform;
+        }
+        .slider-track:hover {
+            animation-play-state: paused;
+        }
+        .partner-card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 12px;
+            width: 160px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            flex-shrink: 0;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        .partner-card img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+        .partner-card:hover {
+            transform: scale(1.05);
+        }
+        @keyframes continuousScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-50% - 10px)); }
+        }
+    </style>
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; direction: rtl;">
+        <h2 data-i18n="partners_title" style="text-align: center; font-size: 36px; font-weight: bold; color: #ffffff; margin-bottom: 40px; display: block; width: 100%;">شركاء النجاح</h2>
+    </div>
+
+    <div class="slider-container">
+        <div class="slider-track">
+            <div class="partner-card"><img src="1.jpeg" alt="Partner"></div>
+            <div class="partner-card"><img src="2.jpeg" alt="Partner"></div>
+            <div class="partner-card"><img src="3.jpeg" alt="Partner"></div>
+            <div class="partner-card"><img src="4.jpeg" alt="Partner"></div>
+            <div class="partner-card"><img src="5.jpeg" alt="Partner"></div>
+            <div class="partner-card"><img src="6.jpeg" alt="Partner"></div>
+            <div class="partner-card"><img src="7.jpeg" alt="Partner"></div>
+            <div class="partner-card"><img src="8.jpeg" alt="Partner"></div>
+
+            <div class="partner-card"><img src="1.jpeg" alt="Partner"></div>
+            <div class="partner-card"><img src="2.jpeg" alt="Partner"></div>
+            <div class="partner-card"><img src="3.jpeg" alt="Partner"></div>
+            <div class="partner-card"><img src="4.jpeg" alt="Partner"></div>
+            <div class="partner-card"><img src="5.jpeg" alt="Partner"></div>
+            <div class="partner-card"><img src="6.jpeg" alt="Partner"></div>
+            <div class="partner-card"><img src="7.jpeg" alt="Partner"></div>
+            <div class="partner-card"><img src="8.jpeg" alt="Partner"></div>
+        </div>
+    </div>
+</section>
+
+<!-- الفوتر -->
+<footer class="footer" style="background-color: #0b1120; color: #ffffff; padding: 50px 40px 20px 40px; border-top: 1px solid rgba(255,255,255,0.1); font-family: inherit;">
+    <div style="max-width: 1300px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 40px;">
+        
+        <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; align-items: flex-start; padding-right: 80px;">
+            <div style="text-align: center;">
+                <h3 style="font-size: 22px; font-weight: bold; margin-bottom: 5px; color: #ffffff;">Agency STORM</h3>
+                <p data-i18n="footer_subtitle" style="font-size: 14px; color: #38bdf8; margin-bottom: 15px; font-weight: 500;">Digital Marketing Solutions</p>
+                <p data-i18n="footer_desc" style="font-size: 15px; color: #cbd5e1; line-height: 1.6; margin-bottom: 10px;">نقدم حلولاً تسويقية شاملة تضمن نمو مبيعاتك</p>
+                <p data-i18n="footer_services_list" style="font-size: 13px; color: #94a3b8; line-height: 1.5;">"بناء الاستراتيجيات - تصميم المواقع - الإنتاج الإبداعي - الإعلانات وتحليل البيانات"</p>
+            </div>
+        </div>
+
+        <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; align-items: center; text-align: center; padding-left: 40px;">
+            <h3 data-i18n="footer_contact" style="font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #ffffff; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                <i class="fas fa-headset" style="color: #38bdf8;"></i> تواصل معنا
+            </h3>
+            
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="https://wa.me/201555983272" target="_blank" title="WhatsApp" style="width: 45px; height: 45px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #25d366; font-size: 20px; transition: 0.3s;" onmouseover="this.style.background='#25d366'; this.style.color='#fff';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='#25d366';">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="mailto:ads.stormagency@gmail.com" target="_blank" title="Email" style="width: 45px; height: 45px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ea4335; font-size: 18px; transition: 0.3s;" onmouseover="this.style.background='#ea4335'; this.style.color='#fff';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='#ea4335';">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.facebook.com/share/1TFDtkXPCE/" target="_blank" title="Facebook" style="width: 45px; height: 45px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #1877f2; font-size: 18px; transition: 0.3s;" onmouseover="this.style.background='#1877f2'; this.style.color='#fff';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='#1877f2';">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/ads_stormagency" target="_blank" title="Instagram" style="width: 45px; height: 45px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e1306c; font-size: 18px; transition: 0.3s;" onmouseover="this.style.background='#e1306c'; this.style.color='#fff';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='#e1306c';">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com/@ads_stormagency?is_from_webapp=1&sender_device=pc" target="_blank" title="TikTok" style="width: 45px; height: 45px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 18px; transition: 0.3s;" onmouseover="this.style.background='#000000'; this.style.color='#fff'; this.style.borderColor='#fff';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='#ffffff'; this.style.borderColor='rgba(255,255,255,0.1)';">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- شريط حقوق النشر وتطوير الموقع -->
+    <div style="max-width: 1300px; margin: 40px auto 0 auto; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; font-size: 13px; color: #64748b; display: flex; flex-direction: column; gap: 8px; align-items: center;">
+        <p>© 2026 Agency STORM. All rights reserved Since 2021.</p>
+        <p style="color: #38bdf8; font-weight: 500;">Designed and Developed by Agency STORM</p>
+    </div>
+</footer>
+
+<script src="main_JQ5e.js"></script>
+
+<!-- زر الواتساب العائم -->
+<a href="https://wa.me/201555983272" target="_blank" rel="noopener noreferrer" style="position: fixed; bottom: 25px; left: 25px; background-color: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 32px; box-shadow: 0px 4px 15px rgba(0,0,0,0.3); z-index: 9999; text-decoration: none; transition: transform 0.3s ease-in-out;">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- زر عائم لتحليلات ومختبر النمو -->
+<a href="ai-tools.html" target="_blank" rel="noopener noreferrer" data-i18n="growth_btn" style="position: fixed; bottom: 95px; right: 15px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; padding: 15px 24px; border-radius: 35px; display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: bold; box-shadow: 0px 6px 25px rgba(59,130,246,0.5); z-index: 9998; text-decoration: none; transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.06)';" onmouseout="this.style.transform='scale(1)';" title="Growth Lab">
+    <i class="fas fa-rocket" style="font-size: 19px;"></i>
+    <span data-i18n="growth_btn">جرب تحليلات Storm</span>
+</a>
+</body>
+</html>

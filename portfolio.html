@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+    <style>
+        @media (max-width: 768px) {
+            .hero {
+                background-size: contain !important;
+                min-height: 250px !important;
+                margin-top: 10px !important;
+            }
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض الأعمال | Storm Agency</title>
+    <meta name="description" content="استعرض معرض أعمال وكالة Storm Agency في تصميم المواقع، الحملات الإعلانية الناجحة، والإنتاج المرئي والإبداعي.">
+    <meta name="author" content="Storm Agency">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0B0F19">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style_JQ5e.css">
+    <style>
+        .portfolio-container {
+            max-width: 1550px;
+            margin: 2rem auto 150px auto;
+            padding: 0 15px;
+        }
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background-color: #131B2E;
+            color: #94a3b8;
+            border: 1px solid #1E293B;
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background-color: #3b82f6;
+            color: #fff;
+            border-color: #3b82f6;
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+        }
+        @media (max-width: 1400px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        @media (max-width: 1024px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .portfolio-card {
+            background-color: #131B2E;
+            border: 1px solid #1E293B;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .portfolio-card:hover {
+            transform: translateY(-4px);
+            border-color: #3b82f6;
+        }
+        .card-media {
+            width: 100%;
+            height: 150px;
+            background-color: #0b1120;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card-media img, .card-media video {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        .card-media:hover img, .card-media:hover video {
+            transform: scale(1.03);
+        }
+        .play-icon-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            pointer-events: none;
+        }
+        .card-body {
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+        .card-body h3 {
+            font-size: 0.88rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 3px;
+        }
+        .card-body p {
+            color: #cbd5e1;
+            font-size: 0.75rem;
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
+        .visit-site-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            background: linear-gradient(90deg, #044dd4, #0ea5e9);
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.72rem;
+            transition: opacity 0.3s;
+        }
+        .visit-site-btn:hover {
+            opacity: 0.9;
+        }
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(11, 17, 32, 0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+        }
+        .lightbox-content img, .lightbox-content video {
+            width: 100%;
+            height: auto;
+            max-height: 85vh;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+        .close-lightbox {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="mesh-bg">
+    <canvas id="meshCanvas" width="1366" height="643"></canvas>
+</div>
+<div class="logo-watermark">STORM</div>
+
+<nav class="navbar">
+    <div class="nav-left">
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <span class="page-title" data-i18n="portfolio">معرض الأعمال</span>
+    </div>
+    <div class="nav-right">
+        <div class="lang-switcher">
+            <button class="lang-btn">
+                <span class="current-lang">العربية</span>
+                <span class="arrow">▾</span>
+            </button>
+            <div class="lang-dropdown">
+                <div class="lang-option active" data-lang="ar" onclick="changeLanguage('ar')">🇸🇦 العربية</div>
+                <div class="lang-option" data-lang="en" onclick="changeLanguage('en')">🇬🇧 English</div>
+                <div class="lang-option" data-lang="fr" onclick="changeLanguage('fr')">🇫🇷 Français</div>
+            </div>
+        </div>
+        <button class="theme-toggle">
+            <span class="icon sun"><i class="fas fa-sun"></i></span>
+            <span class="icon moon"><i class="fas fa-moon"></i></span>
+        </button>
+    </div>
+</nav>
+
+<div class="sidebar-overlay"></div>
+<aside class="sidebar">
+    <div class="sidebar-logo">
+        <h2>
+            <span style="font-size:0.9rem;font-weight:400;opacity:0.8">Agency</span>
+            <span class="logo-sub">STORM</span>
+            <span class="logo-tagline">Digital Marketing Solutions</span>
+        </h2>
+    </div>
+    <a href="index.html"><i class="fas fa-home"></i><span data-i18n="home">الرئيسية</span></a>
+    <a href="strategies.html"><i class="fas fa-chess"></i><span data-i18n="strategies">استراتيجيات التسويق</span></a>
+    <a href="web.html"><i class="fas fa-code"></i><span data-i18n="web">تصميم المواقع</span></a>
+    <a href="media.html"><i class="fas fa-camera-retro"></i><span data-i18n="media">الانتاج والإبداع</span></a>
+    <a href="ads.html"><i class="fas fa-bullhorn"></i><span data-i18n="ads">الإعلانات</span></a>
+    <a href="data.html"><i class="fas fa-chart-line"></i><span data-i18n="data">تحليل البيانات</span></a>
+    <a href="ai-tools.html"><i class="fas fa-rocket"></i><span data-i18n="growth_lab">مختبر النمو</span></a>
+    <a href="portfolio.html" class="active"><i class="fas fa-briefcase"></i><span data-i18n="portfolio">معرض الأعمال</span></a>
+</aside>
+
+<!-- محتوى الصفحة الرئيسي داخل الحاوية المعدلة -->
+<div class="portfolio-container">
+    
+    <!-- قسم الهيرو -->
+    <div class="service-hero" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 40px; margin: 30px auto 40px auto; max-width: 1550px; padding: 0 15px;">
+        
+        <!-- جانب النصوص -->
+        <div class="text-side" style="flex: 1; min-width: 300px; text-align: right;">
+            <h1 data-i18n="portfolio_main_title" style="font-size: 38px; font-weight: bold; color: #ffffff; margin-bottom: 15px; line-height: 1.3;">معرض الأعمال السابقة</h1>
+            <p data-i18n="portfolio_main_desc" style="font-size: 17px; color: #cbd5e1; line-height: 1.7; font-weight: 500; margin-bottom: 25px;">تصفح أقسام أعمالنا السابقة للاطلاع على النتائج، التصميمات، الفيديوهات، ومواقع الويب.</p>
+            <a href="#portfolio-section" style="background: linear-gradient(135deg, #0055ff, #0088ff); color: white; padding: 12px 25px; border-radius: 30px; font-weight: bold; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(0,85,255,0.4);">
+                <span data-i18n="browse_sections">استعرض الأقسام</span> <i class="fas fa-arrow-down"></i>
+            </a>
+        </div>
+
+        <!-- جانب البانر -->
+        <div class="image-side" style="flex: 1; min-width: 300px; display: flex; justify-content: center;">
+            <div style="width: 100%; max-width: 420px; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);">
+                <img src="portfolio.webp" alt="Paid Ads & Campaigns" style="width: 100%; height: auto; display: block;" onerror="this.style.display='none'">
+            </div>
+        </div>
+
+    </div>
+
+    <!-- أزرار التصفية (الأقسام المنفصلة) -->
+    <div class="filter-buttons">
+        <button class="filter-btn active" onclick="filterSelection('ads', event)" data-i18n="filter_ads">نتائج الحملات الإعلانية</button>
+        <button class="filter-btn" onclick="filterSelection('designs', event)" data-i18n="filter_designs">التصميمات والهويات</button>
+        <button class="filter-btn" onclick="filterSelection('videos', event)" data-i18n="filter_videos">الإنتاج المرئي والفيديوهات</button>
+        <button class="filter-btn" onclick="filterSelection('web', event)" data-i18n="filter_web">مواقع وصفحات الهبوط</button>
+    </div>
+
+    <!-- شبكة الكروت -->
+    <div class="portfolio-grid">
+        
+        <!-- قسم نتائج الحملات الإعلانية -->
+        <div class="portfolio-card" data-category="ads">
+            <div class="card-media" onclick="openLightbox('meta1.webp')">
+                <img src="meta1.webp" alt="نتائج حملات ميتا 1">
+            </div>
+            <div class="card-body">
+                <div>
+                    <h3 data-i18n="p_meta1_t">حملات ميتا</h3>
+                    <p data-i18n="p_meta1_d">أداء استثنائي وتوليد تفاعل منخفض التكلفة.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-card" data-category="ads">
+            <div class="card-media" onclick="openLightbox('meta2.webp')">
+                <img src="meta2.webp" alt="نتائج حملات ميتا 2">
+            </div>
+            <div class="card-body">
+                <div>
+                    <h3 data-i18n="p_meta2_t">حملات ميتا</h3>
+                    <p data-i18n="p_meta2_d">تحقيق أعلى عائد على الإنفاق الإعلاني ROAS.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-card" data-category="ads">
+            <div class="card-media" onclick="openLightbox('meta3.webp')">
+                <img src="meta3.webp" alt="نتائج حملات ميتا 3">
+            </div>
+            <div class="card-body">
+                <div>
+                    <h3 data-i18n="p_meta3_t">حملات ميتا</h3>
+                    <p data-i18n="p_meta3_d">استهداف دقيق وتحسين مستمر للنتائج.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-card" data-category="ads">
+            <div class="card-media" onclick="openLightbox('meta4.webp')">
+                <img src="meta4.webp" alt="ملخص الأداء الكلي للحملات">
+            </div>
+            <div class="card-body">
+                <div>
+                    <h3 data-i18n="p_meta4_t">ملخص أداء الحملات</h3>
+                    <p data-i18n="p_meta4_d">إحصائيات متكاملة ومتابعة دقيقة للأداء.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-card" data-category="ads">
+            <div class="card-media" onclick="openLightbox('Tiktok.webp')">
+                <img src="Tiktok.webp" alt="نتائج حملات تيك توك">
+            </div>
+            <div class="card-body">
+                <div>
+                    <h3 data-i18n="p_tik1_t">حملات تيك توك</h3>
+                    <p data-i18n="p_tik1_d">إدارة ميزانيات واحترافية في تحقيق الانتشار.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-card" data-category="ads">
+            <div class="card-media" onclick="openLightbox('Tiktok2.webp')">
+                <img src="Tiktok2.webp" alt="نتائج حملات تيك توك 2">
+            </div>
+            <div class="card-body">
+                <div>
+                    <h3 data-i18n="p_tik2_t">حملات تيك توك</h3>
+                    <p data-i18n="p_tik2_d">تحقيق نتائج مباشرة ومعدلات تحويل عالية.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- قسم التصميمات والهويات -->
+        <div class="portfolio-card" data-category="designs" style="display:none;">
+            <div class="card-media" onclick="openLightbox('alfa.webp')">
+                <img src="alfa.webp" alt="تصميم ألفا إلكتريك">
+            </div>
+            <div class="card-body">
+                <div>
+                    <h3 data-i18n="p_alpha_t">الفا الكتريك</h3>
+                    <p data-i18n="p_alpha_d">تصميم هندسي إبداعي للتركيبات الصناعية.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-card" data-category="designs" style="display:none;">
+            <div class="card-media" onclick="openLightbox('zain.webp')">
+                <img src="zain.webp" alt="تصميم عروض زين">
+            </div>
+            <div class="card-body">
+                <div>
+                    <h3 data-i18n="p_zain_t">عروض زين 5G</h3>
+                    <p data-i18n="p_zain_d">تصميم تسويقي ترويجي لباقات الإنترنت.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-card" data-category="designs" style="display:none;">
+            <div class="card-media" onclick="openLightbox('mobily.webp')">
+                <img src="mobily.webp" alt="عروض موبايلي">
+            </div>
+            <div class="card-body">
+                <div>
+                    <h3 data-i18n="p_mob_t">عروض موبايلي</h3>
+                    <p data-i18n="p_mob_d">إعلان ترويجي لسرعات الإنترنت والخصومات.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-card" data-category="designs" style="display:none;">
+            <div class="card-media" onclick="openLightbox('clear.webp')">
+                <img src="clear.webp" alt="سيروم كلير سكالب">
+            </div>
+            <div class="card-body">
+                <div>
+                    <h3 data-i18n="p_clr_t">كلير سكالب</h3>
+                    <p data-i18n="p_clr_d">تصميم إعلاني طبيعي واحترافي لمنتجات العناية.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-card" data-category="designs" style="display:none;">
+            <div class="card-media" onclick="openLightbox('ingizny.webp')">
+                <img src="ingizny.webp" alt="شركة إنجزني">
+            </div>
+            <div class="card-body">
+                <div>
+                    <h3 data-i18n="p_eng_t">خدمات إنجزني</h3>
+                    <p data-i18n="p_eng_d">تصميم هوية لخدمات التوصيل السريع والشحن.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- قسم الإنتاج المرئي والفيديوهات -->
+        <div class="portfolio-card" data-category="videos" style="display:none;">
+            <div class="card-media" onclick="openLightbox('تعليمي.mp4')">
+                <video src="تعليمي.mp4" muted style="width:100%; height:100%; object-fit:contain;"></video>
+                <div class="play-icon-overlay"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="card-body">
+                <div>
+                    <h3 data-i18n="p_vid1_t">فيديو تعليمي</h3>
+                    <p data-i18n="p_vid1_d">إنتاج مرئي وإبداعي يعكس خدمات الوكالة.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-card" data-category="videos" style="display:none;">
+            <div class="card-media" onclick="openLightbox('ساعات.mp4')">
+                <video src="ساعات.mp4" muted style="width:100%; height:100%; object-fit:contain;"></video>
+                <div class="play-icon-overlay"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="card-body">
+                <div>
+                    <h3 data-i18n="p_vid2_t">اعلان القصر الملكي</h3>
+                    <p data-i18n="p_vid2_d">إنتاج مرئي يعكس قيمة الساعات السويسرية.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-card" data-category="videos" style="display:none;">
+            <div class="card-media" onclick="openLightbox('زين.mp4')">
+                <video src="زين.mp4" muted style="width:100%; height:100%; object-fit:contain;"></video>
+                <div class="play-icon-overlay"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="card-body">
+                <div>
+                    <h3 data-i18n="p_vid3_t">باقات زين 5G المنزلية</h3>
+                    <p data-i18n="p_vid3_d">إنتاج مرئي يعكس سرعة الإنترنت وأهميته.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-card" data-category="videos" style="display:none;">
+            <div class="card-media" onclick="openLightbox('كلير.mp4')">
+                <video src="كلير.mp4" muted style="width:100%; height:100%; object-fit:contain;"></video>
+                <div class="play-icon-overlay"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="card-body">
+                <div>
+                    <h3 data-i18n="p_vid4_t">اعلان Clear Scalp</h3>
+                    <p data-i18n="p_vid4_d">إنتاج مرئي يعكس جودة وأهمية المنتج.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-card" data-category="videos" style="display:none;">
+            <div class="card-media" onclick="openLightbox('مطعم.mp4')">
+                <video src="مطعم.mp4" muted style="width:100%; height:100%; object-fit:contain;"></video>
+                <div class="play-icon-overlay"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="card-body">
+                <div>
+                    <h3 data-i18n="p_vid5_t">اعلان مطعم مأكلات تركية</h3>
+                    <p data-i18n="p_vid5_d">إنتاج مرئي يعكس جودة الطعم والخدمة.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-card" data-category="videos" style="display:none;">
+            <div class="card-media" onclick="openLightbox('بيوتي برم.mp4')">
+                <video src="بيوتي برم.mp4" muted style="width:100%; height:100%; object-fit:contain;"></video>
+                <div class="play-icon-overlay"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="card-body">
+                <div>
+                    <h3 data-i18n="p_vid6_t">اعلان ملابس</h3>
+                    <p data-i18n="p_vid6_d">إنتاج مرئي يعكس جودة الخامات وجمال التفصيل.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- قسم مواقع وصفحات الهبوط -->
+        <div class="portfolio-card" data-category="web" style="display:none;">
+            <div class="card-media" onclick="openLightbox('5G.webp')">
+                <img src="5G.webp" alt="صفحة هبوط زين 5G">
+            </div>
+            <div class="card-body">
+                <div>
+                    <h3 data-i18n="p_web1_t">Zain-5G</h3>
+                    <p data-i18n="p_web1_d">تطوير صفحة تفاعلية لزيادة معدلات التحويل.</p>
+                </div>
+                <a href="https://zain5g.com" target="_blank" class="visit-site-btn">
+                    <i class="fas fa-external-link-alt"></i> <span data-i18n="visit_btn">زيارة الموقع</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="portfolio-card" data-category="web" style="display:none;">
+            <div class="card-media" onclick="openLightbox('watch.webp')">
+                <img src="watch.webp" alt="Watches Buyers">
+            </div>
+            <div class="card-body">
+                <div>
+                    <h3 data-i18n="p_web2_t">Watches-Buyers</h3>
+                    <p data-i18n="p_web2_d">موقع إلكتروني لفحص وتقييم وشراء الساعات.</p>
+                </div>
+                <a href="https://watchesbuyers.com" target="_blank" class="visit-site-btn">
+                    <i class="fas fa-external-link-alt"></i> <span data-i18n="visit_btn">زيارة الموقع</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+        <button class="close-lightbox" onclick="closeLightbox()">&times;</button>
+        <div id="lightbox-body"></div>
+    </div>
+</div>
+
+<footer class="footer" style="background-color: #0b1120; color: #ffffff; padding: 50px 40px 20px 40px; border-top: 1px solid rgba(255,255,255,0.1); font-family: inherit;">
+    <div style="max-width: 1300px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 40px;">
+        <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; align-items: flex-start; padding-right: 80px;">
+            <div style="text-align: center;">
+                <h3 style="font-size: 22px; font-weight: bold; margin-bottom: 5px; color: #ffffff;">Agency STORM</h3>
+                <p style="font-size: 14px; color: #38bdf8; margin-bottom: 15px; font-weight: 500;">Digital Marketing Solutions</p>
+                <p style="font-size: 15px; color: #cbd5e1; line-height: 1.6; margin-bottom: 10px;" data-i18n="footer_desc">نقدم حلولاً تسويقية شاملة تضمن نمو مبيعاتك</p>
+                <p style="font-size: 13px; color: #94a3b8; line-height: 1.5;">"بناء الاستراتيجيات - تصميم المواقع - الإنتاج الإبداعي - الإعلانات وتحليل البيانات"</p>
+            </div>
+        </div>
+
+        <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; align-items: center; text-align: center; padding-left: 40px;">
+            <h3 style="font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #ffffff; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                <i class="fas fa-headset" style="color: #38bdf8;"></i> <span data-i18n="contact_us">تواصل معنا</span>
+            </h3>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="https://wa.me/201555983272" target="_blank" title="WhatsApp" style="width: 45px; height: 45px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #25d366; font-size: 20px; transition: 0.3s;"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:ads.stormagency@gmail.com" target="_blank" title="Email" style="width: 45px; height: 45px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ea4335; font-size: 18px; transition: 0.3s;"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.facebook.com/share/1TFDtkXPCE/" target="_blank" title="Facebook" style="width: 45px; height: 45px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #1877f2; font-size: 18px; transition: 0.3s;"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/ads_stormagency" target="_blank" title="Instagram" style="width: 45px; height: 45px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e1306c; font-size: 18px; transition: 0.3s;"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@ads_stormagency" target="_blank" title="TikTok" style="width: 45px; height: 45px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 18px; transition: 0.3s;"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div style="max-width: 1300px; margin: 40px auto 0 auto; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; font-size: 13px; color: #64748b; display: flex; flex-direction: column; gap: 8px; align-items: center;">
+        <p>© 2026 Agency STORM. All rights reserved Since 2021.</p>
+        <p style="color: #38bdf8; font-weight: 500;">Designed and Developed by Agency STORM</p>
+    </div>
+</footer>
+
+<script src="main_JQ5e.js"></script>
+
+<a href="https://wa.me/201555983272" target="_blank" rel="noopener noreferrer" style="position: fixed; bottom: 25px; left: 25px; background-color: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 32px; box-shadow: 0px 4px 15px rgba(0,0,0,0.3); z-index: 9999; text-decoration: none;">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<a href="ai-tools.html" target="_blank" rel="noopener noreferrer" style="position: fixed; bottom: 95px; right: 15px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; padding: 15px 24px; border-radius: 35px; display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: bold; box-shadow: 0px 6px 25px rgba(59,130,246,0.5); z-index: 9998; text-decoration: none;">
+    <i class="fas fa-rocket" style="font-size: 19px;"></i>
+    <span>جرب تحليلات Storm</span>
+</a>
+
+<script>
+    // قاموس الترجمات الشامل والجاهز لصفحة معرض الأعمال (عربي، إنجليزي، فرنسي)
+    const portfolioTranslations = {
+        ar: {
+            portfolio: "معرض الأعمال",
+            home: "الرئيسية",
+            strategies: "استراتيجيات التسويق",
+            web: "تصميم المواقع",
+            media: "الانتاج والإبداع",
+            ads: "الإعلانات",
+            data: "تحليل البيانات",
+            growth_lab: "مختبر النمو",
+            portfolio_main_title: "معرض الأعمال السابقة",
+            portfolio_main_desc: "تصفح أقسام أعمالنا السابقة للاطلاع على النتائج، التصميمات، الفيديوهات، ومواقع الويب.",
+            browse_sections: "استعرض الأقسام",
+            filter_ads: "نتائج الحملات الإعلانية",
+            filter_designs: "التصميمات والهويات",
+            filter_videos: "الإنتاج المرئي والفيديوهات",
+            filter_web: "مواقع وصفحات الهبوط",
+            visit_btn: "زيارة الموقع",
+            footer_desc: "نقدم حلولاً تسويقية شاملة تضمن نمو مبيعاتك",
+            contact_us: "تواصل معنا",
+            
+            p_meta1_t: "حملات ميتا", p_meta1_d: "أداء استثنائي وتوليد تفاعل منخفض التكلفة.",
+            p_meta2_t: "حملات ميتا", p_meta2_d: "تحقيق أعلى عائد على الإنفاق الإعلاني ROAS.",
+            p_meta3_t: "حملات ميتا", p_meta3_d: "استهداف دقيق وتحسين مستمر للنتائج.",
+            p_meta4_t: "ملخص أداء الحملات", p_meta4_d: "إحصائيات متكاملة ومتابعة دقيقة للأداء.",
+            p_tik1_t: "حملات تيك توك", p_tik1_d: "إدارة ميزانيات واحترافية في تحقيق الانتشار.",
+            p_tik2_t: "حملات تيك توك", p_tik2_d: "تحقيق نتائج مباشرة ومعدلات تحويل عالية.",
+            
+            p_alpha_t: "الفا الكتريك", p_alpha_d: "تصميم هندسي إبداعي للتركيبات الصناعية.",
+            p_zain_t: "عروض زين 5G", p_zain_d: "تصميم تسويقي ترويجي لباقات الإنترنت.",
+            p_mob_t: "عروض موبايلي", p_mob_d: "إعلان ترويجي لسرعات الإنترنت والخصومات.",
+            p_clr_t: "كلير سكالب", p_clr_d: "تصميم إعلاني طبيعي واحترافي لمنتجات العناية.",
+            p_eng_t: "خدمات إنجزني", p_eng_d: "تصميم هوية لخدمات التوصيل السريع والشحن.",
+            
+            p_vid1_t: "فيديو تعليمي", p_vid1_d: "إنتاج مرئي وإبداعي يعكس خدمات الوكالة.",
+            p_vid2_t: "اعلان القصر الملكي", p_vid2_d: "إنتاج مرئي يعكس قيمة الساعات السويسرية.",
+            p_vid3_t: "باقات زين 5G المنزلية", p_vid3_d: "إنتاج مرئي يعكس سرعة الإنترنت وأهميته.",
+            p_vid4_t: "اعلان Clear Scalp", p_vid4_d: "إنتاج مرئي يعكس جودة وأهمية المنتج.",
+            p_vid5_t: "اعلان مطعم مأكلات تركية", p_vid5_d: "إنتاج مرئي يعكس جودة الطعم والخدمة.",
+            p_vid6_t: "اعلان ملابس", p_vid6_d: "إنتاج مرئي يعكس جودة الخامات وجمال التفصيل.",
+            
+            p_web1_t: "Zain-5G", p_web1_d: "تطوير صفحة تفاعلية لزيادة معدلات التحويل.",
+            p_web2_t: "Watches-Buyers", p_web2_d: "موقع إلكتروني لفحص وتقييم وشراء الساعات."
+        },
+        en: {
+            portfolio: "Portfolio",
+            home: "Home",
+            strategies: "Marketing Strategies",
+            web: "Web Design",
+            media: "Creative Production",
+            ads: "Ads",
+            data: "Data Analytics",
+            growth_lab: "Growth Lab",
+            portfolio_main_title: "Previous Portfolio",
+            portfolio_main_desc: "Browse our previous work sections to view results, designs, videos, and websites.",
+            browse_sections: "Browse Sections",
+            filter_ads: "Ad Campaign Results",
+            filter_designs: "Designs & Branding",
+            filter_videos: "Visual Production & Videos",
+            filter_web: "Websites & Landing Pages",
+            visit_btn: "Visit Website",
+            footer_desc: "We provide comprehensive marketing solutions that guarantee sales growth",
+            contact_us: "Contact Us",
+            
+            p_meta1_t: "Meta Campaigns", p_meta1_d: "Exceptional performance and low-cost engagement generation.",
+            p_meta2_t: "Meta Campaigns", p_meta2_d: "Achieving the highest Return On Ad Spend (ROAS).",
+            p_meta3_t: "Meta Campaigns", p_meta3_d: "Precise targeting and continuous performance optimization.",
+            p_meta4_t: "Campaign Performance Summary", p_meta4_d: "Comprehensive statistics and accurate tracking.",
+            p_tik1_t: "TikTok Campaigns", p_tik1_d: "Budget management and professionalism in reach.",
+            p_tik2_t: "TikTok Campaigns", p_tik2_d: "Achieving direct results and high conversion rates.",
+            
+            p_alpha_t: "Alpha Electric", p_alpha_d: "Creative engineering design for industrial installations.",
+            p_zain_t: "Zain 5G Offers", p_zain_d: "Promotional marketing design for internet bundles.",
+            p_mob_t: "Mobily Offers", p_mob_d: "Promotional ad for internet speeds and discounts.",
+            p_clr_t: "Clear Scalp", p_clr_d: "Natural and professional ad design for care products.",
+            p_eng_t: "Ingezny Services", p_eng_d: "Identity design for express delivery and shipping.",
+            
+            p_vid1_t: "Educational Video", p_vid1_d: "Visual production reflecting agency services.",
+            p_vid2_t: "Royal Palace Ad", p_vid2_d: "Visual production reflecting Swiss watch value.",
+            p_vid3_t: "Zain 5G Home Bundles", p_vid3_d: "Visual production reflecting internet speed.",
+            p_vid4_t: "Clear Scalp Ad", p_vid4_d: "Visual production reflecting product quality.",
+            p_vid5_t: "Turkish Restaurant Ad", p_vid5_d: "Visual production reflecting taste and service.",
+            p_vid6_t: "Fashion Ad", p_vid6_d: "Visual production reflecting fabric quality.",
+            
+            p_web1_t: "Zain-5G", p_web1_d: "Developing an interactive landing page to increase conversions.",
+            p_web2_t: "Watches-Buyers", p_web2_d: "A website for inspecting, evaluating, and purchasing watches."
+        },
+        fr: {
+            portfolio: "Portfolio",
+            home: "Accueil",
+            strategies: "Stratégies Marketing",
+            web: "Conception Web",
+            media: "Production Créative",
+            ads: "Publicités",
+            data: "Analyse de Données",
+            growth_lab: "Labo de Croissance",
+            portfolio_main_title: "Portfolio Précédent",
+            portfolio_main_desc: "Parcourez nos sections de travaux précédents pour voir les résultats, designs et sites.",
+            browse_sections: "Parcourir les sections",
+            filter_ads: "Résultats des Campagnes",
+            filter_designs: "Designs et Identités",
+            filter_videos: "Production Visuelle et Vidéos",
+            filter_web: "Sites Web et Pages de Destination",
+            visit_btn: "Visiter le site",
+            footer_desc: "Nous fournissons des solutions marketing complètes garantissant la croissance des ventes",
+            contact_us: "Contactez-nous",
+            
+            p_meta1_t: "Campagnes Meta", p_meta1_d: "Performance exceptionnelle et engagement à faible coût.",
+            p_meta2_t: "Campagnes Meta", p_meta2_d: "Atteindre le meilleur retour sur les dépenses (ROAS).",
+            p_meta3_t: "Campagnes Meta", p_meta3_d: "Ciblage précis et optimisation continue.",
+            p_meta4_t: "Résumé des Performances", p_meta4_d: "Statistiques intégrées et suivi précis.",
+            p_tik1_t: "Campagnes TikTok", p_tik1_d: "Gestion budgétaire et professionnalisme.",
+            p_tik2_t: "Campagnes TikTok", p_tik2_d: "Résultats directs et taux de conversion élevés.",
+            
+            p_alpha_t: "Alpha Electric", p_alpha_d: "Conception d'ingénierie pour installations industrielles.",
+            p_zain_t: "Offres Zain 5G", p_zain_d: "Design marketing promotionnel pour forfaits internet.",
+            p_mob_t: "Offres Mobily", p_mob_d: "Annonce promotionnelle pour vitesses et réductions.",
+            p_clr_t: "Clear Scalp", p_clr_d: "Design publicitaire naturel pour produits de soins.",
+            p_eng_t: "Services Ingezny", p_eng_d: "Design d'identité pour services de livraison rapide.",
+            
+            p_vid1_t: "Vidéo Éducative", p_vid1_d: "Production visuelle reflétant les services de l'agence.",
+            p_vid2_t: "Publicité Palais Royal", p_vid2_d: "Production visuelle reflétant la valeur des montres.",
+            p_vid3_t: "Forfaits Zain 5G", p_vid3_d: "Production visuelle reflétant la vitesse d'Internet.",
+            p_vid4_t: "Publicité Clear Scalp", p_vid4_d: "Production visuelle reflétant la qualité du produit.",
+            p_vid5_t: "Publicité Restaurant Turc", p_vid5_d: "Production visuelle reflétant la qualité du goût.",
+            p_vid6_t: "Publicité Mode", p_vid6_d: "Production visuelle reflétant la qualité des tissus.",
+            
+            p_web1_t: "Zain-5G", p_web1_d: "Développement d'une page interactive pour les conversions.",
+            p_web2_t: "Watches-Buyers", p_web2_d: "Site Web d'inspection, d'évaluation et d'achat de montres."
+        }
+    };
+
+    function changeLanguage(lang) {
+        localStorage.setItem('selected_lang', lang);
+        document.documentElement.setAttribute('lang', lang);
+        document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+        
+        const texts = portfolioTranslations[lang];
+        if(!texts) return;
+
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if(texts[key]) {
+                el.innerText = texts[key];
+            }
+        });
+    }
+
+    // تفعيل اللغة المحفوظة تلقائياً عند فتح الصفحة
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedLang = localStorage.getItem('selected_lang') || 'ar';
+        changeLanguage(savedLang);
+    });
+
+    function filterSelection(category, event) {
+        let cards = document.querySelectorAll('.portfolio-card');
+        let buttons = document.querySelectorAll('.filter-btn');
+        
+        buttons.forEach(btn => btn.classList.remove('active'));
+        if(event && event.target) {
+            event.target.classList.add('active');
+        }
+
+        cards.forEach(card => {
+            if (card.getAttribute('data-category') === category) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    function openLightbox(src) {
+        let lightbox = document.getElementById('lightbox');
+        let body = document.getElementById('lightbox-body');
+        
+        if (src.endsWith('.mp4') || src.endsWith('.webm') || src.endsWith('.ogg')) {
+            body.innerHTML = `<video src="${src}" controls autoplay style="width:100%; max-height:85vh; border-radius:8px;"></video>`;
+        } else {
+            body.innerHTML = `<img src="${src}" alt="Enlarged view">`;
+        }
+        
+        lightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+        let lightbox = document.getElementById('lightbox');
+        let body = document.getElementById('lightbox-body');
+        lightbox.classList.remove('active');
+        body.innerHTML = '';
+    }
+
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+        if(e.target === this) {
+            closeLightbox();
+        }
+    });
+</script>
+</body>
+</html>
