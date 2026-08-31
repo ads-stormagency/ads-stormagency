@@ -1940,97 +1940,31 @@ body {
     display: block !important;
   }
 }
-/* ======================================================
-   إصلاح خاص وحاسم لصفحة مختبر النمو على الموبايل
-   ====================================================== */
 @media (max-width: 768px) {
-  /* إرغام الحاوية الكبرى على الامتداد العمودي */
-  .growth-lab-container,
-  .tools-grid,
-  .growth-grid,
-  .lab-section,
-  .lab-cards {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    padding-left: 10px !important;
-    padding-right: 10px !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    box-sizing: border-box !important;
-  }
+    /* 1. إجبار الحاوية على عرض البطاقات رأسياً فوق بعضها */
+    .services-grid, 
+    .cards-container, 
+    .container { 
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        box-sizing: border-box !important;
+    }
 
-  /* معالجة جميع الكروت والأدوات بداخل صفحة مختبر النمو */
-  .growth-card,
-  .tool-card,
-  .lab-card,
-  .growth-lab-container > div,
-  .tools-grid > div {
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important; /* إلغاء أي عرض أدنى يسبب التمدد الجانبي */
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    box-sizing: border-box !important;
-    flex: none !important;
-  }
+    /* 2. جعل عرض كل بطاقة يغطي الشاشة بالكامل مع حواف دائرية */
+    .card, 
+    .service-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 20px !important;
+        box-sizing: border-box !important;
+    }
 
-  /* منع تمدد الصور أو الأيقونات بداخل الكروت */
-  .growth-card img, .tool-card img, .lab-card img {
-    max-width: 100% !important;
-    height: auto !important;
-  }
-}
-/* ======================================================
-   إصلاح حاسم وتام لصفحة مختبر النمو (ai-tools.html) على الموبايل
-   ====================================================== */
-@media (max-width: 768px) {
-
-  /* 1. إصلاح قسم الهيرو العلوي (منع التمدد وإلغاء min-width) */
-  .service-hero {
-    flex-direction: column !important;
-    gap: 25px !important;
-    margin-bottom: 30px !important;
-  }
-
-  .service-hero .text-side,
-  .service-hero .image-side {
-    width: 100% !important;
-    min-width: unset !important;
-    max-width: 100% !important;
-    text-align: center !important;
-  }
-
-  .service-hero h1 {
-    font-size: 26px !important;
-    line-height: 1.4 !important;
-  }
-
-  /* 2. إصلاح شبكة كروت الأدوات الأربعة (إرغامها لتكون عمود واحد) */
-  .service-details,
-  #tools-grid {
-    display: flex !important;
-    flex-direction: column !important;
-    grid-template-columns: none !important;
-    width: 100% !important;
-    gap: 20px !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
-
-  /* 3. ضغط كل كارت ليلائم عرض الموبايل */
-  .detail-card {
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-
-  /* 4. احتواء أزرار التحويل والروابط بداخل الشاشة */
-  .service-page {
-    padding: 20px 15px !important;
-    overflow-x: hidden !important;
-  }
+    /* 3. منع التمدد الأفقي العام للصفحة */
+    html, body {
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
 }
