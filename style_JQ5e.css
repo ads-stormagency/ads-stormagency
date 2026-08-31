@@ -1940,3 +1940,45 @@ body {
     display: block !important;
   }
 }
+/* ======================================================
+   إصلاح خاص وحاسم لصفحة مختبر النمو على الموبايل
+   ====================================================== */
+@media (max-width: 768px) {
+  /* إرغام الحاوية الكبرى على الامتداد العمودي */
+  .growth-lab-container,
+  .tools-grid,
+  .growth-grid,
+  .lab-section,
+  .lab-cards {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* معالجة جميع الكروت والأدوات بداخل صفحة مختبر النمو */
+  .growth-card,
+  .tool-card,
+  .lab-card,
+  .growth-lab-container > div,
+  .tools-grid > div {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important; /* إلغاء أي عرض أدنى يسبب التمدد الجانبي */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+    flex: none !important;
+  }
+
+  /* منع تمدد الصور أو الأيقونات بداخل الكروت */
+  .growth-card img, .tool-card img, .lab-card img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+}
