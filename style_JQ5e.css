@@ -1873,3 +1873,28 @@ body {
     text-align: center !important;
   }
 }
+/* إصلاح كروت وسطح العمل في صفحة الإعلانات ومختبر النمو */
+@media (max-width: 768px) {
+  /* تجديد شبكة الكروت لتكون عمود واحد متناسق */
+  .cards-grid,
+  .services-grid,
+  .features-grid,
+  .tools-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 15px !important;
+  }
+
+  /* إرغام كل كارت على عدم التمدد خارج الشاشة */
+  .card, 
+  .service-card, 
+  .feature-card, 
+  .tool-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
