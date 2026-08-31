@@ -1504,3 +1504,10 @@ function applyTranslations() {
     createParticles();
     draw();
 })();
+// ضمان تشغيل الترجمة التلقائية فور تحميل الصفحة
+document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('selectedLang') || 'ar';
+    if (typeof changeLanguage === 'function') {
+        changeLanguage(savedLang);
+    }
+});
