@@ -1898,3 +1898,45 @@ body {
     margin-right: 0 !important;
   }
 }
+/* ======================================================
+   إصلاح التمدد الأفقي نهائياً على الموبايل (دراسات الحالة والشبكات)
+   ====================================================== */
+@media (max-width: 768px) {
+
+  /* 1. منع السكرول الأفقي على مستوى الـ HTML والـ BODY */
+  html, body {
+    overflow-x: hidden !important;
+    position: relative;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* 2. إجبار كافة شبكات دراسات الحالة على العرض العمودي */
+  .grid, .row, .container, .cases-container, .cards-grid, .features-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 15px !important; /* مساحة أمان جانبية */
+    padding-right: 15px !important;
+    gap: 15px !important;
+  }
+
+  /* 3. إجبار الكروت داخل الشبكات على ملاءمة الشاشة */
+  .grid > *, .row > *, .cards-grid > *, .features-grid > *, .card, .case-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: unset !important; /* منع أي min-width يسبب التمدد */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+    flex: none !important; /* منع flex-shrink/grow غير المتوقع */
+  }
+
+  /* 4. إيقاف الـ Flex Container داخل دراسات الحالة */
+  #cases .container {
+    display: block !important;
+  }
+}
