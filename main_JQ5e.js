@@ -744,36 +744,28 @@ function setLanguage(lang) {
     if (!translations[lang]) return;
     
     currentLang = lang;
-    localStorage.setItem('selectedLang', lang);
+    localStorage.setItem('selectedLang', lang); // حفظ اللغة في الـ localStorage
 
-    // 1. تحديث اتجاه لغة الصفحة وخصائص CSS
+    // 1. تحديث اتجاه ولغة المستند HTML
     document.documentElement.lang = lang;
     document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
-    document.body.dir = (lang === 'ar') ? 'rtl' : 'ltr';
 
-    // إضافة class للـ body لسهولة التحكم بالـ CSS للغتين
-    if (lang === 'ar') {
-        document.body.classList.remove('lang-en');
-        document.body.classList.add('lang-ar');
-    } else {
-        document.body.classList.remove('lang-ar');
-        document.body.classList.add('lang-en');
-    }
-
-    // 2. تحديث جميع النصوص التي تحتوي على data-i18n
+    // 2. تحديث جميع العناصر التي تتضمن data-i18n
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
-        if (translations[lang] && translations[lang][key] !== undefined) {
+        if (translations[lang][key] !== undefined) {
+            // استخدام innerHTML في حال احتواء النص على أيقونات أو تنسيقات HTML
             element.innerHTML = translations[lang][key];
         }
     });
 
-    // 3. تحديث النص داخل زر تغيير اللغة نفسه
+    // 3. تحديث مظهر واجهة مغير اللغة (إن وجد)
     const currentLangSpan = document.querySelector('.current-lang');
     if (currentLangSpan) {
-        currentLangSpan.textContent = (lang === 'ar') ? 'العربية' : 'English';
+        if (lang === 'ar') currentLangSpan.textContent = 'العربية';
+        else if (lang === 'en') currentLangSpan.textContent = 'English';
+        else if (lang === 'fr') currentLangSpan.textContent = 'Français';
     }
-}
 }
 
 // Export Function for Dynamic Scripts (e.g., Portfolio cards rendered dynamically)
