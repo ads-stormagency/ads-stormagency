@@ -1968,3 +1968,24 @@ body {
         overflow-x: hidden !important;
     }
 }
+/* تنسيق قسم دراسات الحالة للشاشات الكبيرة */
+.case-studies-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    align-items: stretch;
+}
+
+/* التجاوب مع شاشات الموبايل */
+@media (max-width: 992px) {
+    .case-studies-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .case-studies-grid {
+        grid-template-columns: 1fr !important; /* بطاقة واحدة في كل سطر للموبايل */
+        padding: 0 10px;
+    }
+}
