@@ -1831,3 +1831,24 @@ body {
         align-items: center !important;
     }
 }
+/* توحيد الهيدر والعناوين في الصفحات الفرعية على الموبايل */
+@media (max-width: 768px) {
+  /* استثناء الصفحة الرئيسية باستخدام class أو id خاص بها إذا توفر */
+  body:not(.home-page) main,
+  body:not(.home-page) .page-header,
+  body:not(.home-page) .hero-section,
+  body:not(.home-page) section:first-of-type {
+    padding-top: 100px !important; /* مساحة كافية لمنع تداخل العنوان مع الهيدر */
+    margin-top: 0 !important;
+  }
+
+  /* توحيد المحاذاة وحجم عناوين الصفحات الفرعية */
+  body:not(.home-page) h1:first-of-type,
+  body:not(.home-page) .page-title {
+    font-size: 24px !important;
+    line-height: 1.4 !important;
+    margin-top: 10px !important;
+    margin-bottom: 20px !important;
+    text-align: center !important;
+  }
+}
