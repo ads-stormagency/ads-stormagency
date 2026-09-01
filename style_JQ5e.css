@@ -2207,27 +2207,47 @@ body > header span {
     }
 }
 /* ==========================================
-   توحيد خط "الرئيسية" مع باقي عناصر السايدبار
+   الضبط النهائي: تصغير الهيدر وتوحيد السايدبار
    ========================================== */
 
-/* 1. توحيد الاستايل لجميع الروابط والعناصر في السايدبار */
+/* 1. تثبيت ارتفاع الهيدر العلوي وتصغير عنوانه فقط */
+header, .navbar {
+    max-height: 50px !important;
+}
+
+header .page-title,
+.navbar .page-title,
+body > header span {
+    font-size: 11px !important;
+    color: #0d23a0 !important;
+    white-space: nowrap !important;
+}
+
+/* 2. توحيد وتكبير جميع عناصر السايدبار (بما فيها الرئيسية) */
+.sidebar a,
 .sidebar nav a,
 .sidebar ul li a,
 .sidebar .nav-link,
-.sidebar a:first-child,
-.sidebar a.active {
+.sidebar [data-i18n] {
     font-size: 14px !important;
     font-weight: 500 !important;
     color: #ffffff !important;
     opacity: 1 !important;
 }
 
-/* 2. ضبط المحاذاة والمسافات لتكون متطابقة تماماً على الموبايل */
+/* ضوابط الموبايل للدقة القصوى */
 @media screen and (max-width: 768px) {
+    header .page-title,
+    .navbar .page-title {
+        font-size: 10px !important;
+        max-width: 35vw !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    .sidebar a,
     .sidebar nav a,
-    .sidebar ul li a,
-    .sidebar .nav-link {
-        font-size: 13px !important;
-        font-weight: 500 !important;
+    .sidebar ul li a {
+        font-size: 13.5px !important;
     }
 }
