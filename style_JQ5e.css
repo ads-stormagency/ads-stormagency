@@ -2084,25 +2084,30 @@ html body header span {
     }
 }
 /* ==========================================
-   استبدال نص Sidebar بالصورة وعزل الخلفية
+   إصلاح خلفية وحجم اللوجو برمجيًا
    ========================================== */
 .sidebar-logo h2 {
-    font-size: 0 !important; /* إخفاء النصوص القديمة */
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-.sidebar-logo h2 * {
-    display: none !important; /* إخفاء العناصر الداخلية */
+    display: none !important; /* إخفاء النص القديم */
 }
 
 .sidebar-logo {
-    background-image: url('storm.png'); /* اسم الصورة المرفوعة */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    mix-blend-mode: screen; /* عزل الخلفية الزرقاء وإبقاء اللوجو الأبيض */
-    height: 100px; /* ارتفاع مناسب للشعار */
-    margin: 15px auto;
-    width: 80%;
+    background-image: url('storm.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-color: transparent !important;
+    
+    /* عزل المربع الأزرق وتحويل اللوجو لأبيض كامل */
+    filter: brightness(0) invert(1);
+    
+    height: 80px !important;
+    margin: 15px auto !important;
+    width: 85% !important;
+}
+
+@media (max-width: 768px) {
+    .sidebar-logo {
+        height: 60px !important;
+        margin: 10px auto !important;
+    }
 }
