@@ -2084,24 +2084,25 @@ html body header span {
     }
 }
 /* ==========================================
-   استبدال نص القائمة بالصورة وعزل خلفيتها
+   استبدال نص Sidebar بالصورة وعزل الخلفية
    ========================================== */
-.sidebar-header,
-.menu-header,
-.nav-menu-header {
-    background-image: url('storm.png'); /* اسم الصورة المرفوعة في المشروع */
+.sidebar-logo h2 {
+    font-size: 0 !important; /* إخفاء النصوص القديمة */
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.sidebar-logo h2 * {
+    display: none !important; /* إخفاء العناصر الداخلية */
+}
+
+.sidebar-logo {
+    background-image: url('storm.png'); /* اسم الصورة المرفوعة */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    mix-blend-mode: screen; /* عزل الخلفية الزرقاء وإبقاء اللوجو الأبيض فقط */
-    height: 90px;
-    margin: 10px auto;
-}
-
-/* إخفاء النصوص القديمة داخل الهيدر */
-.sidebar-header *,
-.menu-header *,
-.nav-menu-header * {
-    opacity: 0 !important;
-    visibility: hidden !important;
+    mix-blend-mode: screen; /* عزل الخلفية الزرقاء وإبقاء اللوجو الأبيض */
+    height: 100px; /* ارتفاع مناسب للشعار */
+    margin: 15px auto;
+    width: 80%;
 }
