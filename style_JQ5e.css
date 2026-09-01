@@ -2207,39 +2207,37 @@ body > header span {
     }
 }
 /* ==========================================
-   الضبط النهائي: تصغير الهيدر وتوحيد السايدبار
+   إصلاح الهيدر وتوحيد خطوط السايدبار بالكامل
    ========================================== */
 
-/* 1. تثبيت ارتفاع الهيدر العلوي وتصغير عنوانه فقط */
-header, .navbar {
-    max-height: 50px !important;
-}
-
+/* 1. تصغير كلمة "الرئيسية" في الهيدر العلوي فقط */
+.sidebar-overlay + header span,
+.sidebar-overlay ~ header .page-title,
 header .page-title,
-.navbar .page-title,
 body > header span {
     font-size: 11px !important;
+    font-weight: 600 !important;
     color: #0d23a0 !important;
     white-space: nowrap !important;
 }
 
-/* 2. توحيد وتكبير جميع عناصر السايدبار (بما فيها الرئيسية) */
+/* 2. توحيد حجم خط كلمة "الرئيسية" مع باقي عناصر السايدبار */
 .sidebar a,
 .sidebar nav a,
 .sidebar ul li a,
 .sidebar .nav-link,
-.sidebar [data-i18n] {
-    font-size: 14px !important;
+.sidebar a:first-child {
+    font-size: 15px !important;
     font-weight: 500 !important;
     color: #ffffff !important;
     opacity: 1 !important;
 }
 
-/* ضوابط الموبايل للدقة القصوى */
+/* 3. ضوابط للموبايل (أقل من 768px) */
 @media screen and (max-width: 768px) {
     header .page-title,
-    .navbar .page-title {
-        font-size: 10px !important;
+    body > header span {
+        font-size: 11px !important;
         max-width: 35vw !important;
         overflow: hidden !important;
         text-overflow: ellipsis !important;
@@ -2248,6 +2246,6 @@ body > header span {
     .sidebar a,
     .sidebar nav a,
     .sidebar ul li a {
-        font-size: 13.5px !important;
+        font-size: 14px !important;
     }
 }
