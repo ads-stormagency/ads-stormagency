@@ -2041,4 +2041,50 @@ body {
     overflow-x: hidden !important;
   }
 }
+/* ==========================================
+   تنسيق وتحجيم الهيدر العلوي بالكامل للموبايل
+   ========================================== */
+@media (max-width: 768px) {
+    
+    /* 1. تصغير الفراغات العلوية للهيدر الثابت */
+    header, .header, .navbar {
+        padding: 6px 10px !important;
+    }
 
+    /* 2. تصغير عنوان الصفحة المكتوب في المنتصف (الرئيسية / استراتيجيات التسويق...) */
+    .page-title, [data-i18n="home"] {
+        font-size: 15px !important;
+        font-weight: 700 !important;
+    }
+
+    /* إلغاء أي إيموجي أو أيقونة منزل تم إضافتها سابقاً */
+    .page-title::before, .page-title::after,
+    [data-i18n="home"]::before, [data-i18n="home"]::after {
+        content: none !important;
+        display: none !important;
+    }
+
+    /* 3. تصغير زر اختيار اللغة */
+    .lang-btn, .language-selector, #langToggle, [data-lang-label] {
+        font-size: 11px !important;
+        padding: 3px 8px !important;
+        height: auto !important;
+    }
+
+    /* 4. تصغير زر الدارك مود (السويتش) */
+    .theme-toggle, #themeToggle, .dark-mode-toggle {
+        transform: scale(0.75) !important;
+        margin: 0 !important;
+    }
+
+    /* 5. تصغير زر القائمة (الأعمدة الثلاثة) */
+    .menu-btn, .hamburger, #menuToggle {
+        font-size: 18px !important;
+        padding: 2px !important;
+    }
+
+    /* 6. تصغير الخطوط العامة للصفحة */
+    html {
+        font-size: 13px !important;
+    }
+}
