@@ -2179,30 +2179,3 @@ body > header span {
         font-size: 14px !important;
     }
 }
-/* ==========================================
-   إصلاح حاسم لأحجام الخطوط في الموبايل
-   ========================================== */
-
-/* 1. تكبير خطوط القائمة الجانبية (Sidebar) بالكامل */
-.sidebar *, 
-.sidebar a, 
-.sidebar span, 
-.sidebar li {
-    font-size: 15px !important;
-    font-weight: 500 !important;
-}
-
-/* 2. تصغير عنوان الهيدر العلوي (Header Title) في الموبايل قسراً */
-@media screen and (max-width: 768px) {
-    header *,
-    .navbar *,
-    .sidebar-overlay + header *,
-    [class*="header"] h1,
-    [class*="header"] h2,
-    [class*="header"] span,
-    .page-title {
-        font-size: 11px !important;
-        line-height: 1.2 !important;
-        font-weight: 600 !important;
-    }
-}
