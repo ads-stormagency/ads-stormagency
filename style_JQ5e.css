@@ -2042,40 +2042,37 @@ body {
   }
 }
 /* ==========================================
-   1. تحويل نص الرئيسية إلى أيقونة البيت (للكمبيوتر والموبايل)
+   1. تحويل نص "الرئيسية" إلى أيقونة البيت
    ========================================== */
-.nav-brand,
-[data-i18n="hero_title"],
-[data-i18n="home"] {
-    font-size: 0 !important; /* إخفاء النص فقط */
+span.page-title[data-i18n="home"],
+.page-title {
+    font-size: 0 !important; /* إخفاء النص الأصلي */
     display: inline-flex !important;
     align-items: center;
-    text-decoration: none;
+    justify-content: center;
 }
 
-.nav-brand::before,
-[data-i18n="hero_title"]::before,
-[data-i18n="home"]::before {
+span.page-title[data-i18n="home"]::before,
+.page-title::before {
     content: "🏠"; /* أيقونة البيت */
-    font-size: 22px !important; /* حجم الأيقونة */
-    visibility: visible;
+    font-size: 20px !important; /* حجم الأيقونة */
+    line-height: 1;
 }
 
 /* ==========================================
-   2. تصغير حجم الخطوط الشامل لشاشات الموبايل
+   2. تصغير خطوط الموقع بالكامل على الموبايل
    ========================================== */
 @media (max-width: 768px) {
     html {
         font-size: 13px !important;
     }
 
-    h1, .hero-title, .nav-brand {
-        font-size: 1.4rem !important;
-        line-height: 1.2 !important;
+    h1, .hero-title, .page-title {
+        font-size: 1.3rem !important;
     }
 
     h2, .section-title {
-        font-size: 1.2rem !important;
+        font-size: 1.15rem !important;
     }
 
     h3 {
