@@ -2108,3 +2108,40 @@ html body header span {
         height: 120px !important; /* حجم ممتاز ومناسب للموبايل */
     }
 }
+/* =========================================================
+   تعديل رأس السايدبار (الرئيسية بجانب X) وتكبير عناصر القائمة
+   ========================================================= */
+
+/* 1. تصغير كلمة "الرئيسية" الموجودة في أعلى القائمة المفتوحة بجانب زر X */
+.sidebar-header,
+.sidebar-header *,
+.sidebar-top,
+.sidebar-top *,
+.sidebar .close-btn + *,
+.sidebar header span {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #0d23a0 !important;
+}
+
+/* 2. تكبير وتوحيد خط كلمة "الرئيسية" وباقي الروابط داخل القائمة الزرقاء */
+.sidebar nav a,
+.sidebar nav a *,
+.sidebar .menu-item,
+.sidebar .menu-item * {
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    color: #ffffff !important;
+}
+
+/* ضوابط الموبايل المباشرة */
+@media screen and (max-width: 768px) {
+    .sidebar-header *, 
+    .sidebar-top * {
+        font-size: 12px !important;
+    }
+    
+    .sidebar nav a {
+        font-size: 14px !important;
+    }
+}
