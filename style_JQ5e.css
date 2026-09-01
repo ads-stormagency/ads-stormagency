@@ -2206,3 +2206,28 @@ body > header span {
         font-weight: 600 !important;
     }
 }
+/* ==========================================
+   توحيد خط "الرئيسية" مع باقي عناصر السايدبار
+   ========================================== */
+
+/* 1. توحيد الاستايل لجميع الروابط والعناصر في السايدبار */
+.sidebar nav a,
+.sidebar ul li a,
+.sidebar .nav-link,
+.sidebar a:first-child,
+.sidebar a.active {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+/* 2. ضبط المحاذاة والمسافات لتكون متطابقة تماماً على الموبايل */
+@media screen and (max-width: 768px) {
+    .sidebar nav a,
+    .sidebar ul li a,
+    .sidebar .nav-link {
+        font-size: 13px !important;
+        font-weight: 500 !important;
+    }
+}
