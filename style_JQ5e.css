@@ -2062,3 +2062,24 @@ html body header span {
         text-overflow: ellipsis !important;
     }
 }
+/* ==========================================
+   إصلاح حجم خط الهيدر وإلغاء نقاط التقطيع
+   ========================================== */
+html body .page-title,
+html body [data-i18n="home"],
+html body header span {
+    font-size: 14px !important;
+    white-space: nowrap !important;
+    text-overflow: clip !important; /* إلغاء الثلاث نقاط */
+    overflow: visible !important;
+}
+
+@media (max-width: 768px) {
+    html body .page-title,
+    html body [data-i18n="home"],
+    html body header span {
+        font-size: 11px !important; /* تصغير الخط ليتسع للنص كاملاً */
+        max-width: 50vw !important; /* زيادة المساحة المتاحة للعنوان */
+        text-overflow: clip !important;
+    }
+}
