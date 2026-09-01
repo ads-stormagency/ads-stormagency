@@ -2180,45 +2180,29 @@ body > header span {
     }
 }
 /* ==========================================
-   تبديل وتعديل أحجام الخطوط خصيصاً للموبايل
+   إصلاح حاسم لأحجام الخطوط في الموبايل
    ========================================== */
 
-/* 1. تكبير خطوط السايدبار الجانبي لتعود واضحة ومقروءة */
-body .sidebar ul li a,
-body .sidebar .nav-link,
-body .sidebar nav a {
+/* 1. تكبير خطوط القائمة الجانبية (Sidebar) بالكامل */
+.sidebar *, 
+.sidebar a, 
+.sidebar span, 
+.sidebar li {
     font-size: 15px !important;
     font-weight: 500 !important;
-    color: #ffffff !important;
 }
 
-/* 2. تصغير كلمة الهيدر العلوي (مثل الرئيسية) للشاشات الكبيرة */
-body header .page-title,
-body .navbar .page-title,
-body header span {
-    font-size: 13px !important;
-    color: #0d23a0 !important;
-    white-space: nowrap !important;
-}
-
-/* 3. تطبيق التصغير الحاد للهيدر على الموبايل (أقل من 768px) */
+/* 2. تصغير عنوان الهيدر العلوي (Header Title) في الموبايل قسراً */
 @media screen and (max-width: 768px) {
-    
-    /* تصغير خط الهيدر العلوي على الموبايل جداً */
-    body header .page-title,
-    body .navbar .page-title,
-    body header span.page-title,
-    body [data-i18n="home"] {
+    header *,
+    .navbar *,
+    .sidebar-overlay + header *,
+    [class*="header"] h1,
+    [class*="header"] h2,
+    [class*="header"] span,
+    .page-title {
         font-size: 11px !important;
-        max-width: 38vw !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
         line-height: 1.2 !important;
-    }
-    
-    /* ضمان أن خط القائمة الجانبية واضح في الموبايل */
-    body .sidebar ul li a,
-    body .sidebar .nav-link {
-        font-size: 14px !important;
+        font-weight: 600 !important;
     }
 }
