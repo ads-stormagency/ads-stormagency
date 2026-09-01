@@ -2042,44 +2042,47 @@ body {
   }
 }
 /* ==========================================
-   تنسيقات الموبايل: الأيقونة وتصغير الخطوط
+   1. تحويل نص الرئيسية إلى أيقونة البيت (للكمبيوتر والموبايل)
+   ========================================== */
+.nav-brand,
+[data-i18n="hero_title"],
+[data-i18n="home"] {
+    font-size: 0 !important; /* إخفاء النص فقط */
+    display: inline-flex !important;
+    align-items: center;
+    text-decoration: none;
+}
+
+.nav-brand::before,
+[data-i18n="hero_title"]::before,
+[data-i18n="home"]::before {
+    content: "🏠"; /* أيقونة البيت */
+    font-size: 22px !important; /* حجم الأيقونة */
+    visibility: visible;
+}
+
+/* ==========================================
+   2. تصغير حجم الخطوط الشامل لشاشات الموبايل
    ========================================== */
 @media (max-width: 768px) {
-    
-    /* 1. استبدال نص الرئيسية بأيقونة البيت */
-    .nav-links a[data-i18n="home"],
-    .nav-menu a[href="index.html"],
-    .navbar a[href="index.html"] {
-        font-size: 0 !important;
-    }
-
-    .nav-links a[data-i18n="home"]::before,
-    .nav-menu a[href="index.html"]::before,
-    .navbar a[href="index.html"]::before {
-        content: "🏠";
-        font-size: 18px !important;
-        display: inline-block;
-    }
-
-    /* 2. تصغير حجم الخطوط الشامل للموبايل */
     html {
-        font-size: 14px;
+        font-size: 13px !important;
     }
 
-    h1, .hero-title {
-        font-size: 1.6rem !important;
-        line-height: 1.3 !important;
+    h1, .hero-title, .nav-brand {
+        font-size: 1.4rem !important;
+        line-height: 1.2 !important;
     }
 
     h2, .section-title {
-        font-size: 1.3rem !important;
+        font-size: 1.2rem !important;
     }
 
     h3 {
-        font-size: 1.1rem !important;
+        font-size: 1rem !important;
     }
 
     p, span, a, button {
-        font-size: 0.9rem;
+        font-size: 0.85rem !important;
     }
 }
