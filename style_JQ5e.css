@@ -1,3 +1,41 @@
+/* =========================================================
+   تأمين الحجم التنفيذي القسري (Header vs Sidebar)
+   ========================================================= */
+
+/* تصغير عنوان الهيدر قسرياً */
+header span, 
+header h1, 
+header h2, 
+.page-title, 
+[class*="title"] {
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+    font-weight: 600 !important;
+}
+
+/* توحيد وتكبير خطوط السايدبار بالكامل */
+aside.sidebar *, 
+.sidebar a, 
+.sidebar span, 
+.sidebar li, 
+.sidebar-logo + * * {
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    color: #ffffff !important;
+}
+
+/* تخصيص الموبايل المباشر */
+@media screen and (max-width: 768px) {
+    header span, 
+    header h1, 
+    header .page-title {
+        font-size: 10px !important;
+    }
+    
+    aside.sidebar * {
+        font-size: 14px !important;
+    }
+}
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
 
 * {
@@ -2292,6 +2330,44 @@ html body .sidebar .nav-link {
 
     html body .sidebar a,
     html body .sidebar a * {
+        font-size: 14px !important;
+    }
+}
+/* =========================================================
+   تأمين الحجم التنفيذي القسري (Header vs Sidebar)
+   ========================================================= */
+
+/* تصغير عنوان الهيدر قسرياً */
+header span, 
+header h1, 
+header h2, 
+.page-title, 
+[class*="title"] {
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+    font-weight: 600 !important;
+}
+
+/* توحيد وتكبير خطوط السايدبار بالكامل */
+aside.sidebar *, 
+.sidebar a, 
+.sidebar span, 
+.sidebar li, 
+.sidebar-logo + * * {
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    color: #ffffff !important;
+}
+
+/* تخصيص الموبايل المباشر */
+@media screen and (max-width: 768px) {
+    header span, 
+    header h1, 
+    header .page-title {
+        font-size: 10px !important;
+    }
+    
+    aside.sidebar * {
         font-size: 14px !important;
     }
 }
