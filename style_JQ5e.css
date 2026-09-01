@@ -2041,61 +2041,24 @@ body {
     overflow-x: hidden !important;
   }
 }
-/* ==========================================
-   إصلاح شامل للهيدر وعناوين الصفحات (كمبيوتر وموبايل)
-   ========================================== */
-
-/* 1. مسح أي أيقونة منزل أو إيموجي تماماً من جميع الشاشات */
-.page-title::before, .page-title::after,
-[data-i18n="home"]::before, [data-i18n="home"]::after,
-.nav-brand::before, .nav-brand::after {
-    content: none !important;
-    display: none !important;
-}
-
-/* 2. ضبط عنوان الصفحة المكتوب في الهيدر الثابت لكي لا يكسر السطر */
-header .page-title,
-.navbar .page-title,
-.page-title {
-    font-size: 16px !important;
+/* تصغير خط الهيدر بالكامل في كل الشاشات */
+html body .page-title,
+html body [data-i18n="home"],
+html body header span {
+    font-size: 13px !important;
     line-height: 1.2 !important;
-    white-space: nowrap !important; /* يمنع نزول الكلمة على سطرين */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 45vw; /* يمنع التداخل مع أزرار اللغة والدارك مود */
-    display: inline-block !important;
-    margin: 0 !important;
+    white-space: nowrap !important;
 }
 
-/* 3. تصغير عناصر الهيدر بالكامل في الموبايل */
+/* تصغير إضافي للموبايل */
 @media (max-width: 768px) {
-    
-    /* تصغير عنوان الهيدر للموبايل ليكون متناسباً جداً */
-    header .page-title,
-    .navbar .page-title,
-    .page-title {
-        font-size: 13px !important;
-        max-width: 38vw;
-    }
-
-    /* تصغير زر اللغة */
-    .lang-btn, .language-selector, #langToggle, .current-lang {
+    html body .page-title,
+    html body [data-i18n="home"],
+    html body header span {
         font-size: 11px !important;
-        padding: 2px 6px !important;
-    }
-
-    /* تصغير الدارك مود */
-    .theme-toggle, #themeToggle {
-        transform: scale(0.7) !important;
-    }
-
-    /* تصغير العناوين الرئيسية داخل محتوى الصفحة وليس الهيدر */
-    main h1, .hero h1, .hero-title {
-        font-size: 1.4rem !important;
-        line-height: 1.3 !important;
-    }
-
-    main p, .hero p {
-        font-size: 0.85rem !important;
+        max-width: 35vw !important;
+        display: inline-block !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
     }
 }
