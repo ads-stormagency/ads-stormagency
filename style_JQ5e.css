@@ -2041,45 +2041,4 @@ body {
     overflow-x: hidden !important;
   }
 }
-/* ==========================================
-   1. تحويل نص "الرئيسية" إلى أيقونة البيت
-   ========================================== */
-span.page-title[data-i18n="home"],
-.page-title {
-    font-size: 0 !important; /* إخفاء النص الأصلي */
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-}
 
-span.page-title[data-i18n="home"]::before,
-.page-title::before {
-    content: "🏠"; /* أيقونة البيت */
-    font-size: 20px !important; /* حجم الأيقونة */
-    line-height: 1;
-}
-
-/* ==========================================
-   2. تصغير خطوط الموقع بالكامل على الموبايل
-   ========================================== */
-@media (max-width: 768px) {
-    html {
-        font-size: 13px !important;
-    }
-
-    h1, .hero-title, .page-title {
-        font-size: 1.3rem !important;
-    }
-
-    h2, .section-title {
-        font-size: 1.15rem !important;
-    }
-
-    h3 {
-        font-size: 1rem !important;
-    }
-
-    p, span, a, button {
-        font-size: 0.85rem !important;
-    }
-}
