@@ -2084,7 +2084,7 @@ html body header span {
     }
 }
 /* ==========================================
-   إصلاح خلفية وحجم اللوجو برمجيًا
+   إظهار اللوجو الأصلي بالكامل بعرض البار العلوي
    ========================================== */
 .sidebar-logo h2 {
     display: none !important; /* إخفاء النص القديم */
@@ -2092,22 +2092,19 @@ html body header span {
 
 .sidebar-logo {
     background-image: url('storm.png') !important;
-    background-size: contain !important;
+    background-size: cover !important; /* ملء المساحة بالكامل مثل الصورة الأصلية */
     background-repeat: no-repeat !important;
     background-position: center !important;
-    background-color: transparent !important;
+    filter: none !important; /* إرجاع الألوان الزرقاء الأصلية */
     
-    /* عزل المربع الأزرق وتحويل اللوجو لأبيض كامل */
-    filter: brightness(0) invert(1);
-    
-    height: 80px !important;
-    margin: 15px auto !important;
-    width: 85% !important;
+    width: 100% !important; /* ملء عرض القائمة بالكامل */
+    height: 140px !important; /* تكبير الارتفاع ليظهر بوضوح بدلاً من الحجم الصغير */
+    margin: 0 0 15px 0 !important;
+    padding: 0 !important;
 }
 
 @media (max-width: 768px) {
     .sidebar-logo {
-        height: 60px !important;
-        margin: 10px auto !important;
+        height: 120px !important; /* حجم ممتاز ومناسب للموبايل */
     }
 }
