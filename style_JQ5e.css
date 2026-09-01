@@ -2109,39 +2109,35 @@ html body header span {
     }
 }
 /* =========================================================
-   تعديل رأس السايدبار (الرئيسية بجانب X) وتكبير عناصر القائمة
+   تعديل شامل لكل صفحات الموقع عبر CSS موحد
    ========================================================= */
 
-/* 1. تصغير كلمة "الرئيسية" الموجودة في أعلى القائمة المفتوحة بجانب زر X */
-.sidebar-header,
-.sidebar-header *,
-.sidebar-top,
-.sidebar-top *,
-.sidebar .close-btn + *,
-.sidebar header span {
-    font-size: 13px !important;
+/* 1. تصغير كلمة (الرئيسية) في الهيدر العلوي لجميع الصفحات */
+:root header [data-i18n],
+:root header .page-title,
+:root .navbar .page-title {
+    font-size: 11px !important;
     font-weight: 600 !important;
-    color: #0d23a0 !important;
 }
 
-/* 2. تكبير وتوحيد خط كلمة "الرئيسية" وباقي الروابط داخل القائمة الزرقاء */
-.sidebar nav a,
-.sidebar nav a *,
-.sidebar .menu-item,
-.sidebar .menu-item * {
-    font-size: 15px !important;
+/* 2. تكبير وتوحيد خط كلمة (الرئيسية) وبقية القائمة في السايدبار */
+:root .sidebar nav a,
+:root .sidebar ul li a,
+:root .sidebar .nav-link {
+    font-size: 14.5px !important;
     font-weight: 500 !important;
     color: #ffffff !important;
 }
 
-/* ضوابط الموبايل المباشرة */
+/* 3. تطبيق الضوابط التلقائية على شاشات الموبايل في كل الصفحات */
 @media screen and (max-width: 768px) {
-    .sidebar-header *, 
-    .sidebar-top * {
-        font-size: 12px !important;
+    :root header [data-i18n],
+    :root header .page-title {
+        font-size: 10.5px !important;
     }
-    
-    .sidebar nav a {
-        font-size: 14px !important;
+
+    :root .sidebar nav a,
+    :root .sidebar ul li a {
+        font-size: 13.5px !important;
     }
 }
