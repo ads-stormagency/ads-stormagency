@@ -2083,3 +2083,25 @@ html body header span {
         text-overflow: clip !important;
     }
 }
+/* ==========================================
+   استبدال نص القائمة بالصورة وعزل خلفيتها
+   ========================================== */
+.sidebar-header,
+.menu-header,
+.nav-menu-header {
+    background-image: url('storm.png'); /* اسم الصورة المرفوعة في المشروع */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    mix-blend-mode: screen; /* عزل الخلفية الزرقاء وإبقاء اللوجو الأبيض فقط */
+    height: 90px;
+    margin: 10px auto;
+}
+
+/* إخفاء النصوص القديمة داخل الهيدر */
+.sidebar-header *,
+.menu-header *,
+.nav-menu-header * {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
