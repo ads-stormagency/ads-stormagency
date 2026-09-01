@@ -2109,31 +2109,34 @@ html body header span {
     }
 }
 /* ==========================================
-   توحيد استايل وتنسيق الخطوط في الهيدر والبار الجانبي
+   إصلاح دقيق للهيدر العلوي واستعادة ألوان السايدبار
    ========================================== */
 
-/* 1. توحيد الاستايل العام للهيدر والبار الجانبي */
-.page-title,
-.sidebar a,
-.sidebar .nav-link {
-    font-family: inherit !important;
-    color: #0d23a0 !important; /* نفس لون الهوية الأزرق */
-    font-weight: 700 !important;
+/* 1. إرجاع اللون الأبيض النصي المظبوط للسايدبار */
+.sidebar, 
+.sidebar a, 
+.sidebar span, 
+.sidebar li {
+    color: #ffffff !important;
 }
 
-/* 2. ضبط حجم خط الهيدر العلوي للشاشات الكبيرة */
-.page-title {
-    font-size: 15px !important;
-    line-height: 1.2 !important;
+/* 2. تصغير الخط وتحديده للعنوان في الهيدر العلوي فقط (Header Title) */
+header .page-title,
+.navbar .page-title,
+body > header span.page-title {
+    font-size: 11px !important; /* خط مصغر جداً للموبايل */
+    color: #0d23a0 !important;
     white-space: nowrap !important;
+    max-width: 45vw !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
 }
 
-/* 3. تصغير خط الهيدر العلوي على الموبايل فقط */
-@media (max-width: 768px) {
-    .page-title {
-        font-size: 12px !important; /* حجم مصغر ومناسب جداً للموبايل */
-        max-width: 45vw !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
+/* 3. للشاشات الكبيرة */
+@media (min-width: 769px) {
+    header .page-title,
+    .navbar .page-title,
+    body > header span.page-title {
+        font-size: 15px !important;
     }
 }
