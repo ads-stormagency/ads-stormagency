@@ -2108,3 +2108,32 @@ html body header span {
         height: 120px !important; /* حجم ممتاز ومناسب للموبايل */
     }
 }
+/* ==========================================
+   توحيد استايل وتنسيق الخطوط في الهيدر والبار الجانبي
+   ========================================== */
+
+/* 1. توحيد الاستايل العام للهيدر والبار الجانبي */
+.page-title,
+.sidebar a,
+.sidebar .nav-link {
+    font-family: inherit !important;
+    color: #0d23a0 !important; /* نفس لون الهوية الأزرق */
+    font-weight: 700 !important;
+}
+
+/* 2. ضبط حجم خط الهيدر العلوي للشاشات الكبيرة */
+.page-title {
+    font-size: 15px !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+}
+
+/* 3. تصغير خط الهيدر العلوي على الموبايل فقط */
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 12px !important; /* حجم مصغر ومناسب جداً للموبايل */
+        max-width: 45vw !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+}
