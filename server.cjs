@@ -15,12 +15,12 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(express.static(__dirname, { extensions: ['html', 'htm'] }));
 
 let currentApiKey = process.env.GEMINI_API_KEY || '';
-let currentModel = 'gemini-1.5-pro'; // استخدام نموذج يدعم الصور بكفاءة عالية
+let currentModel = 'gemini-1.5-pro'; // نموذج قوي لتحليل الصور والنصوص
 function getAiClient() {
     return new GoogleGenerativeAI(currentApiKey);
 }
 
-// دالة محسنة للتعامل مع النصوص والصور معاً
+// دالة عامة للاتصال بجيميناي مع دعم الصور والنصوص
 async function callGemini(systemPrompt, userContent, imageParts = []) {
     const genAI = getAiClient();
     const model = genAI.getGenerativeModel({ 
@@ -28,7 +28,6 @@ async function callGemini(systemPrompt, userContent, imageParts = []) {
         systemInstruction: systemPrompt 
     });
 
-    // تجهيز المحتوى للنموذج (نصوص + صور إن وجدت)
     let contents = [userContent];
     if (imageParts && imageParts.length > 0) {
         contents = [userContent, ...imageParts];
@@ -39,15 +38,20 @@ async function callGemini(systemPrompt, userContent, imageParts = []) {
     return response.text();
 }
 
-// 1. مسار رادار الإعلانات (يدعم النصوص والصور المرفوعة)
+// 1. رادار الإعلانات: تحليل نتائج الحملات (سكرين شوت النتائج + صورة الإعلان + الأرقام)
 app.post(['/api/ads-radar', '/ads-radar'], async (req, res) => {
     try {
         const { campaignData, description, imageParts } = req.body;
-        const textToAnalyze = campaignData || description || "تحليل الحملة الإعلانية وإيراداتها";
+        const textToAnalyze = campaignData || description || "تحليل أداء الحملة الإعلانية";
         
-        const systemPrompt = "أنت خبير إعلانات وميديا باير محترف في وكالة Storm Agency. قم بتشخيص الحملة الإعلانية بدقة بناءً على البيانات والصور المرفقة، واقترح حلولاً لخفض التكلفة ورفع العائد (ROAS).";
-        
-        // تجهيز الصور إن وجدت بصيغة Generative AI
+        const systemPrompt = `أنت محلل بيانات إعلانية وخبير ميديا باير صارم في وكالة Storm Agency. 
+مهمتك الحصرية هي تشخيص نتائج الحملات الإعلانية من خلال قراءة الأرقام المرفقة (مثل CTR, CPC, Cost per Result, ROAS) وصورة الإعلان.
+لا تقدم خططاً استراتيجية عامة، بل أعط تقريراً تشخيصياً مباشراً يوضح:
+1. تقييم كفاءة الأرقام الحالية مقارنة بمعايير السوق.
+2. التشخيص الفني الدقيق لمشكلة الإعلان (لماذا ترتفع التكلفة أو تقل النتائج؟).
+3. تقييم الخطاف البصري (Creative & Hook).
+4. خطوات تصحيحية فورية لإنقاذ الحملة وخفض التكلفة.`;
+
         let formattedImages = [];
         if (imageParts && Array.isArray(imageParts)) {
             formattedImages = imageParts.map(img => ({
@@ -58,7 +62,7 @@ app.post(['/api/ads-radar', '/ads-radar'], async (req, res) => {
             }));
         }
 
-        const result = await callGemini(systemPrompt, `بيانات الحملة الإعلانية: ${textToAnalyze}`, formattedImages);
+        const result = await callGemini(systemPrompt, `بيانات الحملة والإعلانات: ${textToAnalyze}`, formattedImages);
         res.json({ result });
     } catch (error) {
         console.error('Ads Radar Error:', error);
@@ -66,12 +70,16 @@ app.post(['/api/ads-radar', '/ads-radar'], async (req, res) => {
     }
 });
 
-// 2. مسار مغناطيس المشاهدات (الخطافات)
+// 2. مغناطيس المشاهدات والخطافات (Views Magnet): توليد خطافات وأفكار إعلانية قوية
 app.post(['/api/views-magnet', '/api/hook-generator'], async (req, res) => {
     try {
         const { topicData, topic, description } = req.body;
         const textToAnalyze = topicData || topic || description || "صياغة خطافات تسويقية جاذبة";
-        const result = await callGemini("أنت خبير صناعة محتوى وخطافات تسويقية قوية ومؤثرة لزيادة المشاهدات وتثبيت الانتباه.", `الموضوع أو التفاصيل المقدمة: ${textToAnalyze}`);
+        
+        const systemPrompt = `أنت خبير صناعة محتوى وكاتب إعلانات (Copywriter) محترف في وكالة Storm Agency.
+مهمتك الحصرية هي ابتكار وصياغة "خطافات (Hooks)" إعلانية قوية، جذابة، ومختصرة، بالإضافة إلى أفكار إعلانية إبداعية تكسر التمساح وتجذب انتباه المشاهد من أول ثانية لزيادة التفاعل والمشاهدات. لا تقدم تحليلاً مالياً للمتجر، بل ركز فقط على الأفكار والخطافات الإبداعية.`;
+
+        const result = await callGemini(systemPrompt, `الموضوع أو المنتج المستهدف: ${textToAnalyze}`);
         res.json({ result });
     } catch (error) {
         console.error('Views Magnet Error:', error);
@@ -79,12 +87,16 @@ app.post(['/api/views-magnet', '/api/hook-generator'], async (req, res) => {
     }
 });
 
-// 3. مسار فحص صفحات الهبوط
+// 3. فحص أمان المواقع وصفحات الهبوط (Landing Auditor): فحص الأمان، الحماية، الثبات وتحويل الزوار
 app.post('/api/landing-auditor', async (req, res) => {
     try {
         const { landingPageUrl, description, storeData } = req.body;
-        const textToAnalyze = landingPageUrl || description || storeData || "تحليل صفحة الهبوط وتقييم سرعة التحويل والأمان";
-        const result = await callGemini("أنت خبير تحليل وتحسين صفحات هبوط وزيادة معدل التحويل (Conversion Rate).", `تفاصيل الصفحة أو الرابط: ${textToAnalyze}`);
+        const textToAnalyze = landingPageUrl || description || storeData || "فحص أمان الموقع وصفحة الهبوط";
+        
+        const systemPrompt = `أنت خبير أمن سيبراني ومحلل تحسين صفحات هبوط في وكالة Storm Agency.
+مهمتك الحصرية هي فحص أمان الموقع، تقييم شهادات الحماية (SSL)، الثبات، سرعة التحميل، وتجربة المستخدم (UX) لصفحة الهبوط مع تقديم مؤشر الأمان والكفاءة وخطوات لتأمين الموقع ورفع معدل التحويل.`;
+
+        const result = await callGemini(systemPrompt, `رابط الموقع أو تفاصيل الصفحة: ${textToAnalyze}`);
         res.json({ result });
     } catch (error) {
         console.error('Landing Auditor Error:', error);
@@ -92,12 +104,16 @@ app.post('/api/landing-auditor', async (req, res) => {
     }
 });
 
-// 4. مسار طبيب المبيعات
+// 4. طبيب المبيعات (Sales Doctor): تشخيص المتجر، رحلة العميل، وأسباب ضعف المبيعات
 app.post('/api/sales-doctor', async (req, res) => {
     try {
         const { storeData, description } = req.body;
         const textToAnalyze = storeData || description || "تشخيص مشاكل المتجر الإلكتروني وضعف المبيعات";
-        const result = await callGemini("أنت خبير تشخيص مشاكل المتاجر الإلكترونية وتقديم حلول عملية لزيادة الأرباح ورحلة العميل.", `بيانات وتفاصيل المتجر: ${textToAnalyze}`);
+        
+        const systemPrompt = `أنت خبير استراتيجي في تشخيص مشاكل المتاجر الإلكترونية وزيادة الأرباح في وكالة Storm Agency.
+مهمتك الحصرية هي فحص المتجر الإلكتروني، تحليل رحلة العميل (Customer Journey)، اكتشاف أسباب ترك سلة التسوق (Cart Abandonment)، وضعف المبيعات، وتقديم خطة عمل علاجية وفورية لرفع الأرباح ومتوسط قيمة الطلب (AOV).`;
+
+        const result = await callGemini(systemPrompt, `بيانات وتفاصيل المتجر: ${textToAnalyze}`);
         res.json({ result });
     } catch (error) {
         console.error('Sales Doctor Error:', error);
