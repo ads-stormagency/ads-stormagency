@@ -11,6 +11,7 @@ app.use(cors({ origin: '*' }));
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
+// قراءة ملفات الـ HTML والصفحات تلقائياً
 app.use(express.static(__dirname, { extensions: ['html', 'htm'] }));
 
 let currentApiKey = process.env.GEMINI_API_KEY || '';
@@ -31,42 +32,53 @@ async function callGemini(systemPrompt, userText) {
     return response.text();
 }
 
-// نقطة اتصال رادار الإعلانات
-app.post(['/api/ads-radar', '/ads-radar'], async (req, res) => {
+// 1. مسار رادار الإعلانات
+app.post('/api/ads-radar', async (req, res) => {
     try {
-        const { campaignData, description } = req.body;
-        const textToAnalyze = campaignData || description || "تحليل الحملة الإعلانية";
-        const result = await callGemini("أنت خبير إعلانات ومناطق محترف في وكالة Storm Agency.", `بيانات الحملة الإعلانية: ${textToAnalyze}`);
+        const { campaignData } = req.body;
+        const result = await callGemini("أنت خبير إعلانات ومناطق محترف في وكالة Storm Agency.", `بيانات الحملة الإعلانية: ${campaignData}`);
         res.json({ result });
     } catch (error) {
+        console.error('Ads Radar Error:', error);
         res.status(500).json({ error: error.message });
     }
 });
 
-app.post(['/api/views-magnet', '/views-magnet'], async (req, res) => {
+// 2. مسار مغناطيس المشاهدات (الخطافات)
+app.post(['/api/views-magnet', '/api/hook-generator'], async (req, res) => {
     try {
         const { topicData, topic } = req.body;
         const textToAnalyze = topicData || topic || "صياغة خطافات تسويقية";
-        const result = await callGemini("أنت خبير صناعة محتوى وخطافات تسويقية قوية ومؤثرة.", `الموضوع: ${textToAnalyze}`);
+        const result = await callGemini("أنت خبير صناعة محتوى وخطافات تسويقية قوية ومؤثرة لزيادة المشاهدات.", `الموضوع: ${textToAnalyze}`);
         res.json({ result });
     } catch (error) {
+        console.error('Views Magnet Error:', error);
         res.status(500).json({ error: error.message });
     }
 });
 
-// نقطة اتصال مغناطيس المشاهدات (صياغة الخطافات والمحتوى)
-app.post('/api/views-magnet', async (req, res) => {
+// 3. مسار فحص صفحات الهبوط
+app.post('/api/landing-auditor', async (req, res) => {
     try {
-        const { topicData } = req.body;
-        const result = await callGemini("أنت خبير صناعة محتوى وخطافات تسويقية قوية ومؤثرة لزيادة المشاهدات.", `الموضوع أو التفاصيل: ${topicData}`);
+        const { landingPageUrl } = req.body;
+        const result = await callGemini("أنت خبير تحليل وتحسين صفحات هبوط لزيادة التحويل.", `تحليل الصفحة: ${landingPageUrl}`);
         res.json({ result });
     } catch (error) {
+        console.error('Landing Auditor Error:', error);
         res.status(500).json({ error: error.message });
     }
 });
-// لو حد طلب صفحة مغناطيس المشاهدات بالاسم الجديد أو القديم، افتح له ملف hook-generator.html
-app.get(['/views-magnet', '/views-magnet.html', '/hook-generator', '/hook-generator.html'], (req, res) => {
-    res.sendFile(__dirname + '/hook-generator.html');
+
+// 4. مسار طبيب المبيعات
+app.post('/api/sales-doctor', async (req, res) => {
+    try {
+        const { storeData } = req.body;
+        const result = await callGemini("أنت خبير تشخيص مشاكل المتاجر الإلكترونية وتقديم حلول عملية لزيادة الأرباح.", `بيانات المتجر: ${storeData}`);
+        res.json({ result });
+    } catch (error) {
+        console.error('Sales Doctor Error:', error);
+        res.status(500).json({ error: error.message });
+    }
 });
 
 const PORT = process.env.PORT || 3000;
