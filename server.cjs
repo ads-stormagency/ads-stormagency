@@ -52,6 +52,10 @@ app.post('/api/views-magnet', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
+// لو حد طلب صفحة مغناطيس المشاهدات بالاسم الجديد أو القديم، افتح له ملف hook-generator.html
+app.get(['/views-magnet', '/views-magnet.html', '/hook-generator', '/hook-generator.html'], (req, res) => {
+    res.sendFile(__dirname + '/hook-generator.html');
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
