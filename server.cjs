@@ -31,11 +31,12 @@ async function callGemini(systemPrompt, userText) {
     return response.text();
 }
 
-// 1. مسار رادار الإعلانات
-app.post('/api/ads-radar', async (req, res) => {
+// 1. مسار رادار الإعلانات (يقبل أي صيغة للمسار من الواجهة)
+app.post(['/api/ads-radar', '/ads-radar'], async (req, res) => {
     try {
-        const { campaignData } = req.body;
-        const result = await callGemini("أنت خبير إعلانات ومناطق محترف في وكالة Storm Agency.", `بيانات الحملة الإعلانية: ${campaignData}`);
+        const { campaignData, description } = req.body;
+        const textToAnalyze = campaignData || description || "تحليل الحملة الإعلانية";
+        const result = await callGemini("أنت خبير إعلانات ومناطق محترف في وكالة Storm Agency.", `بيانات الحملة الإعلانية: ${textToAnalyze}`);
         res.json({ result });
     } catch (error) {
         console.error('Ads Radar Error:', error);
