@@ -15,8 +15,7 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(express.static(__dirname, { extensions: ['html', 'htm'] }));
 
 let currentApiKey = process.env.GEMINI_API_KEY || '';
-let currentModel = 'gemini-2.5-flash';
-
+let currentModel = 'gemini-3.6-flash';
 function getAiClient() {
     return new GoogleGenerativeAI(currentApiKey);
 }
