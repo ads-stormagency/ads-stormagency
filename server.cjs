@@ -32,10 +32,22 @@ async function callGemini(systemPrompt, userText) {
 }
 
 // نقطة اتصال رادار الإعلانات
-app.post('/api/ads-radar', async (req, res) => {
+app.post(['/api/ads-radar', '/ads-radar'], async (req, res) => {
     try {
-        const { campaignData } = req.body;
-        const result = await callGemini("أنت خبير إعلانات ومناطق محترف في وكالة Storm Agency.", `بيانات الحملة الإعلانية: ${campaignData}`);
+        const { campaignData, description } = req.body;
+        const textToAnalyze = campaignData || description || "تحليل الحملة الإعلانية";
+        const result = await callGemini("أنت خبير إعلانات ومناطق محترف في وكالة Storm Agency.", `بيانات الحملة الإعلانية: ${textToAnalyze}`);
+        res.json({ result });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+app.post(['/api/views-magnet', '/views-magnet'], async (req, res) => {
+    try {
+        const { topicData, topic } = req.body;
+        const textToAnalyze = topicData || topic || "صياغة خطافات تسويقية";
+        const result = await callGemini("أنت خبير صناعة محتوى وخطافات تسويقية قوية ومؤثرة.", `الموضوع: ${textToAnalyze}`);
         res.json({ result });
     } catch (error) {
         res.status(500).json({ error: error.message });
