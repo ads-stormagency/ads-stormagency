@@ -302,14 +302,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            const response = await fetch('http://localhost:5000/api/ads-radar', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    campaignDetails: details,
-                    images: imageParts
-                })
-            });
+          const response = await fetch('/api/ads-radar', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ campaignData: description })
+});
 
             const data = await response.json();
             if (!response.ok) throw new Error(data.error || 'خطأ في السيرفر');
