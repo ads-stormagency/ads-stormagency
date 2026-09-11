@@ -31,10 +31,22 @@ async function callGemini(systemPrompt, userText) {
     return response.text();
 }
 
+// نقطة اتصال رادار الإعلانات
 app.post('/api/ads-radar', async (req, res) => {
     try {
         const { campaignData } = req.body;
         const result = await callGemini("أنت خبير إعلانات ومناطق محترف في وكالة Storm Agency.", `بيانات الحملة الإعلانية: ${campaignData}`);
+        res.json({ result });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// نقطة اتصال مغناطيس المشاهدات (صياغة الخطافات والمحتوى)
+app.post('/api/views-magnet', async (req, res) => {
+    try {
+        const { topicData } = req.body;
+        const result = await callGemini("أنت خبير صناعة محتوى وخطافات تسويقية قوية ومؤثرة لزيادة المشاهدات.", `الموضوع أو التفاصيل: ${topicData}`);
         res.json({ result });
     } catch (error) {
         res.status(500).json({ error: error.message });
