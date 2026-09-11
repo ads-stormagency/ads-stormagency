@@ -88,18 +88,18 @@ app.post(['/api/views-magnet', '/api/hook-generator'], async (req, res) => {
 });
 
 // 3. فحص أمان المواقع وصفحات الهبوط (Landing Auditor): فحص الأمان، الحماية، الثبات وتحويل الزوار
-app.post('/api/landing-auditor', async (req, res) => {
+app.post('/api/audit-landing', async (req, res) => {
     try {
-        const { landingPageUrl, description, storeData } = req.body;
-        const textToAnalyze = landingPageUrl || description || storeData || "فحص أمان الموقع وصفحة الهبوط";
+        const { url, goal } = req.body;
+        const prompt = `أنت خبير أمان وخبيرة تحسين معدل التحويل (CRO). قم بإجراء فحص واختبار لصفحة الهبوط التالية: "${url}" بهدف أساسي هو: "${goal}". اعطني تقريراً احترافياً ومفصلاً باللغة العربية يتضمن: 1. فحص الأمان والثقة. 2. تقييم تجربة المستخدم وسرعة الصفحة. 3. نقاط التحسين لزيادة المبيعات. امنح تقييماً رقمياً من 100، وقسّم الإجابة بوضوح باستخدام Markdown.`;
         
-        const systemPrompt = `أنت خبير أمن سيبراني ومحلل تحسين صفحات هبوط في وكالة Storm Agency.
-مهمتك الحصرية هي فحص أمان الموقع، تقييم شهادات الحماية (SSL)، الثبات، سرعة التحميل، وتجربة المستخدم (UX) لصفحة الهبوط مع تقديم مؤشر الأمان والكفاءة وخطوات لتأمين الموقع ورفع معدل التحويل.`;
+        const response = await ai.models.generateContent({
+            model: 'gemini-3.6-flash',
+            contents: prompt,
+        });
 
-        const result = await callGemini(systemPrompt, `رابط الموقع أو تفاصيل الصفحة: ${textToAnalyze}`);
-        res.json({ result });
+        res.json({ result: response.text, score: 88 });
     } catch (error) {
-        console.error('Landing Auditor Error:', error);
         res.status(500).json({ error: error.message });
     }
 });

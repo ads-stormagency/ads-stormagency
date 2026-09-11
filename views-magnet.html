@@ -64,10 +64,7 @@
     <a href="portfolio.html"><i class="fas fa-briefcase"></i><span data-i18n="portfolio">معرض الأعمال</span></a>
 </aside>
 
-<!-- محتوى الصفحة الرئيسي -->
 <section class="service-page" style="padding: 60px 20px 40px 20px; max-width: 1200px; margin: 0 auto; position: relative; z-index: 3;">
-    
-    <!-- رأس الأداة -->
     <div style="text-align: center; margin-bottom: 40px;">
         <div style="width: 80px; height: 80px; background: rgba(0,85,255,0.1); border: 2px solid #0055ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; color: #0055ff; font-size: 2.2rem;">
             <i class="fas fa-magnet"></i>
@@ -76,17 +73,13 @@
         <p style="font-size: 16px; color: #cbd5e1; line-height: 1.6; max-width: 700px; margin: 0 auto;" data-i18n="views_magnet_desc">ولد خطاطيف (Hooks)، عناوين، وبدايات تخطف الأنظار لأي محتوى (فيديوهات، بوستات، كتب، أو قصص) لضمان أعلى تفاعل ومبيعات.</p>
     </div>
 
-    <!-- صندوق الأداة -->
     <div style="background: #ffffff; border-radius: 20px; padding: 40px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); margin-bottom: 40px; text-align: right; position: relative;">
         
-        <!-- زر إغلاق (X) يعود مباشرة لمختبر النمو -->
         <a href="ai-tools.html" title="العودة لمختبر النمو" style="position: absolute; top: 15px; left: 15px; background: #f1f5f9; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 1.1rem; text-decoration: none; transition: 0.2s; z-index: 10;" onmouseover="this.style.background='#fee2e2'; this.style.color='#ef4444';" onmouseout="this.style.background='#f1f5f9'; this.style.color='#64748b';">
             <i class="fas fa-times"></i>
         </a>
 
-        <!-- نموذج إدخال البيانات -->
         <form id="hooksForm" style="padding-top: 10px;">
-            
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px;">
                 <div>
                     <label style="display: block; font-weight: bold; color: #0f172a; margin-bottom: 10px; font-size: 1rem;" data-i18n="content_type_label">
@@ -104,7 +97,7 @@
                     <label style="display: block; font-weight: bold; color: #0f172a; margin-bottom: 10px; font-size: 1rem;" data-i18n="target_audience_label">
                         <i class="fas fa-users" style="color: #0055ff; margin-left: 8px;"></i> الجمهور المستهدف:
                     </label>
-                    <input type="text" id="targetAudience" required placeholder="مثال: رواد الأعمال، المهتمين بالتسويق..." style="width: 100%; padding: 15px 20px; border-radius: 12px; border: 1px solid #cbd5e1; font-size: 1rem; outline: none; background: #f8fafc; color: #0f172a; box-sizing: border-box;" data-i18n-placeholder="audience_placeholder">
+                    <input type="text" id="targetAudience" required placeholder="مثال: رواد الأعمال، المهتمين بالتسويق..." style="width: 100%; padding: 15px 20px; border-radius: 12px; border: 1px solid #cbd5e1; font-size: 1rem; outline: none; background: #f8fafc; color: #0f172a; box-sizing: border-box;">
                 </div>
             </div>
 
@@ -112,7 +105,7 @@
                 <label style="display: block; font-weight: bold; color: #0f172a; margin-bottom: 10px; font-size: 1rem;" data-i18n="hook_topic_label">
                     <i class="fas fa-bullseye" style="color: #0055ff; margin-left: 8px;"></i> موضوع المحتوى أو فكرتك باختصار:
                 </label>
-                <textarea id="hookTopic" rows="3" required placeholder="مثال: أسباب فشل الإعلانات الممولة وكيفية حلها..." style="width: 100%; padding: 15px 20px; border-radius: 12px; border: 1px solid #cbd5e1; font-size: 1rem; outline: none; background: #f8fafc; color: #0f172a; box-sizing: border-box; resize: vertical;" data-i18n-placeholder="topic_placeholder"></textarea>
+                <textarea id="hookTopic" rows="3" required placeholder="مثال: أسباب فشل الإعلانات الممولة وكيفية حلها..." style="width: 100%; padding: 15px 20px; border-radius: 12px; border: 1px solid #cbd5e1; font-size: 1rem; outline: none; background: #f8fafc; color: #0f172a; box-sizing: border-box; resize: vertical;"></textarea>
             </div>
 
             <button type="submit" style="width: 100%; background: linear-gradient(135deg, #0055ff, #0088ff); color: white; border: none; padding: 16px; border-radius: 12px; font-size: 1.1rem; font-weight: bold; cursor: pointer; box-shadow: 0 5px 20px rgba(0,85,255,0.35); transition: transform 0.2s;" data-i18n="hook_submit_btn">
@@ -120,14 +113,12 @@
             </button>
         </form>
 
-        <!-- منطقة التحميل الوهمي -->
         <div id="loadingBox" style="display: none; text-align: center; padding: 40px 0;">
             <div class="spinner" style="width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid #0055ff; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px auto;"></div>
             <h3 style="color: #0f172a; font-size: 1.2rem; margin-bottom: 8px;" data-i18n="hook_loading_title">جاري صياغة خطاطيف وعناوين لا تقاوم...</h3>
             <p style="color: #64748b; font-size: 0.95rem;" data-i18n="hook_loading_desc">نحلل علم نفس الجمهور لنصنع لك بدايات تضمن أعلى تفاعل.</p>
         </div>
 
-        <!-- منطقة النتائج (مطابقة تماماً لفحص الحماية ورادار الإعلانات) -->
         <div id="resultsBox" style="display: none; padding-top: 10px; position: relative;">
             <div class="modal-body" style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px;">
                 <!-- سيتم حقن التقرير هنا ديناميكياً -->
@@ -145,34 +136,24 @@
     </div>
 </section>
 
-<!-- حركة التحميل وتنسيق المخرجات -->
 <style>
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
-
-.report-content h1, .report-content h2, .report-content h3 {
-    color: #1a252f;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-.report-content h3 { font-size: 17px; color: #00897b; border-right: 4px solid #00e676; padding-right: 8px; }
-.report-content ul, .report-content ol { padding-right: 20px; margin-bottom: 15px; }
+.report-content h3 { font-size: 17px; color: #00897b; border-right: 4px solid #00e676; padding-right: 8px; margin-top: 15px; margin-bottom: 8px; }
+.report-content h2 { color: #1a252f; font-size: 19px; margin-top: 18px; margin-bottom: 10px; }
+.report-content ul { padding-right: 20px; margin-bottom: 15px; }
 .report-content li { margin-bottom: 8px; }
 .report-content strong { color: #000; font-weight: 600; }
-.report-content hr { border: 0; border-top: 1px solid #e0e0e0; margin: 20px 0; }
 </style>
 
-<!-- زر العودة لمختبر النمو بالأسفل -->
 <div style="text-align: center; margin-bottom: 50px;">
     <a href="ai-tools.html" style="background: rgba(255,255,255,0.1); color: #ffffff; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; border: 1px solid rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 8px;" data-i18n="back_to_lab">
         <i class="fas fa-arrow-right"></i> العودة إلى مختبر النمو
     </a>
 </div>
 
-<!-- الفوتر -->
 <footer class="footer" style="background-color: #0b1120; color: #ffffff; padding: 50px 40px 20px 40px; border-top: 1px solid rgba(255,255,255,0.1); font-family: inherit; margin-top: 60px;">
     <div style="max-width: 1300px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 40px;">
         <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; align-items: flex-start; padding-right: 80px;">
@@ -215,12 +196,10 @@
 <script src="translations.js"></script>
 <script src="main_JQ5e.js"></script>
 
-<!-- زر الواتساب العائم -->
 <a href="https://wa.me/201555983272" target="_blank" rel="noopener noreferrer" style="position: fixed; bottom: 25px; left: 25px; background-color: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 32px; box-shadow: 0px 4px 15px rgba(0,0,0,0.3); z-index: 9999; text-decoration: none;">
     <i class="fab fa-whatsapp"></i>
 </a>
 
-<!-- سكربت التشغيل والتواصل مع السيرفر -->
 <script>
 function resetHooksForm() {
     const form = document.getElementById('hooksForm');
@@ -261,7 +240,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const topic = document.getElementById('hookTopic').value;
 
         try {
-            const response = await fetch('/api/sales-doctor', {
+            // تم تصحيح المسار ليرسل إلى مسار مغناطيس المشاهدات الصحيح في السيرفر
+            const response = await fetch('/api/views-magnet', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -293,7 +273,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
 
-                // ربط زر الواتساب تلقائياً بالمدخلات
                 const whatsappMsg = `مرحباً Storm Agency، لقد قمت بتوليد خطاطيف وعناوين لمحتواي (الموضوع: ${topic}) وأريد طلب استراتيجية صناعة المحتوى المتكاملة.`;
                 document.getElementById('whatsappBtn').href = `https://wa.me/201555983272?text=${encodeURIComponent(whatsappMsg)}`;
             }

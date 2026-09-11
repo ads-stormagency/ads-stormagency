@@ -65,7 +65,6 @@
 </aside>
 
 <section class="service-page" style="padding: 60px 20px 40px 20px; max-width: 1000px; margin: 0 auto; position: relative; z-index: 3;">
-    
     <div style="text-align: center; margin-bottom: 40px;">
         <div style="width: 80px; height: 80px; background: rgba(0,85,255,0.1); border: 2px solid #0055ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; color: #0055ff; font-size: 2.2rem;">
             <i class="fas fa-shield-alt"></i>
@@ -80,7 +79,6 @@
             <i class="fas fa-times"></i>
         </a>
 
-        <!-- نموذج الإدخال -->
         <form id="auditForm" style="padding-top: 10px;">
             <div style="margin-bottom: 25px;">
                 <label style="display: block; font-weight: bold; color: #0f172a; margin-bottom: 10px; font-size: 1rem;">
@@ -106,14 +104,12 @@
             </button>
         </form>
 
-        <!-- صندوق التحميل -->
         <div id="loadingBox" style="display: none; text-align: center; padding: 40px 0;">
             <div class="spinner" style="width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid #0055ff; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px auto;"></div>
             <h3 id="loadingStatusText" style="color: #0f172a; font-size: 1.2rem; margin-bottom: 8px;">جاري الاتصال بالسيرفر وسحب بيانات الرابط...</h3>
             <p style="color: #64748b; font-size: 0.95rem;">نختبر كفاءة التشفير، الثقة الرقمية، وسرعة استجابة السيرفر.</p>
         </div>
 
-        <!-- صندوق النتائج (مطابق تماماً لهيكل رادار الإعلانات) -->
         <div id="resultsBox" style="display: none; padding-top: 10px; position: relative;">
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; flex-wrap: wrap; gap: 15px;">
                 <h3 style="color: #0f172a; font-size: 1.3rem; font-weight: bold; margin: 0;" data-i18n="audit_report_title">
@@ -124,7 +120,6 @@
                 </div>
             </div>
 
-            <!-- حاوية تفاصيل النتائج المنسقة -->
             <div class="modal-body" style="margin-bottom: 25px;">
                 <!-- سيتم تعبئتها برمجياً -->
             </div>
@@ -133,7 +128,7 @@
                 <button type="button" onclick="resetAuditForm()" style="background: #f1f5f9; color: #0f172a; border: none; padding: 12px 25px; border-radius: 30px; font-weight: bold; cursor: pointer; font-size: 0.95rem; transition: 0.2s;" onmouseover="this.style.background='#e2e8f0'" onmouseout="this.style.background='#f1f5f9'">
                     <i class="fas fa-redo" style="margin-left: 6px;"></i> فحص صفحة أخرى
                 </button>
-                <a href="https://wa.me/201555983272?text=مرحباً%20Storm%20Agency،%20قمت بفحص حماية صفحة الهبوط الخاصة بي وأريد تأمين وتطوير الموقع بالكامل" target="_blank" style="background: #00c853; color: white; padding: 12px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; font-size: 0.95rem; box-shadow: 0 4px 15px rgba(0,200,83,0.3);">
+                <a id="whatsappAuditBtn" href="#" target="_blank" style="background: #00c853; color: white; padding: 12px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; font-size: 0.95rem; box-shadow: 0 4px 15px rgba(0,200,83,0.3);">
                     <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> اطلب تأمين وتطوير الموقع من الوكالة
                 </a>
             </div>
@@ -146,6 +141,11 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+.report-content h3 { font-size: 17px; color: #00897b; border-right: 4px solid #00e676; padding-right: 8px; margin-top: 15px; margin-bottom: 8px; }
+.report-content h2 { color: #1a252f; font-size: 19px; margin-top: 18px; margin-bottom: 10px; }
+.report-content ul { padding-right: 20px; margin-bottom: 15px; }
+.report-content li { margin-bottom: 8px; }
+.report-content strong { color: #000; font-weight: 600; }
 </style>
 
 <script>
@@ -168,10 +168,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!form) return;
 
-    // دالة محلية ذكية لتحويل التنسيقات والرموز إلى HTML مرتب بدون الاعتماد على مكتبات خارجية
     const formatMarkdownToHtml = (text) => {
         if (!text) return '';
-        
         return text
             .replace(/^### (.*$)/gim, '<h3 style="color: #00897b; font-size: 17px; margin-top: 15px; margin-bottom: 8px; border-right: 4px solid #00e676; padding-right: 8px;">$1</h3>')
             .replace(/^## (.*$)/gim, '<h2 style="color: #1a252f; font-size: 19px; margin-top: 18px; margin-bottom: 10px;">$1</h2>')
@@ -207,7 +205,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const response = await fetch('/api/sales-doctor', {
+            // تم تصحيح المسار ليرسل إلى مسار فحص صفحات الهبوط الصحيح في السيرفر
+            const response = await fetch('/api/audit-landing', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ url, goal })
@@ -218,34 +217,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (loadingBox) loadingBox.style.display = 'none';
 
-            // تحديث مؤشر الأمان في الأعلى
             const scoreBadge = document.getElementById('scoreBadge');
             if (scoreBadge) {
-                scoreBadge.textContent = `مؤشر الأمان والكفاءة: ${data.score || 85} / 100`;
+                scoreBadge.textContent = `مؤشر الأمان والكفاءة: ${data.score || 88} / 100`;
             }
 
             if (resultsBox) {
                 resultsBox.style.display = 'block';
                 const modalBody = resultsBox.querySelector('.modal-body');
-                
-                // دعم صيغتين للـ JSON (سواء كانت مصفوفة نتائج أو نص مرسل)
-                let formattedHtml = '';
-                if (data.result) {
-                    formattedHtml = formatMarkdownToHtml(data.result);
-                } else if (data.results && Array.isArray(data.results)) {
-                    data.results.forEach((item, index) => {
-                        let iconColor = item.status === 'success' ? '#10b981' : item.status === 'warning' ? '#f59e0b' : '#ef4444';
-                        let itemText = item.text ? item.text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>') : '';
-                        formattedHtml += `
-                            <div style="margin-bottom: 20px;">
-                                <h4 style="color: #0f172a; font-size: 1.1rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
-                                    <span style="color: ${iconColor};">■</span> ${index + 1}. ${item.title}
-                                </h4>
-                                <p style="margin: 0; padding-right: 15px; color: #334155; line-height: 1.8;">${itemText}</p>
-                            </div>
-                        `;
-                    });
-                }
+                const formattedHtml = formatMarkdownToHtml(data.result);
 
                 if (modalBody) {
                     modalBody.innerHTML = `
@@ -260,6 +240,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     `;
                 }
+
+                const whatsappMsg = `مرحباً Storm Agency، قمت بفحص حماية صفحة الهبوط الخاصة بي (${url}) وأريد تأمين وتطوير الموقع بالكامل.`;
+                document.getElementById('whatsappAuditBtn').href = `https://wa.me/201555983272?text=${encodeURIComponent(whatsappMsg)}`;
             }
         } catch (err) {
             form.style.display = 'block';

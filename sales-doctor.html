@@ -64,10 +64,7 @@
     <a href="portfolio.html"><i class="fas fa-briefcase"></i><span data-i18n="portfolio">معرض الأعمال</span></a>
 </aside>
 
-<!-- محتوى الصفحة الرئيسي بتصميم عريض ومريح مطابق لفحص الحماية -->
 <section class="service-page" style="padding: 60px 20px 40px 20px; max-width: 1200px; margin: 0 auto; position: relative; z-index: 3;">
-    
-    <!-- رأس الأداة -->
     <div style="text-align: center; margin-bottom: 40px;">
         <div style="width: 80px; height: 80px; background: rgba(0,85,255,0.1); border: 2px solid #0055ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; color: #0055ff; font-size: 2.2rem;">
             <i class="fas fa-user-md"></i>
@@ -76,71 +73,58 @@
         <p style="font-size: 16px; color: #cbd5e1; line-height: 1.6; max-width: 700px; margin: 0 auto;" data-i18n="sales_doc_desc">أدخل رابط متجرك واكتب طبيعة نشاطك، وسيقوم الذكاء الاصطناعي بتحليل الأداء واكتشاف الثغرات التي تمنع العملاء من إتمام الشراء.</p>
     </div>
 
-    <!-- صندوق أداة الفحص العريض -->
     <div style="background: #ffffff; border-radius: 20px; padding: 40px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); margin-bottom: 40px; text-align: right; position: relative;">
         
-        <!-- زر إغلاق (X) -->
-        <a href="ai-tools.html" title="العودة لمختبر النمو" style="position: absolute; top: 15px; left: 15px; background: #f1f5f9; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 1.1rem; text-decoration: none; transition: 0.2s; z-index: 10;" onmouseover="this.style.background='#fee2e2'; this.style.color='#ef4444';" onmouseout="this.style.background='#f1f5f9'; this.style.color='#64748b';">
+        <a href="ai-tools.html" title="العودة لمختبر النمو" style="position: absolute; top: 15px; left: 15px; background: #f1f5f9; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 1.1rem; text-decoration: none; transition: 0.2s; z-index: 10;">
             <i class="fas fa-times"></i>
         </a>
 
-        <!-- نموذج إدخال الرابط -->
         <form id="auditForm" onsubmit="runAudit(event)" style="padding-top: 10px;">
             <div style="margin-bottom: 25px;">
                 <label style="display: block; font-weight: bold; color: #0f172a; margin-bottom: 10px; font-size: 1rem;" data-i18n="store_url_label">
                     <i class="fas fa-link" style="color: #0055ff; margin-left: 8px;"></i> رابط المتجر أو صفحة الهبوط:
                 </label>
-                <input type="url" id="storeUrl" required placeholder="https://yourstore.com" style="width: 100%; padding: 15px 20px; border-radius: 12px; border: 1px solid #cbd5e1; font-size: 1rem; outline: none; background: #f8fafc; color: #0f172a; box-sizing: border-box; transition: border-color 0.3s;" onfocus="this.style.borderColor='#0055ff'" onblur="this.style.borderColor='#cbd5e1'">
+                <input type="url" id="storeUrl" required placeholder="https://yourstore.com" style="width: 100%; padding: 15px 20px; border-radius: 12px; border: 1px solid #cbd5e1; font-size: 1rem; outline: none; background: #f8fafc; color: #0f172a; box-sizing: border-box;">
             </div>
 
             <div style="margin-bottom: 30px;">
                 <label style="display: block; font-weight: bold; color: #0f172a; margin-bottom: 10px; font-size: 1rem;" data-i18n="store_type_label">
                     <i class="fas fa-store" style="color: #0055ff; margin-left: 8px;"></i> طبيعة النشاط التجاري:
                 </label>
-                <input type="text" id="storeType" required placeholder="مثال: متجر إلكتروني لبيع العطور..." style="width: 100%; padding: 15px 20px; border-radius: 12px; border: 1px solid #cbd5e1; font-size: 1rem; outline: none; background: #f8fafc; color: #0f172a; box-sizing: border-box; transition: border-color 0.3s;" onfocus="this.style.borderColor='#0055ff'" onblur="this.style.borderColor='#cbd5e1'">
+                <input type="text" id="storeType" required placeholder="مثال: متجر إلكتروني لبيع العطور..." style="width: 100%; padding: 15px 20px; border-radius: 12px; border: 1px solid #cbd5e1; font-size: 1rem; outline: none; background: #f8fafc; color: #0f172a; box-sizing: border-box;">
             </div>
 
-            <button type="submit" style="width: 100%; background: linear-gradient(135deg, #0055ff, #0088ff); color: white; border: none; padding: 16px; border-radius: 12px; font-size: 1.1rem; font-weight: bold; cursor: pointer; box-shadow: 0 5px 20px rgba(0,85,255,0.35); transition: transform 0.2s;" data-i18n="sales_submit_btn">
+            <button type="submit" style="width: 100%; background: linear-gradient(135deg, #0055ff, #0088ff); color: white; border: none; padding: 16px; border-radius: 12px; font-size: 1.1rem; font-weight: bold; cursor: pointer; box-shadow: 0 5px 20px rgba(0,85,255,0.35);" data-i18n="sales_submit_btn">
                 <i class="fas fa-stethoscope" style="margin-left: 8px;"></i> ابدأ التشخيص والفحص الشامل
             </button>
         </form>
 
-        <!-- منطقة التحميل -->
         <div id="loadingBox" style="display: none; text-align: center; padding: 40px 0;">
             <div class="spinner" style="width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid #0055ff; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px auto;"></div>
             <h3 style="color: #0f172a; font-size: 1.2rem; margin-bottom: 8px;" data-i18n="sales_loading_title">جاري فحص المتجر وتحليل تجربة المستخدم...</h3>
             <p style="color: #64748b; font-size: 0.95rem;" data-i18n="sales_loading_desc">نبحث عن ثغرات أزرار الشراء، سرعة التحميل، ونقاط التسرب.</p>
         </div>
 
-        <!-- منطقة النتائج المنظمة بعرض كامل -->
-       <div id="resultsBox" style="display: none; padding-top: 10px; position: relative;">
-    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; flex-wrap: wrap; gap: 15px;">
-        <h3 style="color: #0f172a; font-size: 1.3rem; font-weight: bold; margin: 0;">
-            <i class="fas fa-clipboard-check" style="color: #10b981; margin-left: 8px;"></i> تقرير فحص وتشخيص المتجر الاحترافي
-        </h3>
-        <span id="scoreBadge" style="background: #e0f2fe; color: #0369a1; padding: 6px 18px; border-radius: 20px; font-weight: bold; font-size: 0.95rem;">كفاءة المتجر: 72%</span>
-    </div>
-    
-    <div id="dynamicReportContent" style="background: #fdfdfd; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 20px;">
-        <!-- سيتم حقن التفاصيل هنا مرونة تامة دون أي تكرار لطلب الرابط -->
-    </div>
-    
-    <div style="text-align: center;">
-        <a id="whatsappBtn" href="#" target="_blank" style="background: #00c853; color: white; padding: 14px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 8px;">
-            <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> أطلب جلسة إصلاح المتجر مع خبرائنا
-        </a>
-    </div>
-</div>
-            <div id="dynamicReportContent" style="background: #fdfdfd; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; line-height: 1.9; color: #2c3e50;">
-                <!-- سيتم حقن تفاصيل التقرير هنا بمرونة تامة دون أي تكرار لطلب الرابط -->
+        <!-- صندوق النتائج غير المكرر -->
+        <div id="resultsBox" style="display: none; padding-top: 10px; position: relative;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; flex-wrap: wrap; gap: 15px;">
+                <h3 style="color: #0f172a; font-size: 1.3rem; font-weight: bold; margin: 0;">
+                    <i class="fas fa-clipboard-check" style="color: #10b981; margin-left: 8px;"></i> تقرير فحص وتشخيص المتجر الاحترافي
+                </h3>
+                <span id="scoreBadge" style="background: #e0f2fe; color: #0369a1; padding: 6px 18px; border-radius: 20px; font-weight: bold; font-size: 0.95rem;">كفاءة المتجر: 72%</span>
             </div>
-
+            
+            <div id="dynamicReportContent" style="background: #fdfdfd; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; line-height: 1.9; color: #2c3e50;">
+                <!-- سيتم حقن تفاصيل التقرير هنا بمرونة تامة -->
+            </div>
+            
             <div style="text-align: center;">
                 <a id="whatsappBtn" href="#" target="_blank" style="background: #00c853; color: white; padding: 14px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; font-size: 1rem; box-shadow: 0 4px 15px rgba(0,200,83,0.3);">
                     <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> اطلب جلسة إصلاح المتجر مع خبرائنا
                 </a>
             </div>
         </div>
+
     </div>
 </section>
 
