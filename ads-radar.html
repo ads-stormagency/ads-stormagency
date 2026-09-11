@@ -145,7 +145,7 @@
             <p style="color: #64748b; font-size: 0.95rem;" data-i18n="radar_loading_desc">نقرأ بيانات الـ CTR و CPC و ROAS ونحدد نقاط الضعف بدقة.</p>
         </div>
 
-        <!-- منطقة النتائج (متوافقة مع فحص الحماية وطبيب المبيعات) -->
+        <!-- منطقة النتائج -->
         <div id="resultsBox" style="display: none; padding-top: 10px; position: relative;">
             <div class="modal-body" style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px;">
                 <!-- سيتم حقن التقرير هنا ديناميكياً -->
@@ -283,7 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const platform = document.getElementById('adPlatform').value;
         const niche = document.getElementById('radarNiche').value;
         const summary = document.getElementById('adSummary').value;
-        const details = `المنصة: ${platform} | المجال: ${niche} | التفاصيل: ${summary}`;
+        const campaignData = `المنصة: ${platform} | المجال: ${niche} | التفاصيل: ${summary}`;
 
         const fileInputs = form.querySelectorAll('input[type="file"]');
         let imageParts = [];
@@ -302,13 +302,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-          const response = await fetch('/api/ads-radar', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ campaignData: description })
-});
+            const response = await fetch('/api/ads-radar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ campaignData, imageParts })
+            });
 
             const data = await response.json();
             if (!response.ok) throw new Error(data.error || 'خطأ في السيرفر');
@@ -332,7 +332,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
 
-                // ربط زر الواتساب بشكل تلقائي ومباشر بالمدخلات بدون طلب بيانات جديدة
                 const whatsappMsg = `مرحباً Storm Agency، لقد قمت بتحليل أداء إعلاني عبر رادار الإعلانات (المجال: ${niche}) وأريد طلب استشارة لخفض التكلفة ورفع العائد.`;
                 document.getElementById('whatsappBtn').href = `https://wa.me/201555983272?text=${encodeURIComponent(whatsappMsg)}`;
             }
