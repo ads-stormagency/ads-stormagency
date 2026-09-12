@@ -147,19 +147,29 @@ const formatMarkdownToHtml = (text) => {
         .replace(/\n/g, '<br>');
 };
 
-// استخراج اللغة الحالية المحددة في الموقع أوتوماتيكياً
-const currentLang = document.documentElement.getAttribute('lang') || localStorage.getItem('site_lang') || 'ar';
+async function runAudit(event) {
+    event.preventDefault();
+    const form = document.getElementById('auditForm');
+    const loadingBox = document.getElementById('loadingBox');
+    const resultsBox = document.getElementById('resultsBox');
+    const storeUrl = document.getElementById('storeUrl').value;
+    const storeType = document.getElementById('storeType').value;
 
-const response = await fetch('/api/sales-doctor', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-        storeDetails: `الرابط: ${storeUrl} - النشاط: ${storeType}`,
-        storeUrl: storeUrl,
-        storeType: storeType,
-        language: currentLang // إرسال اللغة أوتوماتيكياً للباك إند والـ AI
-    })
-});
+    form.style.display = 'none';
+    loadingBox.style.display = 'block';
+    resultsBox.style.display = 'none';
+
+    try {
+        const response = await fetch('/api/sales-doctor', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                storeDetails: `الرابط: ${storeUrl} - النشاط: ${storeType}`,
+                storeUrl: storeUrl,
+                storeType: storeType,
+                language: document.documentElement.lang || 'ar'
+            })
+        });
 
         const data = await response.json();
         if (!response.ok) throw new Error(data.error || 'خطأ في السيرفر');
@@ -173,7 +183,7 @@ const response = await fetch('/api/sales-doctor', {
         const whatsappBtn = document.getElementById('whatsappBtn');
         whatsappBtn.href = `https://wa.me/201555983272?text=${encodeURIComponent('مرحباً Storm Agency، أريد طلب جلسة إصلاح لمتجري (' + storeUrl + ') نشاط (' + storeType + ') بعد فحصه بطبيب المبيعات.')}`;
 
-    } catch (err) {
+    } (err) {
         loadingBox.style.display = 'none';
         form.style.display = 'block';
         alert('حدث خطأ أثناء الاتصال: ' + err.message);
