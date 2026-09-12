@@ -52,7 +52,7 @@
             </div>
         </header>
 
-        <!-- عدادات التتبع الفعلية (تبدأ من الصفر تماماً) -->
+        <!-- عدادات التتبع الفعلية -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700 shadow-lg">
                 <p class="text-slate-400 text-xs">زيارات لوحة التحكم الفعلية</p>
@@ -76,19 +76,32 @@
             </div>
         </div>
 
-        <!-- إعدادات الـ AI والـ Prompts -->
+        <!-- إعدادات الـ AI والـ Prompts لكل الأدوات -->
         <div id="settingsPanel" class="hidden bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-700 space-y-4">
-            <h2 class="text-lg font-semibold text-amber-400">تعديل سلوك وأوامر الذكاء الاصطناعي (System Prompts)</h2>
+            <h2 class="text-lg font-semibold text-amber-400">تعديل سلوك وأوامر الذكاء الاصطناعي لكافة أدوات الوكالة (System Prompts)</h2>
+            
             <div>
-                <label class="block text-sm text-slate-300 mb-1">مفتاح Google Gemini API Key:</label>
+                <label class="block text-sm text-slate-300 mb-1">مفتاح Google Gemini API Key العام:</label>
                 <input type="password" id="apiKeyInput" placeholder="أدخل مفتاح الـ API الجديد هنا..." class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-blue-500">
             </div>
-            <div>
-                <label class="block text-sm text-slate-300 mb-1">توجيهات طبيب المبيعات (Sales Doctor Prompt):</label>
-                <textarea id="salesPromptInput" rows="3" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-blue-500"></textarea>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+                <div>
+                    <label class="block text-sm text-emerald-400 mb-1">أوامر طبيب المبيعات:</label>
+                    <textarea id="salesPromptInput" rows="4" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-emerald-500"></textarea>
+                </div>
+                <div>
+                    <label class="block text-sm text-amber-400 mb-1">أوامر رادار الإعلانات:</label>
+                    <textarea id="adsPromptInput" rows="4" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-amber-500"></textarea>
+                </div>
+                <div>
+                    <label class="block text-sm text-purple-400 mb-1">أوامر مغناطيس المشاهدات:</label>
+                    <textarea id="hooksPromptInput" rows="4" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-purple-500"></textarea>
+                </div>
             </div>
-            <button onclick="saveSettings()" class="bg-blue-600 hover:bg-blue-500 px-6 py-2 rounded-xl text-sm font-medium transition">
-                حفظ التعديلات في النظام
+
+            <button onclick="saveSettings()" class="bg-blue-600 hover:bg-blue-500 px-6 py-2 rounded-xl text-sm font-medium transition mt-2">
+                حفظ التعديلات لكافة الأدوات
             </button>
         </div>
 
@@ -154,7 +167,6 @@
                 document.getElementById('dashboardContent').classList.remove('hidden');
                 loadSettings();
                 
-                // حساب زيارة حقيقية جديدة تبدأ من الصفر وتزيد فعلياً
                 let visits = parseInt(localStorage.getItem('real_site_visits') || 0);
                 if (!sessionStorage.hasTrackedVisit) {
                     visits += 1;
@@ -179,18 +191,26 @@
 
         function saveSettings() {
             const key = document.getElementById('apiKeyInput').value;
-            const prompt = document.getElementById('salesPromptInput').value;
+            const salesP = document.getElementById('salesPromptInput').value;
+            const adsP = document.getElementById('adsPromptInput').value;
+            const hooksP = document.getElementById('hooksPromptInput').value;
+
             if(key) localStorage.setItem('custom_gemini_key', key);
-            if(prompt) localStorage.setItem('sales_system_prompt', prompt);
-            alert('تم حفظ الإعدادات بنجاح!');
+            if(salesP) localStorage.setItem('sales_system_prompt', salesP);
+            if(adsP) localStorage.setItem('ads_system_prompt', adsP);
+            if(hooksP) localStorage.setItem('hooks_system_prompt', hooksP);
+
+            alert('تم حفظ إعدادات وأوامر كافة الأدوات بنجاح!');
             toggleSettings();
         }
 
         function loadSettings() {
             const savedKey = localStorage.getItem('custom_gemini_key');
-            const savedPrompt = localStorage.getItem('sales_system_prompt');
             if(savedKey) document.getElementById('apiKeyInput').value = savedKey;
-            if(savedPrompt) document.getElementById('salesPromptInput').value = savedPrompt;
+
+            document.getElementById('salesPromptInput').value = localStorage.getItem('sales_system_prompt') || "أنت خبير استراتيجي في تشخيص مشاكل المتاجر الإلكترونية وزيادة الأرباح في وكالة Storm Agency...";
+            document.getElementById('adsPromptInput').value = localStorage.getItem('ads_system_prompt') || "أنت محلل حملات إعلانية محترف لـ Meta و TikTok و Snapchat، تقدم خطوات تصحيحية دقيقة...";
+            document.getElementById('hooksPromptInput').value = localStorage.getItem('hooks_system_prompt') || "أنت خبير صياغة محتوى مرئي وخطافات (Hooks) تجذب انتباه الجمهور في أول 3 ثوانٍ...";
         }
 
         function updateStatsDisplay() {
@@ -224,7 +244,7 @@
                 localStorage.setItem('real_ads_uses', 0);
                 localStorage.setItem('real_hooks_uses', 0);
                 updateStatsDisplay();
-                alert('تم تصفير العدادات بنجاح وجاهزة للعد من الصفر.');
+                alert('تم تصفير العدادات بنجاح.');
             }
         }
     </script>
