@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agency Storm - لوحة التحكم الفعلية</title>
+    <title>Agency Storm - لوحة التحكم الاحترافية</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-900 text-white min-h-screen p-6 flex flex-col justify-center items-center">
@@ -31,7 +31,7 @@
     </div>
 
     <!-- لوحة التحكم الرئيسية -->
-    <div id="dashboardContent" class="hidden max-w-6xl w-full mx-auto space-y-6">
+    <div id="dashboardContent" class="hidden max-w-4xl w-full mx-auto space-y-6">
         
         <!-- الهيدر -->
         <header class="bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-700 flex flex-col md:flex-row justify-between items-center gap-4">
@@ -55,61 +55,70 @@
         <!-- عدادات التتبع الفعلية -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700 shadow-lg">
-                <p class="text-slate-400 text-xs">زيارات لوحة التحكم الفعلية</p>
+                <p class="text-slate-400 text-xs">زيارات لوحة التحكم</p>
                 <h3 class="text-3xl font-bold text-blue-400 mt-1" id="totalVisits">0</h3>
-                <span class="text-slate-500 text-xs mt-2 inline-block">تبدأ العد من الآن</span>
             </div>
             <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700 shadow-lg">
-                <p class="text-slate-400 text-xs">استخدام طبيب المبيعات</p>
+                <p class="text-slate-400 text-xs">طبيب المبيعات</p>
                 <h3 class="text-3xl font-bold text-emerald-400 mt-1" id="salesDoctorUses">0</h3>
-                <span class="text-slate-500 text-xs mt-2 inline-block">عمليات التشخيص الحقيقية</span>
             </div>
             <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700 shadow-lg">
-                <p class="text-slate-400 text-xs">استخدام رادار الإعلانات</p>
+                <p class="text-slate-400 text-xs">رادار الإعلانات</p>
                 <h3 class="text-3xl font-bold text-amber-400 mt-1" id="adsRadarUses">0</h3>
-                <span class="text-slate-500 text-xs mt-2 inline-block">التحليلات المنفذة</span>
             </div>
             <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700 shadow-lg">
                 <p class="text-slate-400 text-xs">مغناطيس المشاهدات</p>
                 <h3 class="text-3xl font-bold text-purple-400 mt-1" id="hooksUses">0</h3>
-                <span class="text-slate-500 text-xs mt-2 inline-block">الخطافات المولدة</span>
             </div>
         </div>
 
-        <!-- إعدادات الـ AI والـ Prompts لكل الأدوات -->
-        <div id="settingsPanel" class="hidden bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-700 space-y-4">
-            <h2 class="text-lg font-semibold text-amber-400">تعديل سلوك وأوامر الذكاء الاصطناعي لكافة أدوات الوكالة (System Prompts)</h2>
+        <!-- إعدادات الـ AI والـ Prompts مرصوصة عمودياً وبأزرار منفصلة -->
+        <div id="settingsPanel" class="hidden bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-700 space-y-6">
+            <h2 class="text-lg font-semibold text-amber-400 border-b border-slate-700 pb-3">إدارة وتعديل أوامر الذكاء الاصطناعي (System Prompts)</h2>
             
-            <div>
-                <label class="block text-sm text-slate-300 mb-1">مفتاح Google Gemini API Key العام:</label>
-                <input type="password" id="apiKeyInput" placeholder="أدخل مفتاح الـ API الجديد هنا..." class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-blue-500">
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
-                <div>
-                    <label class="block text-sm text-emerald-400 mb-1">أوامر طبيب المبيعات:</label>
-                    <textarea id="salesPromptInput" rows="4" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-emerald-500"></textarea>
-                </div>
-                <div>
-                    <label class="block text-sm text-amber-400 mb-1">أوامر رادار الإعلانات:</label>
-                    <textarea id="adsPromptInput" rows="4" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-amber-500"></textarea>
-                </div>
-                <div>
-                    <label class="block text-sm text-purple-400 mb-1">أوامر مغناطيس المشاهدات:</label>
-                    <textarea id="hooksPromptInput" rows="4" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-purple-500"></textarea>
+            <!-- مفتاح الـ API العام -->
+            <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-700 space-y-2">
+                <label class="block text-sm font-semibold text-blue-400">مفتاح Google Gemini API Key:</label>
+                <div class="flex gap-2">
+                    <input type="password" id="apiKeyInput" placeholder="أدخل مفتاح الـ API الجديد هنا..." class="flex-1 bg-slate-900 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-blue-500">
+                    <button onclick="saveApiKey()" class="bg-blue-600 hover:bg-blue-500 px-5 py-2 rounded-xl text-sm font-medium transition">تثبيت المفتاح</button>
                 </div>
             </div>
 
-            <button onclick="saveSettings()" class="bg-blue-600 hover:bg-blue-500 px-6 py-2 rounded-xl text-sm font-medium transition mt-2">
-                حفظ التعديلات لكافة الأدوات
-            </button>
+            <!-- 1. طبيب المبيعات -->
+            <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-700 space-y-2">
+                <label class="block text-sm font-semibold text-emerald-400">🩺 توجيهات طبيب المبيعات:</label>
+                <textarea id="salesPromptInput" rows="3" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-emerald-500"></textarea>
+                <button onclick="savePrompt('sales')" class="bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-400 border border-emerald-500/30 px-4 py-2 rounded-xl text-xs font-medium transition">تثبيت أمر طبيب المبيعات</button>
+            </div>
+
+            <!-- 2. رادار الإعلانات -->
+            <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-700 space-y-2">
+                <label class="block text-sm font-semibold text-amber-400">📡 توجيهات رادار الإعلانات:</label>
+                <textarea id="adsPromptInput" rows="3" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-amber-500"></textarea>
+                <button onclick="savePrompt('ads')" class="bg-amber-600/20 hover:bg-amber-600/30 text-amber-400 border border-amber-500/30 px-4 py-2 rounded-xl text-xs font-medium transition">تثبيت أمر رادار الإعلانات</button>
+            </div>
+
+            <!-- 3. مغناطيس المشاهدات -->
+            <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-700 space-y-2">
+                <label class="block text-sm font-semibold text-purple-400">🧲 توجيهات مغناطيس المشاهدات:</label>
+                <textarea id="hooksPromptInput" rows="3" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-purple-500"></textarea>
+                <button onclick="savePrompt('hooks')" class="bg-purple-600/20 hover:bg-purple-600/30 text-purple-400 border border-purple-500/30 px-4 py-2 rounded-xl text-xs font-medium transition">تثبيت أمر مغناطيس المشاهدات</button>
+            </div>
+
+            <!-- 4. فحص صفحات الهبوط -->
+            <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-700 space-y-2">
+                <label class="block text-sm font-semibold text-cyan-400">🛡️ توجيهات فحص صفحات الهبوط:</label>
+                <textarea id="landingPromptInput" rows="3" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-500"></textarea>
+                <button onclick="savePrompt('landing')" class="bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-400 border border-cyan-500/30 px-4 py-2 rounded-xl text-xs font-medium transition">تثبيت أمر صفحة الهبوط</button>
+            </div>
         </div>
 
-        <!-- شبكة الأدوات -->
+        <!-- شبكة الأدوات الأساسية -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <a href="sales-doctor.html" onclick="trackTool('sales')" class="bg-slate-800 hover:bg-slate-700 p-6 rounded-2xl border border-slate-700 transition flex flex-col justify-between shadow-lg group">
                 <div>
-                    <h2 class="text-xl font-semibold text-emerald-400 mb-2 group-hover:translate-x-1 transition">🩺 طبيب المبيعات</h2>
+                    <h2 class="text-xl font-semibold text-emerald-400 mb-2">🩺 طبيب المبيعات</h2>
                     <p class="text-slate-300 text-sm">تشخيص مشاكل المتاجر الإلكترونية، رحلة العميل، وأسباب ضعف المبيعات وترك السلة.</p>
                 </div>
                 <span class="mt-4 text-blue-400 text-sm font-medium">فتح الأداة &larr;</span>
@@ -131,12 +140,12 @@
                 <span class="mt-4 text-purple-400 text-sm font-medium">تجربة الأداة &larr;</span>
             </div>
 
-            <div class="bg-slate-800 hover:bg-slate-700 p-6 rounded-2xl border border-slate-700 transition flex flex-col justify-between shadow-lg opacity-70">
+            <div class="bg-slate-800 hover:bg-slate-700 p-6 rounded-2xl border border-slate-700 transition flex flex-col justify-between shadow-lg opacity-90">
                 <div>
                     <h2 class="text-xl font-semibold text-cyan-400 mb-2">🛡️ فحص صفحات الهبوط</h2>
                     <p class="text-slate-300 text-sm">تقييم صفحات الهبوط وتحسين معدلات التحويل (CRO) وتجربة المستخدم بشكل احترافي.</p>
                 </div>
-                <span class="mt-4 text-slate-400 text-sm font-medium">قريباً</span>
+                <span class="mt-4 text-cyan-400 text-sm font-medium">قريباً</span>
             </div>
         </div>
 
@@ -189,19 +198,34 @@
             panel.classList.toggle('hidden');
         }
 
-        function saveSettings() {
+        function saveApiKey() {
             const key = document.getElementById('apiKeyInput').value;
-            const salesP = document.getElementById('salesPromptInput').value;
-            const adsP = document.getElementById('adsPromptInput').value;
-            const hooksP = document.getElementById('hooksPromptInput').value;
+            if(key) {
+                localStorage.setItem('custom_gemini_key', key);
+                alert('تم تثبيت مفتاح الـ API بنجاح!');
+            } else {
+                alert('الرجاء إدخال المفتاح أولاً.');
+            }
+        }
 
-            if(key) localStorage.setItem('custom_gemini_key', key);
-            if(salesP) localStorage.setItem('sales_system_prompt', salesP);
-            if(adsP) localStorage.setItem('ads_system_prompt', adsP);
-            if(hooksP) localStorage.setItem('hooks_system_prompt', hooksP);
-
-            alert('تم حفظ إعدادات وأوامر كافة الأدوات بنجاح!');
-            toggleSettings();
+        function savePrompt(type) {
+            if(type === 'sales') {
+                const val = document.getElementById('salesPromptInput').value;
+                localStorage.setItem('sales_system_prompt', val);
+                alert('تم تثبيت أمر "طبيب المبيعات" بنجاح!');
+            } else if(type === 'ads') {
+                const val = document.getElementById('adsPromptInput').value;
+                localStorage.setItem('ads_system_prompt', val);
+                alert('تم تثبيت أمر "رادار الإعلانات" بنجاح!');
+            } else if(type === 'hooks') {
+                const val = document.getElementById('hooksPromptInput').value;
+                localStorage.setItem('hooks_system_prompt', val);
+                alert('تم تثبيت أمر "مغناطيس المشاهدات" بنجاح!');
+            } else if(type === 'landing') {
+                const val = document.getElementById('landingPromptInput').value;
+                localStorage.setItem('landing_system_prompt', val);
+                alert('تم تثبيت أمر "فحص صفحات الهبوط" بنجاح!');
+            }
         }
 
         function loadSettings() {
@@ -211,6 +235,7 @@
             document.getElementById('salesPromptInput').value = localStorage.getItem('sales_system_prompt') || "أنت خبير استراتيجي في تشخيص مشاكل المتاجر الإلكترونية وزيادة الأرباح في وكالة Storm Agency...";
             document.getElementById('adsPromptInput').value = localStorage.getItem('ads_system_prompt') || "أنت محلل حملات إعلانية محترف لـ Meta و TikTok و Snapchat، تقدم خطوات تصحيحية دقيقة...";
             document.getElementById('hooksPromptInput').value = localStorage.getItem('hooks_system_prompt') || "أنت خبير صياغة محتوى مرئي وخطافات (Hooks) تجذب انتباه الجمهور في أول 3 ثوانٍ...";
+            document.getElementById('landingPromptInput').value = localStorage.getItem('landing_system_prompt') || "أنت خبير تحسين معدلات التحويل وتجربة المستخدم لصفحات الهبوط في المتاجر الإلكترونية...";
         }
 
         function updateStatsDisplay() {
@@ -227,12 +252,10 @@
             } else if(tool === 'ads') {
                 let count = parseInt(localStorage.getItem('real_ads_uses') || 0) + 1;
                 localStorage.setItem('real_ads_uses', count);
-                alert('تم تسجيل تفاعل حقيقي على رادار الإعلانات!');
                 updateStatsDisplay();
             } else if(tool === 'hooks') {
                 let count = parseInt(localStorage.getItem('real_hooks_uses') || 0) + 1;
                 localStorage.setItem('real_hooks_uses', count);
-                alert('تم تسجيل تفاعل حقيقي على مغناطيس المشاهدات!');
                 updateStatsDisplay();
             }
         }
