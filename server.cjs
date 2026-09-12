@@ -96,13 +96,19 @@ app.post('/api/audit-landing', async (req, res) => {
     }
 });
 
-// 4. طبيب المبيعات
+// 4. طبيب المبيعات (Sales Doctor) - تحليل فوري وصارم
 app.post('/api/sales-doctor', async (req, res) => {
     try {
-        const { storeData, description } = req.body;
-        const textToAnalyze = storeData || description || "تشخيص مشاكل المتجر الإلكتروني وضعف المبيعات";
+        const { storeData, description, url } = req.body;
+        const textToAnalyze = storeData || description || url || "تحليل متجر إلكتروني وتقييم رحلة العميل وضعف المبيعات";
         
-        const systemPrompt = `أنت خبير استراتيجي في تشخيص مشاكل المتاجر الإلكترونية وزيادة الأرباح في وكالة Storm Agency.`;
+        const systemPrompt = `أنت خبير استراتيجي في تشخيص مشاكل المتاجر الإلكترونية وزيادة الأرباح في وكالة Storm Agency.
+مهمتك الحصرية: بناءً على أي مدخلات بسيطة يكتبها المستخدم (حتى لو كانت اسم متجر أو رابط أو كلمة عابرة)، **لا تقم بسؤاله عن تفاصيل إضافية أبداً**. 
+بدلاً من ذلك، قدم فوراً تقريراً تشخيصياً افتراضياً واحترافياً يغطي:
+1. تقييم رحلة العميل وتجربة المستخدم (UX) وأزرار الشراء.
+2. الأسباب الرئيسية المحتملة لترك السلة وضعف المبيعات في هذا النوع من المتاجر.
+3. خطوة تصحيحية فورية لرفع الأرباح ومتوسط قيمة الطلب.
+كن مباشراً، حاسماً، وقدم تقريراً جاهزاً للعميل فوراً بدون أي أسئلة استباقية.`;
 
         const result = await callGemini(systemPrompt, `بيانات وتفاصيل المتجر: ${textToAnalyze}`);
         res.json({ result });
@@ -111,7 +117,6 @@ app.post('/api/sales-doctor', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
-
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
