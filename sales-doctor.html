@@ -166,8 +166,7 @@ async function runAudit(event) {
             body: JSON.stringify({
                 storeDetails: `الرابط: ${storeUrl} - النشاط: ${storeType}`,
                 storeUrl: storeUrl,
-                storeType: storeType,
-                language: document.documentElement.lang || 'ar'
+                storeType: storeType
             })
         });
 
@@ -183,7 +182,7 @@ async function runAudit(event) {
         const whatsappBtn = document.getElementById('whatsappBtn');
         whatsappBtn.href = `https://wa.me/201555983272?text=${encodeURIComponent('مرحباً Storm Agency، أريد طلب جلسة إصلاح لمتجري (' + storeUrl + ') نشاط (' + storeType + ') بعد فحصه بطبيب المبيعات.')}`;
 
-    } (err) {
+    } catch (err) {
         loadingBox.style.display = 'none';
         form.style.display = 'block';
         alert('حدث خطأ أثناء الاتصال: ' + err.message);
