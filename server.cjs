@@ -117,6 +117,10 @@ app.post('/api/sales-doctor', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
+// فتح صفحة الداشبورد مباشرة
+app.get('/dashboard.html', (req, res) => {
+    res.sendFile(__dirname + '/dashboard.html');
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
