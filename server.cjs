@@ -38,13 +38,22 @@ async function callGemini(systemPrompt, userContent, imageParts = []) {
     return response.text();
 }
 
+// دالة مساعدة لتوليد توجيه اللغة للذكاء الاصطناعي
+function getLanguageInstruction(lang) {
+    if (lang === 'en') return 'You must write your entire response and report in English.';
+    if (lang === 'fr') return 'Vous devez rédiger l\'intégralité de votre rapport en français.';
+    return 'يجب أن تكتب تقريرك واعترافاتك بالكامل باللغة العربية.';
+}
+
 // 1. رادار الإعلانات
 app.post(['/api/ads-radar', '/ads-radar'], async (req, res) => {
     try {
-        const { campaignData, description, imageParts } = req.body;
+        const { campaignData, description, imageParts, lang } = req.body;
         const textToAnalyze = campaignData || description || "تحليل أداء الحملة الإعلانية";
         
-        const systemPrompt = `أنت محلل بيانات إعلانية وخبير ميديا باير صارم في وكالة Storm Agency. مهمتك تشخيص نتائج الحملات الإعلانية من خلال قراءة الأرقام المرفقة وصورة الإعلان وإعطاء خطوات تصحيحية فورية.`;
+        const languageInstruction = getLanguageInstruction(lang);
+        const systemPrompt = `أنت محلل بيانات إعلانية وخبير ميديا باير صارم في وكالة Storm Agency. مهمتك تشخيص نتائج الحملات الإعلانية من خلال قراءة الأرقام المرفقة وصورة الإعلان وإعطاء خطوات تصحيحية فورية.
+${languageInstruction}`;
 
         let formattedImages = [];
         if (imageParts && Array.isArray(imageParts)) {
@@ -67,10 +76,12 @@ app.post(['/api/ads-radar', '/ads-radar'], async (req, res) => {
 // 2. مغناطيس المشاهدات والخطافات
 app.post(['/api/views-magnet', '/api/hook-generator'], async (req, res) => {
     try {
-        const { topicData, topic, description } = req.body;
+        const { topicData, topic, description, lang } = req.body;
         const textToAnalyze = topicData || topic || description || "صياغة خطافات تسويقية جاذبة";
         
-        const systemPrompt = `أنت خبير صناعة محتوى وكاتب إعلانات (Copywriter) محترف في وكالة Storm Agency. مهمتك ابتكار وصياغة خطافات إعلانية قوية وجذابة.`;
+        const languageInstruction = getLanguageInstruction(lang);
+        const systemPrompt = `أنت خبير صناعة محتوى وكاتب إعلانات (Copywriter) محترف في وكالة Storm Agency. مهمتك ابتكار وصياغة خطافات إعلانية قوية وجذابة.
+${languageInstruction}`;
 
         const result = await callGemini(systemPrompt, `الموضوع أو المنتج المستهدف: ${textToAnalyze}`);
         res.json({ result });
@@ -83,10 +94,12 @@ app.post(['/api/views-magnet', '/api/hook-generator'], async (req, res) => {
 // 3. فحص صفحات الهبوط
 app.post('/api/audit-landing', async (req, res) => {
     try {
-        const { url, goal, description } = req.body;
+        const { url, goal, description, lang } = req.body;
         const textToAnalyze = `رابط الصفحة: ${url || 'غير متوفر'} | الهدف: ${goal || 'غير متوفر'} | تفاصيل إضافية: ${description || ''}`;
         
-        const systemPrompt = `أنت خبير أمان وخبيرة تحسين معدل التحويل (CRO) في وكالة Storm Agency. قم بتقييم صفحة الهبوط والهدف منها واقترح نقاط التحسين.`;
+        const languageInstruction = getLanguageInstruction(lang);
+        const systemPrompt = `أنت خبير أمان وخبيرة تحسين معدل التحويل (CRO) في وكالة Storm Agency. قم بتقييم صفحة الهبوط والهدف منها واقترح نقاط التحسين.
+${languageInstruction}`;
 
         const result = await callGemini(systemPrompt, textToAnalyze);
         res.json({ result, score: 85 });
@@ -99,16 +112,18 @@ app.post('/api/audit-landing', async (req, res) => {
 // 4. طبيب المبيعات (تحليل فوري وصارم بدون أسئلة)
 app.post('/api/sales-doctor', async (req, res) => {
     try {
-        const { storeData, description, url } = req.body;
+        const { storeData, description, url, lang } = req.body;
         const textToAnalyze = storeData || description || url || "تشخيص مشاكل المتجر الإلكتروني وضعف المبيعات";
         
+        const languageInstruction = getLanguageInstruction(lang);
         const systemPrompt = `أنت خبير استراتيجي في تشخيص مشاكل المتاجر الإلكترونية وزيادة الأرباح في وكالة Storm Agency.
 مهمتك الحصرية: بناءً على أي مدخلات بسيطة يكتبها المستخدم، لا تقم بسؤاله عن تفاصيل إضافية أبداً. 
 بدلاً من ذلك، قدم فوراً تقريراً تشخيصياً افتراضياً واحترافياً يغطي:
 1. تقييم رحلة العميل وتجربة المستخدم (UX) وأزرار الشراء.
 2. الأسباب الرئيسية المحتملة لترك السلة وضعف المبيعات.
 3. خطوة تصحيحية فورية لرفع الأرباح ومتوسط قيمة الطلب.
-كن مباشراً، حاسماً، وقدم تقريراً جاهزاً للعميل فوراً بدون أي أسئلة.`;
+كن مباشراً، حاسماً، وقدم تقريراً جاهزاً للعميل فوراً بدون أي أسئلة.
+${languageInstruction}`;
 
         const result = await callGemini(systemPrompt, `بيانات وتفاصيل المتجر: ${textToAnalyze}`);
         res.json({ result });
@@ -117,6 +132,7 @@ app.post('/api/sales-doctor', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
+
 // فتح صفحة الداشبورد مباشرة
 app.get('/dashboard.html', (req, res) => {
     res.sendFile(__dirname + '/dashboard.html');
