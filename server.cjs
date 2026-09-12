@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const puppeteer = require('puppeteer');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 
 dotenv.config();
@@ -77,7 +78,7 @@ app.post(['/api/views-magnet', '/api/hook-generator'], async (req, res) => {
         const textToAnalyze = topicData || topic || description || "صياغة خطافات تسويقية جاذبة";
         
         const systemPrompt = `أنت خبير صناعة محتوى وكاتب إعلانات (Copywriter) محترف في وكالة Storm Agency.
-مهمتك الحصرية هي ابتكار وصياغة "خطافات (Hooks)" إعلانية قوية، جذابة، ومختصرة، بالإضافة إلى أفكار إعلانية إبداعية تكسر التمساح وتجذب انتباه المشاهد من أول ثانية لزيادة التفاعل والمشاهدات. لا تقدم تحليلاً مالياً للمتجر، بل ركز فقط على الأفكار والخطافات الإبداعية.`;
+مهمتك الحصرية هي ابتكار وصياغة "خطافات (Hooks)" إعلانية قوية، جذابة، ومختصرة، بالإضافة إلى أفكار إعلانية إبداعية تكسر النمط وتجذب انتباه المشاهد من أول ثانية لزيادة التفاعل والمشاهدات.`;
 
         const result = await callGemini(systemPrompt, `الموضوع أو المنتج المستهدف: ${textToAnalyze}`);
         res.json({ result });
@@ -87,20 +88,44 @@ app.post(['/api/views-magnet', '/api/hook-generator'], async (req, res) => {
     }
 });
 
-// 3. فحص أمان المواقع وصفحات الهبوط (Landing Auditor): فحص الأمان، الحماية، الثبات وتحويل الزوار
+// 3. فحص أمان المواقع وصفحات الهبوط (Landing Auditor): سحب الرابط كصورة عبر Puppeteer وفحصه
 app.post('/api/audit-landing', async (req, res) => {
+    let browser;
     try {
         const { url, goal } = req.body;
-        const prompt = `أنت خبير أمان وخبيرة تحسين معدل التحويل (CRO). قم بإجراء فحص واختبار لصفحة الهبوط التالية: "${url}" بهدف أساسي هو: "${goal}". اعطني تقريراً احترافياً ومفصلاً باللغة العربية يتضمن: 1. فحص الأمان والثقة. 2. تقييم تجربة المستخدم وسرعة الصفحة. 3. نقاط التحسين لزيادة المبيعات. امنح تقييماً رقمياً من 100، وقسّم الإجابة بوضوح باستخدام Markdown.`;
         
-        const response = await ai.models.generateContent({
-            model: 'gemini-3.6-flash',
-            contents: prompt,
+        // فتح متصفح وهمي وأخذ لقطة شاشة لصفحة الهبوط لكي يراها الـ AI بوضوح
+        browser = await puppeteer.launch({ 
+            headless: 'new', 
+            args: ['--no-sandbox', '--disable-setuid-sandbox'] 
         });
+        const page = await browser.newPage();
+        await page.setViewport({ width: 1280, height: 800 });
+        
+        await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
+        
+        const screenshotBuffer = await page.screenshot({ fullPage: true });
+        const base64Image = screenshotBuffer.toString('base64');
+        
+        await browser.close();
 
-        res.json({ result: response.text, score: 88 });
+        const systemPrompt = `أنت خبير أمان وخبيرة تحسين معدل التحويل (CRO) في وكالة Storm Agency.`;
+        const userPrompt = `قم بفحص لقطة الشاشة لصفحة الهبوط هذه (${url}) والتي تهدف إلى: "${goal}". أعطني تقريراً احترافياً ومفصلاً باللغة العربية يتضمن: 1. فحص الأمان والثقة. 2. تقييم تجربة المستخدم وسرعة الصفحة من واقع التصميم. 3. نقاط التحسين لزيادة المبيعات. قسّم الإجابة بوضوح باستخدام Markdown.`;
+
+        const imageParts = [{
+            inlineData: {
+                data: base64Image,
+                mimeType: "image/png"
+            }
+        }];
+
+        const result = await callGemini(systemPrompt, userPrompt, imageParts);
+        res.json({ result, score: 88 });
+
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        if (browser) await browser.close();
+        console.error('Audit Landing Error:', error);
+        res.status(500).json({ error: 'فشل في سحب وفحص الرابط: ' + error.message });
     }
 });
 
