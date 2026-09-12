@@ -147,28 +147,19 @@ const formatMarkdownToHtml = (text) => {
         .replace(/\n/g, '<br>');
 };
 
-async function runAudit(event) {
-    event.preventDefault();
-    const form = document.getElementById('auditForm');
-    const loadingBox = document.getElementById('loadingBox');
-    const resultsBox = document.getElementById('resultsBox');
-    const storeUrl = document.getElementById('storeUrl').value;
-    const storeType = document.getElementById('storeType').value;
+// استخراج اللغة الحالية المحددة في الموقع أوتوماتيكياً
+const currentLang = document.documentElement.getAttribute('lang') || localStorage.getItem('site_lang') || 'ar';
 
-    form.style.display = 'none';
-    loadingBox.style.display = 'block';
-    resultsBox.style.display = 'none';
-
-    try {
-        const response = await fetch('/api/sales-doctor', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                storeDetails: `الرابط: ${storeUrl} - النشاط: ${storeType}`,
-                storeUrl: storeUrl,
-                storeType: storeType
-            })
-        });
+const response = await fetch('/api/sales-doctor', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+        storeDetails: `الرابط: ${storeUrl} - النشاط: ${storeType}`,
+        storeUrl: storeUrl,
+        storeType: storeType,
+        language: currentLang // إرسال اللغة أوتوماتيكياً للباك إند والـ AI
+    })
+});
 
         const data = await response.json();
         if (!response.ok) throw new Error(data.error || 'خطأ في السيرفر');
