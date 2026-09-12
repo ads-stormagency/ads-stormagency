@@ -80,7 +80,7 @@ app.post(['/api/views-magnet', '/api/hook-generator'], async (req, res) => {
     }
 });
 
-// 3. فحص صفحات الهبوط (يعتمد على إرسال الوصف والهدف مباشرة للـ AI)
+// 3. فحص صفحات الهبوط
 app.post('/api/audit-landing', async (req, res) => {
     try {
         const { url, goal, description } = req.body;
@@ -96,19 +96,19 @@ app.post('/api/audit-landing', async (req, res) => {
     }
 });
 
-// 4. طبيب المبيعات (Sales Doctor) - تحليل فوري وصارم
+// 4. طبيب المبيعات (تحليل فوري وصارم بدون أسئلة)
 app.post('/api/sales-doctor', async (req, res) => {
     try {
         const { storeData, description, url } = req.body;
-        const textToAnalyze = storeData || description || url || "تحليل متجر إلكتروني وتقييم رحلة العميل وضعف المبيعات";
+        const textToAnalyze = storeData || description || url || "تشخيص مشاكل المتجر الإلكتروني وضعف المبيعات";
         
         const systemPrompt = `أنت خبير استراتيجي في تشخيص مشاكل المتاجر الإلكترونية وزيادة الأرباح في وكالة Storm Agency.
-مهمتك الحصرية: بناءً على أي مدخلات بسيطة يكتبها المستخدم (حتى لو كانت اسم متجر أو رابط أو كلمة عابرة)، **لا تقم بسؤاله عن تفاصيل إضافية أبداً**. 
+مهمتك الحصرية: بناءً على أي مدخلات بسيطة يكتبها المستخدم، لا تقم بسؤاله عن تفاصيل إضافية أبداً. 
 بدلاً من ذلك، قدم فوراً تقريراً تشخيصياً افتراضياً واحترافياً يغطي:
 1. تقييم رحلة العميل وتجربة المستخدم (UX) وأزرار الشراء.
-2. الأسباب الرئيسية المحتملة لترك السلة وضعف المبيعات في هذا النوع من المتاجر.
+2. الأسباب الرئيسية المحتملة لترك السلة وضعف المبيعات.
 3. خطوة تصحيحية فورية لرفع الأرباح ومتوسط قيمة الطلب.
-كن مباشراً، حاسماً، وقدم تقريراً جاهزاً للعميل فوراً بدون أي أسئلة استباقية.`;
+كن مباشراً، حاسماً، وقدم تقريراً جاهزاً للعميل فوراً بدون أي أسئلة.`;
 
         const result = await callGemini(systemPrompt, `بيانات وتفاصيل المتجر: ${textToAnalyze}`);
         res.json({ result });
@@ -117,6 +117,7 @@ app.post('/api/sales-doctor', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
