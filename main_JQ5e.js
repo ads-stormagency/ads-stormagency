@@ -1250,7 +1250,7 @@ if (themeToggle) {
 function setLanguage(lang) {
     currentLang = lang;
     localStorage.setItem('lang', lang);
-    localStorage.setItem('selected_lang', lang); // أضف السطر ده هنا
+    localStorage.setItem('selected_lang', lang);
     document.documentElement.setAttribute('lang', lang);
     document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
     
@@ -1262,13 +1262,52 @@ function setLanguage(lang) {
         opt.classList.toggle('active', opt.dataset.lang === lang);
     });
     
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.dataset.i18n;
-        if (translations[lang] && translations[lang][key]) {
-            el.textContent = translations[lang][key];
-        }
-    });
+    // التحقق من وجود الترجمات قبل تطبيقها لعدم كسر الصفحة
+    if (typeof translations !== 'undefined' && translations[lang]) {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.dataset.i18n;
+            if (translations[lang][key]) {
+                el.textContent = translations[lang][key];
+            }
+        });
+    }
 }
+
+// تفعيل أحداث الضغط على زر اللغة والقائمة المنسدلة لتجنب توقفها
+document.addEventListener('DOMContentLoaded', () => {
+    // تحميل اللغة المحفوظة تلقائياً
+    const savedLang = localStorage.getItem('lang') || localStorage.getItem('selected_lang') || 'ar';
+    if (typeof setLanguage === 'function') {
+        setLanguage(savedLang);
+    }
+
+    // ربط زر فتح القائمة وتغيير اللغة
+    const langBtn = document.querySelector('.lang-btn');
+    const langDropdown = document.querySelector('.lang-dropdown');
+
+    if (langBtn && langDropdown) {
+        langBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langDropdown.classList.toggle('show'); // أو طريقة العرض بتاعتك
+        });
+
+        document.addEventListener('click', () => {
+            langDropdown.classList.remove('show');
+        });
+    }
+
+    // اختيار لغة محددة
+    document.querySelectorAll('.lang-option').forEach(option => {
+        option.addEventListener('click', (e) => {
+            const selectedLang = e.currentTarget.getAttribute('data-lang');
+            if (selectedLang) {
+                setLanguage(selectedLang);
+                // تحديث الصفحة لضمان عمل كافة العناصر بسلاسة إن أمكن
+                window.location.reload();
+            }
+        });
+    });
+});
 
     // Update floating words
     document.querySelectorAll('.floating-word').forEach((el, i) => {
