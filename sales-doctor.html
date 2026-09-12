@@ -105,7 +105,6 @@
             <p style="color: #64748b; font-size: 0.95rem;" data-i18n="sales_loading_desc">نبحث عن ثغرات أزرار الشراء، سرعة التحميل، ونقاط التسرب.</p>
         </div>
 
-        <!-- صندوق النتائج غير المكرر -->
         <div id="resultsBox" style="display: none; padding-top: 10px; position: relative;">
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; flex-wrap: wrap; gap: 15px;">
                 <h3 style="color: #0f172a; font-size: 1.3rem; font-weight: bold; margin: 0;">
@@ -166,7 +165,8 @@ async function runAudit(event) {
             body: JSON.stringify({
                 storeDetails: `الرابط: ${storeUrl} - النشاط: ${storeType}`,
                 storeUrl: storeUrl,
-                storeType: storeType
+                storeType: storeType,
+                language: localStorage.getItem('selected_lang') || document.documentElement.lang || 'ar'
             })
         });
 
