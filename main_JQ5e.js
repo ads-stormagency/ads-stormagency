@@ -1509,5 +1509,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('selectedLang') || 'ar';
     if (typeof changeLanguage === 'function') {
         changeLanguage(savedLang);
+        localStorage.setItem('selected_lang', savedLang);
     }
 });
