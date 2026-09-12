@@ -3,59 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agency Storm - لوحة تحكم أدوات الذكاء الاصطناعي</title>
+    <title>Agency Storm - لوحة التحكم المركزية الآمنة</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-900 text-white min-h-screen flex flex-col items-center justify-center p-6">
-    
-    <div class="max-w-4xl w-full bg-slate-800 p-8 rounded-2xl shadow-2xl border border-slate-700">
-        <header class="text-center mb-10">
-            <h1 class="text-3xl font-bold text-blue-400 mb-2">Agency Storm AI Suite</h1>
-            <p class="text-slate-400">لوحة التحكم المركزية لأدوات التسويق والذكاء الاصطناعي</p>
+<body class="bg-slate-900 text-white min-h-screen p-6 flex flex-col justify-center items-center">
+
+    <!-- شاشة تسجيل الدخول (تختفي تلقائياً بمجرد الدخول الصحيح) -->
+    <div id="loginModal" class="fixed inset-0 bg-slate-950 bg-opacity-90 z-50 flex items-center justify-center p-4">
+        <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 max-w-md w-full shadow-2xl space-y-6">
+            <div class="text-center">
+                <h2 class="text-2xl font-bold text-blue-400">🔒 بوابة أمان Agency Storm</h2>
+                <p class="text-slate-400 text-sm mt-1">الرجاء إدخال بيانات الدخول للوصول للوحة التحكم</p>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm text-slate-300 mb-1">اسم المستخدم:</label>
+                    <input type="text" id="username" placeholder="admin" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-sm text-slate-300 mb-1">كلمة المرور:</label>
+                    <input type="password" id="password" placeholder="••••••••" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-blue-500">
+                </div>
+                <button onclick="handleLogin()" class="w-full bg-blue-600 hover:bg-blue-500 py-3 rounded-xl font-medium transition text-white">دخول آمن</button>
+                <p id="loginError" class="text-red-400 text-xs text-center hidden">بيانات الدخول غير صحيحة!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- لوحة التحكم الرئيسية (مخفية لحين تسجيل الدخول) -->
+    <div id="dashboardContent" class="hidden max-w-5xl w-full mx-auto space-y-6">
+        
+        <!-- الهيدر -->
+        <header class="bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-700 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <h1 class="text-2xl font-bold text-blue-400">Agency Storm AI Suite</h1>
+                <p class="text-slate-400 text-sm">غرفة العمليات المركزية للذكاء الاصطناعي وإدارة الوكالة</p>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="toggleSettings()" class="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-xl text-sm font-medium border border-slate-600 transition">
+                    ⚙️ إعدادات الـ AI والمفاتيح
+                </button>
+                <button onclick="logout()" class="bg-red-600/20 hover:bg-red-600/30 text-red-400 px-4 py-2 rounded-xl text-sm font-medium border border-red-500/30 transition">
+                    تسجيل خروج
+                </button>
+            </div>
         </header>
 
+        <!-- لوحة إعدادات الـ AI والـ Prompts -->
+        <div id="settingsPanel" class="hidden bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-700 space-y-4">
+            <h2 class="text-lg font-semibold text-amber-400">تعديل سلوك وأوامر الذكاء الاصطناعي (System Prompts)</h2>
+            
+            <div>
+                <label class="block text-sm text-slate-300 mb-1">مفتاح Google Gemini API Key:</label>
+                <input type="password" id="apiKeyInput" placeholder="أدخل مفتاح الـ API الجديد هنا..." class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-blue-500">
+            </div>
+
+            <div>
+                <label class="block text-sm text-slate-300 mb-1">توجيهات طبيب المبيعات (Sales Doctor Prompt):</label>
+                <textarea id="salesPromptInput" rows="3" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-blue-500"></textarea>
+            </div>
+
+            <button onclick="saveSettings()" class="bg-blue-600 hover:bg-blue-500 px-6 py-2 rounded-xl text-sm font-medium transition">
+                حفظ التعديلات في النظام
+            </button>
+        </div>
+
+        <!-- شبكة الأدوات -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- طبيب المبيعات -->
-            <a href="sales-doctor.html" class="bg-slate-700 hover:bg-slate-600 p-6 rounded-xl border border-slate-600 transition flex flex-col justify-between">
+            <a href="sales-doctor.html" class="bg-slate-800 hover:bg-slate-700 p-6 rounded-2xl border border-slate-700 transition flex flex-col justify-between shadow-lg group">
                 <div>
-                    <h2 class="text-xl font-semibold text-emerald-400 mb-2">🩺 طبيب المبيعات</h2>
+                    <h2 class="text-xl font-semibold text-emerald-400 mb-2 group-hover:translate-x-1 transition">🩺 طبيب المبيعات</h2>
                     <p class="text-slate-300 text-sm">تشخيص مشاكل المتاجر الإلكترونية، رحلة العميل، وأسباب ضعف المبيعات وترك السلة.</p>
                 </div>
                 <span class="mt-4 text-blue-400 text-sm font-medium">فتح الأداة &larr;</span>
             </a>
 
             <!-- رادار الإعلانات -->
-            <div class="bg-slate-700 hover:bg-slate-600 p-6 rounded-xl border border-slate-600 transition flex flex-col justify-between opacity-75">
+            <div class="bg-slate-800 hover:bg-slate-700 p-6 rounded-2xl border border-slate-700 transition flex flex-col justify-between shadow-lg">
                 <div>
                     <h2 class="text-xl font-semibold text-amber-400 mb-2">📡 رادار الإعلانات</h2>
-                    <p class="text-slate-300 text-sm">تحليل نتائج الحملات الإعلانية وتقديم خطوات تصحيحية فورية.</p>
+                    <p class="text-slate-300 text-sm">تحليل نتائج الحملات الإعلانية على Meta و TikTok و Snapchat وتقديم خطوات تصحيحية فورية.</p>
                 </div>
-                <span class="mt-4 text-slate-400 text-sm font-medium">قريباً / متاحة بالسيرفر</span>
+                <span class="mt-4 text-slate-400 text-sm font-medium">جاهزة للربط</span>
             </div>
 
             <!-- مغناطيس المشاهدات -->
-            <div class="bg-slate-700 hover:bg-slate-600 p-6 rounded-xl border border-slate-600 transition flex flex-col justify-between opacity-75">
+            <div class="bg-slate-800 hover:bg-slate-700 p-6 rounded-2xl border border-slate-700 transition flex flex-col justify-between shadow-lg">
                 <div>
                     <h2 class="text-xl font-semibold text-purple-400 mb-2">🧲 مغناطيس المشاهدات</h2>
-                    <p class="text-slate-300 text-sm">ابتكار وصياغة خطافات إعلانية قوية ومحتوى يجذب المشاهدات.</p>
+                    <p class="text-slate-300 text-sm">ابتكار وصياغة خطافات إعلانية (Hooks) قوية ومحتوى مرئي يجذب المشاهدات والتفاعل.</p>
                 </div>
-                <span class="mt-4 text-slate-400 text-sm font-medium">قريباً / متاحة بالسيرفر</span>
+                <span class="mt-4 text-slate-400 text-sm font-medium">قريباً</span>
             </div>
 
             <!-- فحص صفحات الهبوط -->
-            <div class="bg-slate-700 hover:bg-slate-600 p-6 rounded-xl border border-slate-600 transition flex flex-col justify-between opacity-75">
+            <div class="bg-slate-800 hover:bg-slate-700 p-6 rounded-2xl border border-slate-700 transition flex flex-col justify-between shadow-lg">
                 <div>
                     <h2 class="text-xl font-semibold text-cyan-400 mb-2">🛡️ فحص صفحات الهبوط</h2>
-                    <p class="text-slate-300 text-sm">تقييم صفحات الهبوط وتحسين معدلات التحويل (CRO) وتجربة المستخدم.</p>
+                    <p class="text-slate-300 text-sm">تقييم صفحات الهبوط وتحسين معدلات التحويل (CRO) وتجربة المستخدم بشكل احترافي.</p>
                 </div>
-                <span class="mt-4 text-slate-400 text-sm font-medium">قريباً / متاحة بالسيرفر</span>
+                <span class="mt-4 text-slate-400 text-sm font-medium">قريباً</span>
             </div>
         </div>
 
-        <footer class="mt-10 text-center text-slate-500 text-xs">
-            Agency Storm &copy; 2026 - جميع الحقوق محفوظة
+        <footer class="text-center text-slate-500 text-xs pt-6">
+            Agency Storm &copy; 2026 - لوحة تحكم وكالة التسويق الرقمي
         </footer>
     </div>
 
+    <script>
+        // بيانات الدخول الافتراضية (يمكنك تعديلها هنا)
+        const ADMIN_USER = "admin";
+        const ADMIN_PASS = "storm2026";
+
+        // التحقق من حالة الدخول عند فتح الصفحة
+        window.onload = function() {
+            if(localStorage.getItem('is_logged_in') === 'true') {
+                document.getElementById('loginModal').classList.add('hidden');
+                document.getElementById('dashboardContent').classList.remove('hidden');
+                loadSettings();
+            }
+        }
+
+        function handleLogin() {
+            const u = document.getElementById('username').value;
+            const p = document.getElementById('password').value;
+            if(u === ADMIN_USER && p === ADMIN_PASS) {
+                localStorage.setItem('is_logged_in', 'true');
+                document.getElementById('loginModal').classList.add('hidden');
+                document.getElementById('dashboardContent').classList.remove('hidden');
+                loadSettings();
+            } else {
+                document.getElementById('loginError').classList.remove('hidden');
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('is_logged_in');
+            location.reload();
+        }
+
+        function toggleSettings() {
+            const panel = document.getElementById('settingsPanel');
+            panel.classList.toggle('hidden');
+        }
+
+        function saveSettings() {
+            const key = document.getElementById('apiKeyInput').value;
+            const prompt = document.getElementById('salesPromptInput').value;
+            
+            if(key) localStorage.setItem('custom_gemini_key', key);
+            if(prompt) localStorage.setItem('sales_system_prompt', prompt);
+            
+            alert('تم حفظ الإعدادات وتحديث سلوك النظام بنجاح!');
+            toggleSettings();
+        }
+
+        function loadSettings() {
+            const savedKey = localStorage.getItem('custom_gemini_key');
+            const savedPrompt = localStorage.getItem('sales_system_prompt');
+            
+            if(savedKey) document.getElementById('apiKeyInput').value = savedKey;
+            if(savedPrompt) {
+                document.getElementById('salesPromptInput').value = savedPrompt;
+            } else {
+                document.getElementById('salesPromptInput').value = "أنت خبير استراتيجي في تشخيص مشاكل المتاجر الإلكترونية وزيادة الأرباح في وكالة Storm Agency...";
+            }
+        }
+    </script>
 </body>
 </html>
