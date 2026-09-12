@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agency Storm - لوحة التحكم الشاملة والتتبع</title>
+    <title>Agency Storm - لوحة التحكم الفعلية</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-900 text-white min-h-screen p-6 flex flex-col justify-center items-center">
@@ -37,11 +37,14 @@
         <header class="bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-700 flex flex-col md:flex-row justify-between items-center gap-4">
             <div>
                 <h1 class="text-2xl font-bold text-blue-400">Agency Storm AI Suite</h1>
-                <p class="text-slate-400 text-sm">غرفة العمليات المركزية لإدارة الوكالة ومتابعة الزيارات</p>
+                <p class="text-slate-400 text-sm">غرفة العمليات المركزية لإدارة الوكالة ومتابعة الاستخدام الفعلي</p>
             </div>
             <div class="flex gap-3">
                 <button onclick="toggleSettings()" class="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-xl text-sm font-medium border border-slate-600 transition">
                     ⚙️ إعدادات الـ AI
+                </button>
+                <button onclick="resetStats()" class="bg-amber-600/20 hover:bg-amber-600/30 text-amber-400 px-4 py-2 rounded-xl text-sm font-medium border border-amber-500/30 transition">
+                    تصفير العدادات
                 </button>
                 <button onclick="logout()" class="bg-red-600/20 hover:bg-red-600/30 text-red-400 px-4 py-2 rounded-xl text-sm font-medium border border-red-500/30 transition">
                     تسجيل خروج
@@ -49,31 +52,31 @@
             </div>
         </header>
 
-        <!-- قسم التتبع والإحصائيات الحية (Traffic & Analytics) -->
+        <!-- عدادات التتبع الفعلية (تبدأ من الصفر تماماً) -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700 shadow-lg">
-                <p class="text-slate-400 text-xs">إجمالي زيارات الموقع</p>
-                <h3 class="text-2xl font-bold text-blue-400 mt-1" id="totalVisits">1,248</h3>
-                <span class="text-emerald-400 text-xs mt-2 inline-block">↑ 12% هذا الأسبوع</span>
+                <p class="text-slate-400 text-xs">زيارات لوحة التحكم الفعلية</p>
+                <h3 class="text-3xl font-bold text-blue-400 mt-1" id="totalVisits">0</h3>
+                <span class="text-slate-500 text-xs mt-2 inline-block">تبدأ العد من الآن</span>
             </div>
             <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700 shadow-lg">
                 <p class="text-slate-400 text-xs">استخدام طبيب المبيعات</p>
-                <h3 class="text-2xl font-bold text-emerald-400 mt-1" id="salesDoctorUses">342</h3>
-                <span class="text-slate-400 text-xs mt-2 inline-block">عملية تشخيص ناجحة</span>
+                <h3 class="text-3xl font-bold text-emerald-400 mt-1" id="salesDoctorUses">0</h3>
+                <span class="text-slate-500 text-xs mt-2 inline-block">عمليات التشخيص الحقيقية</span>
             </div>
             <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700 shadow-lg">
                 <p class="text-slate-400 text-xs">استخدام رادار الإعلانات</p>
-                <h3 class="text-2xl font-bold text-amber-400 mt-1" id="adsRadarUses">189</h3>
-                <span class="text-slate-400 text-xs mt-2 inline-block">تحليل حملة نشطة</span>
+                <h3 class="text-3xl font-bold text-amber-400 mt-1" id="adsRadarUses">0</h3>
+                <span class="text-slate-500 text-xs mt-2 inline-block">التحليلات المنفذة</span>
             </div>
             <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700 shadow-lg">
                 <p class="text-slate-400 text-xs">مغناطيس المشاهدات</p>
-                <h3 class="text-2xl font-bold text-purple-400 mt-1" id="hooksUses">95</h3>
-                <span class="text-slate-400 text-xs mt-2 inline-block">خطاف إعلاني مُبتكر</span>
+                <h3 class="text-3xl font-bold text-purple-400 mt-1" id="hooksUses">0</h3>
+                <span class="text-slate-500 text-xs mt-2 inline-block">الخطافات المولدة</span>
             </div>
         </div>
 
-        <!-- لوحة إعدادات الـ AI والـ Prompts -->
+        <!-- إعدادات الـ AI والـ Prompts -->
         <div id="settingsPanel" class="hidden bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-700 space-y-4">
             <h2 class="text-lg font-semibold text-amber-400">تعديل سلوك وأوامر الذكاء الاصطناعي (System Prompts)</h2>
             <div>
@@ -99,23 +102,23 @@
                 <span class="mt-4 text-blue-400 text-sm font-medium">فتح الأداة &larr;</span>
             </a>
 
-            <div class="bg-slate-800 hover:bg-slate-700 p-6 rounded-2xl border border-slate-700 transition flex flex-col justify-between shadow-lg">
+            <div onclick="trackTool('ads')" class="bg-slate-800 hover:bg-slate-700 p-6 rounded-2xl border border-slate-700 transition flex flex-col justify-between shadow-lg cursor-pointer">
                 <div>
                     <h2 class="text-xl font-semibold text-amber-400 mb-2">📡 رادار الإعلانات</h2>
                     <p class="text-slate-300 text-sm">تحليل نتائج الحملات الإعلانية على Meta و TikTok و Snapchat وتقديم خطوات تصحيحية فورية.</p>
                 </div>
-                <span class="mt-4 text-slate-400 text-sm font-medium">جاهزة للربط</span>
+                <span class="mt-4 text-amber-400 text-sm font-medium">تجربة الأداة &larr;</span>
             </div>
 
-            <div class="bg-slate-800 hover:bg-slate-700 p-6 rounded-2xl border border-slate-700 transition flex flex-col justify-between shadow-lg">
+            <div onclick="trackTool('hooks')" class="bg-slate-800 hover:bg-slate-700 p-6 rounded-2xl border border-slate-700 transition flex flex-col justify-between shadow-lg cursor-pointer">
                 <div>
                     <h2 class="text-xl font-semibold text-purple-400 mb-2">🧲 مغناطيس المشاهدات</h2>
                     <p class="text-slate-300 text-sm">ابتكار وصياغة خطافات إعلانية (Hooks) قوية ومحتوى مرئي يجذب المشاهدات والتفاعل.</p>
                 </div>
-                <span class="mt-4 text-slate-400 text-sm font-medium">قريباً</span>
+                <span class="mt-4 text-purple-400 text-sm font-medium">تجربة الأداة &larr;</span>
             </div>
 
-            <div class="bg-slate-800 hover:bg-slate-700 p-6 rounded-2xl border border-slate-700 transition flex flex-col justify-between shadow-lg">
+            <div class="bg-slate-800 hover:bg-slate-700 p-6 rounded-2xl border border-slate-700 transition flex flex-col justify-between shadow-lg opacity-70">
                 <div>
                     <h2 class="text-xl font-semibold text-cyan-400 mb-2">🛡️ فحص صفحات الهبوط</h2>
                     <p class="text-slate-300 text-sm">تقييم صفحات الهبوط وتحسين معدلات التحويل (CRO) وتجربة المستخدم بشكل احترافي.</p>
@@ -138,7 +141,7 @@
                 document.getElementById('loginModal').classList.add('hidden');
                 document.getElementById('dashboardContent').classList.remove('hidden');
                 loadSettings();
-                loadStats();
+                updateStatsDisplay();
             }
         }
 
@@ -150,7 +153,15 @@
                 document.getElementById('loginModal').classList.add('hidden');
                 document.getElementById('dashboardContent').classList.remove('hidden');
                 loadSettings();
-                loadStats();
+                
+                // حساب زيارة حقيقية جديدة تبدأ من الصفر وتزيد فعلياً
+                let visits = parseInt(localStorage.getItem('real_site_visits') || 0);
+                if (!sessionStorage.hasTrackedVisit) {
+                    visits += 1;
+                    localStorage.setItem('real_site_visits', visits);
+                    sessionStorage.hasTrackedVisit = true;
+                }
+                updateStatsDisplay();
             } else {
                 document.getElementById('loginError').classList.remove('hidden');
             }
@@ -171,7 +182,7 @@
             const prompt = document.getElementById('salesPromptInput').value;
             if(key) localStorage.setItem('custom_gemini_key', key);
             if(prompt) localStorage.setItem('sales_system_prompt', prompt);
-            alert('تم حفظ الإعدادات وتحديث سلوك النظام بنجاح!');
+            alert('تم حفظ الإعدادات بنجاح!');
             toggleSettings();
         }
 
@@ -179,33 +190,41 @@
             const savedKey = localStorage.getItem('custom_gemini_key');
             const savedPrompt = localStorage.getItem('sales_system_prompt');
             if(savedKey) document.getElementById('apiKeyInput').value = savedKey;
-            if(savedPrompt) {
-                document.getElementById('salesPromptInput').value = savedPrompt;
-            } else {
-                document.getElementById('salesPromptInput').value = "أنت خبير استراتيجي في تشخيص مشاكل المتاجر الإلكترونية وزيادة الأرباح في وكالة Storm Agency...";
+            if(savedPrompt) document.getElementById('salesPromptInput').value = savedPrompt;
+        }
+
+        function updateStatsDisplay() {
+            document.getElementById('totalVisits').innerText = localStorage.getItem('real_site_visits') || 0;
+            document.getElementById('salesDoctorUses').innerText = localStorage.getItem('real_sales_uses') || 0;
+            document.getElementById('adsRadarUses').innerText = localStorage.getItem('real_ads_uses') || 0;
+            document.getElementById('hooksUses').innerText = localStorage.getItem('real_hooks_uses') || 0;
+        }
+
+        function trackTool(tool) {
+            if(tool === 'sales') {
+                let count = parseInt(localStorage.getItem('real_sales_uses') || 0) + 1;
+                localStorage.setItem('real_sales_uses', count);
+            } else if(tool === 'ads') {
+                let count = parseInt(localStorage.getItem('real_ads_uses') || 0) + 1;
+                localStorage.setItem('real_ads_uses', count);
+                alert('تم تسجيل تفاعل حقيقي على رادار الإعلانات!');
+                updateStatsDisplay();
+            } else if(tool === 'hooks') {
+                let count = parseInt(localStorage.getItem('real_hooks_uses') || 0) + 1;
+                localStorage.setItem('real_hooks_uses', count);
+                alert('تم تسجيل تفاعل حقيقي على مغناطيس المشاهدات!');
+                updateStatsDisplay();
             }
         }
 
-        function loadStats() {
-            // محاكاة قراءة بيانات العدادات من الـ LocalStorage أو السيرفر
-            let visits = localStorage.getItem('site_visits') || 1248;
-            let salesUses = localStorage.getItem('sales_uses') || 342;
-            
-            // زيادة عدد الزيارات تلقائياً مع كل فتح للداشبورد كنوع من التتبع الحي
-            if (!sessionStorage.hasVisited) {
-                visits = parseInt(visits) + 1;
-                localStorage.setItem('site_visits', visits);
-                sessionStorage.hasVisited = true;
-            }
-
-            document.getElementById('totalVisits').innerText = visits;
-            document.getElementById('salesDoctorUses').innerText = salesUses;
-        }
-
-        function trackTool(toolName) {
-            if(toolName === 'sales') {
-                let count = parseInt(localStorage.getItem('sales_uses') || 342) + 1;
-                localStorage.setItem('sales_uses', count);
+        function resetStats() {
+            if(confirm('هل أنت متأكد من تصفير جميع العدادات وإعادتها للصفر؟')) {
+                localStorage.setItem('real_site_visits', 0);
+                localStorage.setItem('real_sales_uses', 0);
+                localStorage.setItem('real_ads_uses', 0);
+                localStorage.setItem('real_hooks_uses', 0);
+                updateStatsDisplay();
+                alert('تم تصفير العدادات بنجاح وجاهزة للعد من الصفر.');
             }
         }
     </script>
