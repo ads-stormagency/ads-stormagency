@@ -1250,6 +1250,7 @@ if (themeToggle) {
 function setLanguage(lang) {
     currentLang = lang;
     localStorage.setItem('lang', lang);
+    localStorage.setItem('selected_lang', lang); // أضف السطر ده هنا
     document.documentElement.setAttribute('lang', lang);
     document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
     
@@ -1267,6 +1268,7 @@ function setLanguage(lang) {
             el.textContent = translations[lang][key];
         }
     });
+}
 
     // Update floating words
     document.querySelectorAll('.floating-word').forEach((el, i) => {
