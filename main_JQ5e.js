@@ -1506,7 +1506,7 @@ function applyTranslations() {
 })();
 // ضمان تشغيل الترجمة التلقائية فور تحميل الصفحة
 document.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem('selectedLang') || 'ar';
+    const savedLang = localStorage.getItem('selected_lang') || 'ar';
     if (typeof changeLanguage === 'function') {
         changeLanguage(savedLang);
         localStorage.setItem('selected_lang', savedLang);
