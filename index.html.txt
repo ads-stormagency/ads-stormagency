@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storm Agency - Digital Marketing & Technology Solutions</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        storm: {
+                            DEFAULT: '#1200D6', // Royal Storm Blue
+                            dark: '#0A0080',
+                            deep: '#05004D',
+                            light: '#3322EE',
+                            ice: '#EEF2FF',
+                            soft: '#F4F7FF'
+                        },
+                        pop: {
+                            cyan: '#00D2FE',
+                            yellow: '#FFC700',
+                            coral: '#FF3366',
+                            emerald: '#10B981',
+                            purple: '#8B5CF6'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Cairo', 'Inter', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'storm': '0 20px 40px -15px rgba(18, 0, 214, 0.25)',
+                        'storm-lg': '0 25px 50px -12px rgba(18, 0, 214, 0.35)',
+                        'glow-cyan': '0 0 25px rgba(0, 210, 254, 0.4)',
+                        'glow-yellow': '0 0 25px rgba(255, 199, 0, 0.4)',
+                        'card-hover': '0 20px 30px -10px rgba(18, 0, 214, 0.12)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Cairo', 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            color: #1E293B;
+            line-height: 1.95 !important;
+        }
+
+        p, span, li, h1, h2, h3, h4, h5, h6 {
+            line-height: 1.9 !important;
+        }
+
+        .bg-mesh-pattern {
+            background-image: radial-gradient(rgba(18, 0, 214, 0.08) 1.5px, transparent 1.5px), radial-gradient(rgba(0, 210, 254, 0.08) 1.5px, #FFFFFF 1.5px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
+
+        .blue-gradient-bg {
+            background: linear-gradient(135deg, #1200D6 0%, #0A0080 100%);
+        }
+
+        .page-section {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .page-section.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #1200D6;
+            border-radius: 4px;
+        }
+
+        @keyframes float-pulse {
+            0%, 100% { transform: translateY(0) scale(1); box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4); }
+            50% { transform: translateY(-6px) scale(1.04); box-shadow: 0 20px 35px -5px rgba(16, 185, 129, 0.6); }
+        }
+
+        .floating-wa-btn {
+            animation: float-pulse 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-800 antialiased selection:bg-storm selection:text-white custom-scrollbar">
+
+    <!-- Top Info Bar -->
+    <div class="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800 hidden sm:block">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-6">
+                <a href="mailto:ads.stormagency@gmail.com" class="hover:text-pop-cyan transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-envelope text-pop-cyan"></i>
+                    <span>ads.stormagency@gmail.com</span>
+                </a>
+                <a href="https://wa.me/201203562899" target="_blank" class="hover:text-pop-emerald transition-colors flex items-center gap-1.5">
+                    <i class="fa-brands fa-whatsapp text-pop-emerald"></i>
+                    <span dir="ltr">+20 120 356 2899</span>
+                </a>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="text-slate-500">تابعنا على:</span>
+                <a href="https://www.instagram.com/ads_stormagency" target="_blank" rel="noopener noreferrer" class="hover:text-pop-coral transition-colors" title="Instagram">
+                    <i class="fa-brands fa-instagram text-sm"></i>
+                </a>
+                <a href="https://www.facebook.com/share/1TFDtkXPCE/" target="_blank" rel="noopener noreferrer" class="hover:text-pop-cyan transition-colors" title="Facebook">
+                    <i class="fa-brands fa-facebook text-sm"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-storm/10 transition-all duration-300" id="mainHeader">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <a href="#home" onclick="navigateTo('home')" class="flex items-center gap-3 group">
+                    <img src="WhatsApp%20Image%202026-07-23%20at%2001.58.02_3.jpeg" 
+                         alt="STORM Agency Logo" 
+                         class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                         onerror="this.onerror=null; this.src='https://placehold.co/220x70/1200D6/FFFFFF?text=STORM+AGENCY';">
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center gap-1 xl:gap-2">
+                    <button onclick="navigateTo('home')" id="nav-home" class="nav-btn px-4 py-2 rounded-xl text-sm font-bold transition-all text-storm bg-storm/5">
+                        <i class="fa-solid fa-house ml-1.5 text-xs"></i>
+                        <span data-i18n="nav-home">الرئيسية</span>
+                    </button>
+                    <button onclick="navigateTo('services')" id="nav-services" class="nav-btn px-4 py-2 rounded-xl text-sm font-bold text-slate-600 hover:text-storm hover:bg-storm/5 transition-all">
+                        <i class="fa-solid fa-cubes ml-1.5 text-xs text-pop-cyan"></i>
+                        <span data-i18n="nav-services">خدماتنا والتصاميم</span>
+                    </button>
+                    <button onclick="navigateTo('security')" id="nav-security" class="nav-btn px-4 py-2 rounded-xl text-sm font-bold text-slate-600 hover:text-storm hover:bg-storm/5 transition-all">
+                        <i class="fa-solid fa-shield-halved ml-1.5 text-xs text-pop-coral"></i>
+                        <span data-i18n="nav-security">فحص الأمان</span>
+                    </button>
+                    <button onclick="navigateTo('portfolio')" id="nav-portfolio" class="nav-btn px-4 py-2 rounded-xl text-sm font-bold text-slate-600 hover:text-storm hover:bg-storm/5 transition-all">
+                        <i class="fa-solid fa-chart-line ml-1.5 text-xs text-pop-yellow"></i>
+                        <span data-i18n="nav-portfolio">سابقة الأعمال والنتائج</span>
+                    </button>
+                    <button onclick="navigateTo('pricing')" id="nav-pricing" class="nav-btn px-4 py-2 rounded-xl text-sm font-bold text-slate-600 hover:text-storm hover:bg-storm/5 transition-all">
+                        <i class="fa-solid fa-tags ml-1.5 text-xs text-pop-emerald"></i>
+                        <span data-i18n="nav-pricing">الباقات والعروض</span>
+                    </button>
+                    <button onclick="navigateTo('contact')" id="nav-contact" class="nav-btn px-4 py-2 rounded-xl text-sm font-bold text-slate-600 hover:text-storm hover:bg-storm/5 transition-all">
+                        <i class="fa-solid fa-headset ml-1.5 text-xs"></i>
+                        <span data-i18n="nav-contact">تواصل معنا</span>
+                    </button>
+                </nav>
+
+                <!-- Action Controls (Language & CTA) -->
+                <div class="hidden lg:flex items-center gap-3">
+                    <button onclick="toggleLanguage()" class="px-3 py-2 rounded-lg border border-slate-200 text-xs font-bold text-slate-700 hover:bg-slate-50 transition-all flex items-center gap-1.5">
+                        <i class="fa-solid fa-globe text-storm"></i>
+                        <span id="langLabel">English</span>
+                    </button>
+                    <a href="https://wa.me/201203562899?text=مرحباً%20وكالة%20ستورم،%20أريد%20الاستفسار%20عن%20خدماتكم" target="_blank" class="px-5 py-2.5 rounded-xl bg-storm text-white font-bold text-sm hover:bg-storm-dark shadow-storm transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-pop-emerald text-base"></i>
+                        <span>تحدث معنا</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center gap-2">
+                    <button onclick="toggleLanguage()" class="p-2 rounded-lg border border-slate-200 text-xs font-bold text-slate-700">
+                        <i class="fa-solid fa-globe text-storm"></i>
+                    </button>
+                    <button onclick="toggleMobileMenu()" class="p-2.5 rounded-xl bg-slate-100 text-storm hover:bg-storm/10 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Container -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-2 shadow-xl">
+            <button onclick="navigateTo('home'); toggleMobileMenu()" class="w-full text-right px-4 py-3 rounded-xl text-sm font-bold text-storm bg-storm/5">
+                <i class="fa-solid fa-house ml-2"></i>الرئيسية
+            </button>
+            <button onclick="navigateTo('services'); toggleMobileMenu()" class="w-full text-right px-4 py-3 rounded-xl text-sm font-bold text-slate-700 hover:bg-slate-50">
+                <i class="fa-solid fa-cubes ml-2 text-pop-cyan"></i>خدماتنا وتصاميم البوسترات
+            </button>
+            <button onclick="navigateTo('security'); toggleMobileMenu()" class="w-full text-right px-4 py-3 rounded-xl text-sm font-bold text-slate-700 hover:bg-slate-50">
+                <i class="fa-solid fa-shield-halved ml-2 text-pop-coral"></i>مركز فحص الأمان
+            </button>
+            <button onclick="navigateTo('portfolio'); toggleMobileMenu()" class="w-full text-right px-4 py-3 rounded-xl text-sm font-bold text-slate-700 hover:bg-slate-50">
+                <i class="fa-solid fa-chart-line ml-2 text-pop-yellow"></i>سابقة الأعمال وتقارير الحملات
+            </button>
+            <button onclick="navigateTo('pricing'); toggleMobileMenu()" class="w-full text-right px-4 py-3 rounded-xl text-sm font-bold text-slate-700 hover:bg-slate-50">
+                <i class="fa-solid fa-tags ml-2 text-pop-emerald"></i>الباقات والعروض
+            </button>
+            <button onclick="navigateTo('contact'); toggleMobileMenu()" class="w-full text-right px-4 py-3 rounded-xl text-sm font-bold text-slate-700 hover:bg-slate-50">
+                <i class="fa-solid fa-headset ml-2"></i>تواصل مع الفريق
+            </button>
+            <div class="pt-2 flex justify-center gap-4 text-slate-600">
+                <a href="https://www.instagram.com/ads_stormagency" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-full bg-slate-100 hover:bg-slate-200 text-pink-600">
+                    <i class="fa-brands fa-instagram text-lg"></i>
+                </a>
+                <a href="https://www.facebook.com/share/1TFDtkXPCE/" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-full bg-slate-100 hover:bg-slate-200 text-blue-600">
+                    <i class="fa-brands fa-facebook text-lg"></i>
+                </a>
+                <a href="mailto:ads.stormagency@gmail.com" class="p-2.5 rounded-full bg-slate-100 hover:bg-slate-200 text-storm">
+                    <i class="fa-solid fa-envelope text-lg"></i>
+                </a>
+            </div>
+            <a href="https://wa.me/201203562899" target="_blank" class="w-full mt-2 flex items-center justify-center gap-2 py-3 rounded-xl bg-storm text-white font-bold text-sm shadow-storm">
+                <i class="fa-brands fa-whatsapp text-pop-emerald text-lg"></i>
+                <span>تواصل عبر الواتساب</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        
+        <!-- ========================================== -->
+        <!-- 1. HOME PAGE SECTION                       -->
+        <!-- ========================================== -->
+        <section id="page-home" class="page-section active">
+            
+            <!-- Hero Section -->
+            <div class="relative bg-mesh-pattern pt-12 pb-24 lg:pt-20 lg:pb-32 overflow-hidden">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                        
+                        <!-- Right Text Content -->
+                        <div class="lg:col-span-7 text-right space-y-6">
+                            
+                            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-storm/10 border border-storm/20 text-storm font-bold text-sm shadow-sm">
+                                <span class="w-2.5 h-2.5 rounded-full bg-pop-emerald animate-ping"></span>
+                                <span>شريكك الاستراتيجي للنمو الرقمي والحماية السيبرانية</span>
+                            </div>
+
+                            <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-slate-900 leading-tight">
+                                نبني العلامات التجارية <br>
+                                <span class="text-transparent bg-clip-text bg-gradient-to-r from-storm via-storm-light to-pop-cyan">
+                                    ونقود الحملات الإعلانية بأعلى ROAS
+                                </span>
+                            </h1>
+
+                            <p class="text-lg sm:text-xl text-slate-600 font-medium max-w-2xl leading-relaxed">
+                                ندمج بين التخطيط الاستراتيجي، صناعة المحتوى الإبداعي، إدارة الحملات المُموّلة المستهدفة، وحماية المواقع الإلكترونية لنضمن لشركتك ريادة السوق العربي والمحلي.
+                            </p>
+
+                            <!-- CTAs & Proof -->
+                            <div class="pt-4 flex flex-wrap items-center gap-4">
+                                <button onclick="navigateTo('portfolio')" class="px-8 py-4 rounded-xl bg-storm text-white font-bold text-base hover:bg-storm-dark shadow-storm hover:shadow-storm-lg transition-all transform hover:-translate-y-1 flex items-center gap-3">
+                                    <span>مشاهدة نتائج سابقة الأعمال</span>
+                                    <i class="fa-solid fa-arrow-left"></i>
+                                </button>
+                                <button onclick="navigateTo('services')" class="px-8 py-4 rounded-xl bg-white border-2 border-storm/20 text-storm hover:bg-storm/5 font-bold text-base transition-all flex items-center gap-2">
+                                    <i class="fa-solid fa-cubes text-pop-cyan"></i>
+                                    <span>استعرض بوسترات وخدماتنا</span>
+                                </button>
+                            </div>
+
+                            <!-- Live Metric Highlights -->
+                            <div class="pt-8 grid grid-cols-3 gap-4 border-t border-slate-200/80">
+                                <div class="bg-storm/5 p-4 rounded-2xl border border-storm/10 text-center sm:text-right">
+                                    <div class="text-2xl sm:text-3xl font-black text-storm">+3.2M</div>
+                                    <div class="text-xs sm:text-sm font-bold text-slate-600 mt-1">انطباع ووصول فريد</div>
+                                </div>
+                                <div class="bg-pop-cyan/10 p-4 rounded-2xl border border-pop-cyan/20 text-center sm:text-right">
+                                    <div class="text-2xl sm:text-3xl font-black text-slate-900">+15,000</div>
+                                    <div class="text-xs sm:text-sm font-bold text-slate-600 mt-1">محادثة مبيعات ناجحة</div>
+                                </div>
+                                <div class="bg-pop-yellow/10 p-4 rounded-2xl border border-pop-yellow/30 text-center sm:text-right">
+                                    <div class="text-2xl sm:text-3xl font-black text-slate-900">1.87 ج.م</div>
+                                    <div class="text-xs sm:text-sm font-bold text-slate-600 mt-1">أقل تكلفة رسالة مبيعات</div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Left Visual Branding Card -->
+                        <div class="lg:col-span-5 relative">
+                            <div class="relative mx-auto max-w-md bg-white rounded-3xl p-6 shadow-2xl border-2 border-storm/10 transform rotate-1 hover:rotate-0 transition-transform duration-500">
+                                
+                                <!-- Brand Header -->
+                                <div class="flex items-center justify-between pb-6 border-b border-slate-100">
+                                    <img src="WhatsApp%20Image%202026-07-23%20at%2001.58.02_3.jpeg" 
+                                         alt="STORM Agency Logo" 
+                                         class="h-14 object-contain"
+                                         onerror="this.onerror=null; this.src='https://placehold.co/220x70/1200D6/FFFFFF?text=STORM+AGENCY';">
+                                    <span class="px-3 py-1 rounded-full bg-pop-emerald/10 text-pop-emerald text-xs font-black border border-pop-emerald/20">
+                                        Since 2021
+                                    </span>
+                                </div>
+
+                                <!-- Dynamic Preview Box -->
+                                <div class="py-6 space-y-4">
+                                    <div class="p-4 rounded-2xl bg-storm-ice border border-storm/10 flex items-center justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-xl bg-storm text-white flex items-center justify-center font-bold">
+                                                <i class="fa-solid fa-bullhorn text-pop-yellow"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-bold text-sm text-slate-900">حملة Mobily & Zain 5G</h4>
+                                                <p class="text-xs text-slate-500">محادثات مبيعات فورية مستهدفة</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-xs font-black text-pop-emerald bg-emerald-50 px-2.5 py-1 rounded-lg">9,030 رسالة</span>
+                                    </div>
+
+                                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-xl bg-pop-coral text-white flex items-center justify-center font-bold">
+                                                <i class="fa-solid fa-shield-cat"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-bold text-sm text-slate-900">حصانة السيرفرات</h4>
+                                                <p class="text-xs text-slate-500">فحص ثغرات SQL & XSS</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-xs font-black text-storm bg-storm/10 px-2.5 py-1 rounded-lg">آمن 100%</span>
+                                    </div>
+                                </div>
+
+                                <!-- Footer CTA inside card -->
+                                <button onclick="navigateTo('contact')" class="w-full py-3 rounded-xl blue-gradient-bg text-white font-bold text-sm shadow-storm flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-rocket text-pop-cyan"></i>
+                                    <span>ابتدى حملتك الإعلانية الجديدة اليوم</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visual Showcase Quick Teaser -->
+            <div class="py-20 bg-slate-50 border-y border-slate-200/80">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                        <span class="px-4 py-1.5 rounded-full bg-storm/10 text-storm font-extrabold text-xs">معرض الخدمات والتصاميم</span>
+                        <h2 class="text-3xl sm:text-4xl font-black text-slate-900">بوسترات الخدمات المصممة باحترافية</h2>
+                        <p class="text-slate-600 font-medium">اختر الخدمة للتعرف على كامل التفاصيل والباقات</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        
+                        <!-- Visual Card 1 -->
+                        <div onclick="navigateTo('services')" class="cursor-pointer bg-white rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-card-hover transition-all duration-300 group overflow-hidden">
+                            <div class="relative h-60 bg-slate-100 overflow-hidden">
+                                <img src="service1_strategy.jpg" alt="استراتيجيات التسويق والتخطيط" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1200D6/FFFFFF?text=%D8%A7%D8%B3%D8%AA%D8%B1%D8%A7%D8%AA%D9%8A%D8%AC%D9%8A%D8%A7%D8%AA+%D8%A7%D9%84%D8%AA%D8%B3%D9%88%D9%8A%D9%82';">
+                                <div class="absolute top-4 right-4 px-3 py-1 bg-storm/90 text-white rounded-full text-xs font-bold backdrop-blur-md">
+                                    Marketing Strategy
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-slate-900 mb-2">1. استراتيجيات التخطيط والتسويق</h3>
+                                <p class="text-slate-600 text-sm leading-relaxed mb-4">بناء الخطط الاستراتيجية وتحديد الجمهور المستهدف لضمان ريادة العلامة التجارية.</p>
+                                <span class="text-storm font-bold text-sm inline-flex items-center gap-2">تصفح البوستر بالتفصيل <i class="fa-solid fa-arrow-left text-xs"></i></span>
+                            </div>
+                        </div>
+
+                        <!-- Visual Card 2 -->
+                        <div onclick="navigateTo('services')" class="cursor-pointer bg-white rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-card-hover transition-all duration-300 group overflow-hidden">
+                            <div class="relative h-60 bg-slate-100 overflow-hidden">
+                                <img src="service2_analytics.jpg" alt="تحليل البيانات والتقارير الذكية" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x400/00D2FE/1E293B?text=%D8%AA%D8%AD%D9%84%D9%8A%D9%84+%D8%A7%D9%84%D8%A8%D9%8A%D8%A7%D9%86%D8%A7%D8%AA';">
+                                <div class="absolute top-4 right-4 px-3 py-1 bg-pop-cyan text-slate-900 rounded-full text-xs font-extrabold shadow-sm">
+                                    Data Analytics
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-slate-900 mb-2">2. تحليل البيانات والتقارير</h3>
+                                <p class="text-slate-600 text-sm leading-relaxed mb-4">تحويل البيانات إلى قرارات نمو فعلية مع متابعة دقيقة لمعدلات ROAS.</p>
+                                <span class="text-storm font-bold text-sm inline-flex items-center gap-2">تصفح البوستر بالتفصيل <i class="fa-solid fa-arrow-left text-xs"></i></span>
+                            </div>
+                        </div>
+
+                        <!-- Visual Card 3 -->
+                        <div onclick="navigateTo('services')" class="cursor-pointer bg-white rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-card-hover transition-all duration-300 group overflow-hidden">
+                            <div class="relative h-60 bg-slate-100 overflow-hidden">
+                                <img src="service3_ads.jpg" alt="الحملات الإعلانية المموّلة" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1200D6/FFFFFF?text=%D8%A7%D9%84%D8%AD%D9%85%D9%84%D8%A7%D8%AA+%D8%A7%D9%84%D8%A5%D8%B9%D9%84%D8%A7%D9%86%D9%8A%D8%A9+%D8%A7%D9%84%D9%85%D9%85%D9%88%D9%84%D8%A9';">
+                                <div class="absolute top-4 right-4 px-3 py-1 bg-pop-coral text-white rounded-full text-xs font-bold">
+                                    Media Buying
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-slate-900 mb-2">3. الحملات الإعلانية المُموّلة</h3>
+                                <p class="text-slate-600 text-sm leading-relaxed mb-4">إدارة وتوجيه ميزانيات الإعلانات للحصول على أكبر عدد من المبيعات والمحادثات.</p>
+                                <span class="text-storm font-bold text-sm inline-flex items-center gap-2">تصفح البوستر بالتفصيل <i class="fa-solid fa-arrow-left text-xs"></i></span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proof & Real Results Spotlight -->
+            <div class="py-20 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="bg-storm text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                            <div class="lg:col-span-8 space-y-4 text-right">
+                                <span class="px-3.5 py-1 rounded-full bg-white/20 text-white font-extrabold text-xs">أرقام حقيقية موثقة</span>
+                                <h3 class="text-2xl sm:text-4xl font-black leading-snug">
+                                    أكثر من 813,000 جنيه مصري و 23,000 ريال ميزانيات إعلانية مُدارة بنجاح
+                                </h3>
+                                <p class="text-slate-200 text-base leading-relaxed">
+                                    حققت حملاتنا لشركات الاتصالات والمنتجات التجارية أعلى معدلات التحويل بأقل تكلفة للرسائل والمحادثات الفعلية.
+                                </p>
+                            </div>
+                            <div class="lg:col-span-4 text-center lg:text-left">
+                                <button onclick="navigateTo('portfolio')" class="px-8 py-4 rounded-xl bg-pop-yellow text-slate-900 font-extrabold text-base hover:bg-yellow-400 shadow-lg transition-all">
+                                    تصفح تقارير وسابقة الأعمال
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 2. SERVICES PAGE SECTION WITH FULL POSTERS -->
+        <!-- ========================================== -->
+        <section id="page-services" class="page-section">
+            <div class="py-12 bg-storm-soft border-b border-slate-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-right">
+                    <div class="inline-flex items-center gap-2 text-xs font-bold text-slate-500 mb-2">
+                        <a href="#home" onclick="navigateTo('home')" class="hover:text-storm">الرئيسية</a>
+                        <span>/</span>
+                        <span class="text-storm">خدماتنا وبوسترات التصاميم</span>
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl font-black text-slate-900">بوسترات خدمات STORM للتسويق والتكنولوجيا</h1>
+                    <p class="text-slate-600 text-sm mt-2">تصفح تصاميم البوسترات الرسمية الستة لجميع الخدمات المقدمة من وكالة ستورم</p>
+                </div>
+            </div>
+
+            <div class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Poster Card 1 -->
+                    <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:border-storm hover:shadow-storm transition-all group">
+                        <div class="relative bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="service1_poster.jpg" alt="1. استراتيجيات التسويق والتخطيط" class="w-full h-auto max-h-96 object-cover group-hover:scale-102 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/600x750/1200D6/FFFFFF?text=%D8%A8%D9%88%D8%B3%D8%AA%D8%B1+1%0A%D8%A7%D9%84%D8%AA%D8%AE%D8%B7%D9%8A%D8%B7+%D9%88%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%B1%D8%A7%D8%AA%D9%8A%D8%AC%D9%8A%D8%A7%D8%AA';">
+                            <span class="absolute top-4 right-4 px-3 py-1 bg-storm text-white rounded-full text-xs font-bold shadow-md">البوستر الرسمى #1</span>
+                        </div>
+                        <div class="p-6 space-y-4">
+                            <h3 class="text-xl font-extrabold text-slate-900">1. استراتيجيات التسويق والتخطيط</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                تحليل القطاع وتحديد الفئات المستهدفة، بناء دراسة المنافسين ورسم مسار النمو الرقمي الشامل لتحديد نبرة العلامة التجارية.
+                            </p>
+                            <ul class="text-xs text-slate-600 space-y-2 pt-3 border-t border-slate-100">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pop-emerald"></i> تحليل الجمهور والشرائح Target Audience</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pop-emerald"></i> تموضع البراند Brand Positioning</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pop-emerald"></i> خريطة الطريق للنمو Growth Roadmap</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Poster Card 2 -->
+                    <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:border-storm hover:shadow-storm transition-all group">
+                        <div class="relative bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="service2_poster.jpg" alt="2. تحليل البيانات والتقارير الذكية" class="w-full h-auto max-h-96 object-cover group-hover:scale-102 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/600x750/00D2FE/1E293B?text=%D8%A8%D9%88%D8%B3%D8%AA%D8%B1+2%0A%D8%AA%D8%AD%D9%84%D9%8A%D9%84+%D8%A7%D9%84%D8%A8%D9%8A%D8%A7%D9%86%D8%A7%D8%AA+%D9%88%D8%A7%D9%84%D8%AA%D9%82%D8%A7%D8%B1%D9%8A%D8%B1';">
+                            <span class="absolute top-4 right-4 px-3 py-1 bg-pop-cyan text-slate-900 rounded-full text-xs font-black shadow-md">البوستر الرسمى #2</span>
+                        </div>
+                        <div class="p-6 space-y-4">
+                            <h3 class="text-xl font-extrabold text-slate-900">2. تحليل البيانات والتقارير الذكية</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                تحويل الأرقام الصامتة إلى قرارات تسويقية واضحة، مع مراقبة أداء الحملات ونسبة التحويل وتوقع اتجاهات السوق.
+                            </p>
+                            <ul class="text-xs text-slate-600 space-y-2 pt-3 border-t border-slate-100">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pop-emerald"></i> تتبع الأداء وتحديد الميزانيات</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pop-emerald"></i> تحسين العائد على الاستثمار ROI & ROAS</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Poster Card 3 -->
+                    <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:border-storm hover:shadow-storm transition-all group">
+                        <div class="relative bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="service3_poster.jpg" alt="3. الحملات الإعلانية المُموّلة" class="w-full h-auto max-h-96 object-cover group-hover:scale-102 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/600x750/1200D6/FFFFFF?text=%D8%A8%D9%88%D8%B3%D8%AA%D8%B1+3%0A%D8%A7%D9%84%D8%AD%D9%85%D9%84%D8%A7%D8%AA+%D8%A7%D9%84%D8%A5%D8%B9%D9%84%D8%A7%D9%86%D9%8A%D8%A9+%D8%A7%D9%84%D9%85%D9%85%D9%88%D9%84%D8%A9';">
+                            <span class="absolute top-4 right-4 px-3 py-1 bg-pop-coral text-white rounded-full text-xs font-bold shadow-md">البوستر الرسمى #3</span>
+                        </div>
+                        <div class="p-6 space-y-4">
+                            <h3 class="text-xl font-extrabold text-slate-900">3. الحملات الإعلانية المُموّلة</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                إدارة وإطلاق الإعلانات على جميع منصات التواصل الاجتماعي ومحركات البحث للحصول على أكبر عدد رسائل ومبيعات حقيقية.
+                            </p>
+                            <ul class="text-xs text-slate-600 space-y-2 pt-3 border-t border-slate-100">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pop-emerald"></i> إعلانات ميتا (فيس بوك وانستغرام)</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pop-emerald"></i> إعلانات جوجل وسناب شات وتيك توك</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Poster Card 4 -->
+                    <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:border-storm hover:shadow-storm transition-all group">
+                        <div class="relative bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="service4_poster.jpg" alt="4. تصميم وتطوير المواقع والمنصات" class="w-full h-auto max-h-96 object-cover group-hover:scale-102 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/600x750/10B981/FFFFFF?text=%D8%A8%D9%88%D8%B3%D8%AA%D8%B1+4%0A%D8%AA%D8%B5%D9%85%D9%8A%D9%85+%D9%88%D8%AA%D8%B7%D9%88%D9%8A%D8%B1+%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9';">
+                            <span class="absolute top-4 right-4 px-3 py-1 bg-pop-emerald text-white rounded-full text-xs font-bold shadow-md">البوستر الرسمى #4</span>
+                        </div>
+                        <div class="p-6 space-y-4">
+                            <h3 class="text-xl font-extrabold text-slate-900">4. تصميم وتطوير المواقع والمنصات</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                بناء مواقع تعريفية ومتاجر إلكترونية فائقة السرعة وتتوافق مع مختلف الشاشات، مع تطبيق معايير تحسين محركات البحث.
+                            </p>
+                            <ul class="text-xs text-slate-600 space-y-2 pt-3 border-t border-slate-100">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pop-emerald"></i> برمجة مخصصة وتصميم متجاوب</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pop-emerald"></i> تهيئة محركات البحث SEO</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Poster Card 5 -->
+                    <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:border-storm hover:shadow-storm transition-all group">
+                        <div class="relative bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="service5_poster.jpg" alt="5. التصوير الفوتوغرافي الاحترافي" class="w-full h-auto max-h-96 object-cover group-hover:scale-102 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/600x750/FFC700/1E293B?text=%D8%A8%D9%88%D8%B3%D8%AA%D8%B1+5%0A%D8%A7%D9%84%D8%AA%D8%B5%D9%88%D9%8A%D8%B1+%D8%A7%D9%84%D9%81%D9%88%D8%AA%D9%88%D8%BA%D8%B1%D8%A7%D9%81%D9%8A';">
+                            <span class="absolute top-4 right-4 px-3 py-1 bg-pop-yellow text-slate-900 rounded-full text-xs font-black shadow-md">البوستر الرسمى #5</span>
+                        </div>
+                        <div class="p-6 space-y-4">
+                            <h3 class="text-xl font-extrabold text-slate-900">5. التصوير الفوتوغرافي الاحترافي</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                جلسات تصوير المنتجات والخدمات في أستوديو مجهز بأحدث الكاميرات والإضاءة لإبراز جودة وتفاصيل منتجاتك.
+                            </p>
+                            <ul class="text-xs text-slate-600 space-y-2 pt-3 border-t border-slate-100">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pop-emerald"></i> تصوير منتجات المتاجر Commercial</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pop-emerald"></i> معالجة وإخراج ألوان احترافي</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Poster Card 6 -->
+                    <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:border-storm hover:shadow-storm transition-all group">
+                        <div class="relative bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="service6_poster.jpg" alt="6. الإنتاج المرئي ومونتاج الفيديو" class="w-full h-auto max-h-96 object-cover group-hover:scale-102 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/600x750/8B5CF6/FFFFFF?text=%D8%A8%D9%88%D8%B3%D8%AA%D8%B1+6%0A%D8%A7%D9%84%D8%A5%D9%86%D8%AA%D8%A7%D8%AC+%D8%A7%D9%84%D9%85%D8%B1%D8%A6%D9%8A+%D9%88%D8%A7%D9%84%D9%85%D9%88%D9%86%D8%AA%D8%A7%D8%AC';">
+                            <span class="absolute top-4 right-4 px-3 py-1 bg-pop-purple text-white rounded-full text-xs font-bold shadow-md">البوستر الرسمى #6</span>
+                        </div>
+                        <div class="p-6 space-y-4">
+                            <h3 class="text-xl font-extrabold text-slate-900">6. الإنتاج المرئي ومونتاج الفيديو</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                تحرير الفيديوهات الإعلانية القصيرة (Reels & Shorts) مع المؤثرات البصرية والصوتية الكفيلة بجذب الانتباه وتحقيق الانتشارات.
+                            </p>
+                            <ul class="text-xs text-slate-600 space-y-2 pt-3 border-t border-slate-100">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pop-emerald"></i> تحرير فيديوهات Reels & Tiktok</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pop-emerald"></i> إضافة المؤثرات الحركية Motion Graphics</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 3. SECURITY AUDIT PAGE SECTION             -->
+        <!-- ========================================== -->
+        <section id="page-security" class="page-section">
+            <div class="py-12 bg-storm text-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-right space-y-3">
+                    <span class="px-3.5 py-1 rounded-full bg-white/20 font-bold text-xs">STORM CyberShield</span>
+                    <h1 class="text-3xl sm:text-4xl font-black">أداة فحص أمان وسرعة المواقع الإلكترونية</h1>
+                    <p class="text-slate-200 text-sm max-w-2xl">افحص مدى تحصين موقعك ضد ثغرات الاختراق واكتشف المشاكل الأمنية مجاناً في ثوانٍ معدودة.</p>
+                </div>
+            </div>
+
+            <div class="py-16 max-w-4xl mx-auto px-4 sm:px-6">
+                <div class="bg-white rounded-3xl border-2 border-storm/20 p-6 sm:p-10 shadow-2xl space-y-8">
+                    
+                    <div class="space-y-4">
+                        <label class="block text-sm font-extrabold text-slate-800">أدخل رابط موقعك الإلكتروني لتبدأ الفحص:</label>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <input type="url" id="scanTargetUrl" placeholder="https://yourwebsite.com" class="flex-1 px-5 py-3.5 rounded-xl border border-slate-300 focus:outline-none focus:border-storm font-mono text-sm">
+                            <button onclick="runSecurityScan()" class="px-8 py-3.5 rounded-xl bg-storm text-white font-bold hover:bg-storm-dark shadow-storm transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-shield-halved text-pop-cyan"></i>
+                                <span>بدء الفحص الفوري</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar (Hidden by default) -->
+                    <div id="scanProgressBar" class="hidden space-y-2">
+                        <div class="flex justify-between text-xs font-bold text-slate-600">
+                            <span id="scanStatusText">جاري الاتصال بالسيرفر والتحقق من شهادة SSL...</span>
+                            <span id="scanPercentText">0%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
+                            <div id="scanFillBar" class="bg-storm h-full w-0 transition-all duration-300"></div>
+                        </div>
+                    </div>
+
+                    <!-- Scan Results Output -->
+                    <div id="scanResultCard" class="hidden p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
+                        <div class="flex items-center justify-between pb-4 border-b border-slate-200">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-pop-emerald/20 text-pop-emerald flex items-center justify-center text-lg font-bold">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 text-base" id="scanResultDomain">yourwebsite.com</h4>
+                                    <p class="text-xs text-slate-500">تم اكتمال الفحص الشامل بواسطة STORM Shield</p>
+                                </div>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-storm/10 text-storm font-extrabold text-xs" id="scanScore">درجة الأمان: 88/100</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-medium text-slate-700">
+                            <div class="p-3 bg-white rounded-xl border border-slate-200 flex items-center justify-between">
+                                <span>تشفير SSL / HTTPS:</span>
+                                <span class="text-pop-emerald font-bold"><i class="fa-solid fa-lock ml-1"></i> مفعل وآمن</span>
+                            </div>
+                            <div class="p-3 bg-white rounded-xl border border-slate-200 flex items-center justify-between">
+                                <span>ثغرات SQL Injection:</span>
+                                <span class="text-pop-emerald font-bold">محصن</span>
+                            </div>
+                            <div class="p-3 bg-white rounded-xl border border-slate-200 flex items-center justify-between">
+                                <span>حماية جدار النارية WAF:</span>
+                                <span class="text-pop-coral font-bold">يحتاج تحسين</span>
+                            </div>
+                            <div class="p-3 bg-white rounded-xl border border-slate-200 flex items-center justify-between">
+                                <span>سرعة استجابة السيرفر:</span>
+                                <span class="text-pop-emerald font-bold">0.4 ثانية</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 text-center">
+                            <a href="https://wa.me/201203562899?text=مرحباً،%20أريد%20استشارة%20أمنية%20لموقعي%20بعد%20إجراء%20الفحص" target="_blank" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-pop-emerald text-white font-bold text-xs shadow-md">
+                                <i class="fa-brands fa-whatsapp text-sm"></i>
+                                <span>احصل على تقرير معالجة الثغرات عبر الواتساب</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 4. PORTFOLIO & WORK GALLERY PAGE           -->
+        <!-- ========================================== -->
+        <section id="page-portfolio" class="page-section">
+            <div class="py-12 bg-storm-soft border-b border-slate-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-right">
+                    <h1 class="text-3xl sm:text-4xl font-black text-slate-900">سجل إنجازاتنا ونماذج سابقة الأعمال الرسمية</h1>
+                    <p class="text-slate-600 text-sm mt-2">استعرض نتائج الحملات المباشرة وتصاميم الهوية التجارية المنفذة للعملاء في مصر والسعودية.</p>
+                </div>
+            </div>
+
+            <div class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Proof Campaign Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                    
+                    <!-- Proof 1: Saudi Telecom Mobily & Zain -->
+                    <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-storm transition-all">
+                        <div class="p-6 bg-storm text-white flex items-center justify-between">
+                            <div>
+                                <span class="text-xs font-bold text-pop-cyan">حملات الاتصالات - السعودية 🇸🇦</span>
+                                <h3 class="text-xl font-bold mt-1">عروض 5G Home (Mobily & Zain)</h3>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-white/20 text-xs font-black">Meta Ads</span>
+                        </div>
+                        <div class="p-6 space-y-4">
+                            <div class="grid grid-cols-3 gap-3 text-center">
+                                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                    <div class="text-xs text-slate-500">محادثات مبيعات</div>
+                                    <div class="text-lg font-black text-storm">9,030</div>
+                                </div>
+                                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                    <div class="text-xs text-slate-500">المبلغ المستثمر</div>
+                                    <div class="text-lg font-black text-slate-800">23,199 ر.س</div>
+                                </div>
+                                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                    <div class="text-xs text-slate-500">الوصول الإنطباعي</div>
+                                    <div class="text-lg font-black text-pop-emerald">3.09M</div>
+                                </div>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                تصميم وتغذية حملات عروض أجهزة الراوتر 5G وإدارة الاستهداف لجلب عملاء مشتركين بشرائح إنترنت منزلية بأسعار تنافسية.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Proof 2: Egypt Low CPA Campaign -->
+                    <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-storm transition-all">
+                        <div class="p-6 bg-slate-900 text-white flex items-center justify-between">
+                            <div>
+                                <span class="text-xs font-bold text-pop-yellow">إعلانات مصر 🇪🇬</span>
+                                <h3 class="text-xl font-bold mt-1">حملة الرسائل القياسية الكبرى</h3>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-pop-emerald/20 text-pop-emerald text-xs font-black">محادثات مبيعات</span>
+                        </div>
+                        <div class="p-6 space-y-4">
+                            <div class="grid grid-cols-3 gap-3 text-center">
+                                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                    <div class="text-xs text-slate-500">تكلفة الرسالة</div>
+                                    <div class="text-lg font-black text-pop-emerald">1.87 ج.م</div>
+                                </div>
+                                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                    <div class="text-xs text-slate-500">إجمالي الميزانية</div>
+                                    <div class="text-lg font-black text-slate-800">813,386 ج.م</div>
+                                </div>
+                                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                    <div class="text-xs text-slate-500">النقرات الفعالة</div>
+                                    <div class="text-lg font-black text-storm">189,711</div>
+                                </div>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                تحقيق نتائج استثنائية وخفض تكلفة محادثات المبيعات لمستويات متميزة مع ضمان تحقيق أعلى العوائد الممكنة.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Portfolio Graphic Designs Image Gallery -->
+                <div class="space-y-6">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-2xl font-black text-slate-900 text-right">معرض بوسترات والتصاميم الإعلانية</h3>
+                        <span class="text-xs font-bold text-storm bg-storm/10 px-3 py-1 rounded-full">معرض أعمال حقيقي</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        
+                        <!-- Portfolio Image Item 1 -->
+                        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm text-center space-y-3 group hover:border-storm transition-all">
+                            <div class="w-full h-64 bg-slate-100 rounded-xl overflow-hidden relative">
+                                <img src="portfolio_engezny.jpg" alt="إنجزني لشحن البضائع" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/500x650/1200D6/FFFFFF?text=%D8%A5%D9%86%D8%AC%D8%B2%D9%86%D9%8A+%D9%84%D9%84%D8%B4%D8%AD%D9%86';">
+                            </div>
+                            <h4 class="font-extrabold text-sm text-slate-900">إنجزني لشحن البضائع</h4>
+                            <p class="text-xs text-slate-500">تصميم وتنفيذ البوست الإعلاني الرسمي</p>
+                        </div>
+
+                        <!-- Portfolio Image Item 2 -->
+                        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm text-center space-y-3 group hover:border-storm transition-all">
+                            <div class="w-full h-64 bg-slate-100 rounded-xl overflow-hidden relative">
+                                <img src="portfolio_mobily.jpg" alt="Mobily 5G Home" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/500x650/00D2FE/1E293B?text=Mobily+5G+Home';">
+                            </div>
+                            <h4 class="font-extrabold text-sm text-slate-900">Mobily 5G Home</h4>
+                            <p class="text-xs text-slate-500">إعلانات سرعة الإنترنت والباقات</p>
+                        </div>
+
+                        <!-- Portfolio Image Item 3 -->
+                        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm text-center space-y-3 group hover:border-storm transition-all">
+                            <div class="w-full h-64 bg-slate-100 rounded-xl overflow-hidden relative">
+                                <img src="portfolio_zain.jpg" alt="عروض Zain المدرسية" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/500x650/FFC700/1E293B?text=%D8%B9%D8%B1%D9%88%D8%B6+Zain';">
+                            </div>
+                            <h4 class="font-extrabold text-sm text-slate-900">عروض Zain المدرسية</h4>
+                            <p class="text-xs text-slate-500">حملة Back to School المخصصة</p>
+                        </div>
+
+                        <!-- Portfolio Image Item 4 -->
+                        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm text-center space-y-3 group hover:border-storm transition-all">
+                            <div class="w-full h-64 bg-slate-100 rounded-xl overflow-hidden relative">
+                                <img src="portfolio_clear.jpg" alt="Clear Scalp Serum" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/500x650/FF3366/FFFFFF?text=Clear+Scalp+Serum';">
+                            </div>
+                            <h4 class="font-extrabold text-sm text-slate-900">Clear Scalp Serum</h4>
+                            <p class="text-xs text-slate-500">تصاميم العناية بالمنتجات الطبية</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 5. PRICING PAGE SECTION                    -->
+        <!-- ========================================== -->
+        <section id="page-pricing" class="page-section">
+            <div class="py-12 bg-storm-soft border-b border-slate-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-right">
+                    <h1 class="text-3xl sm:text-4xl font-black text-slate-900">باقات الاستثمار التسويقي</h1>
+                    <p class="text-slate-600 text-sm mt-2">اختر الباقة المناسبة لحجم أعمالك مع إمكانية التخصيص الكامل حسب ميزانيتك.</p>
+                </div>
+            </div>
+
+            <div class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Starter Package -->
+                    <div class="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm hover:shadow-card-hover transition-all relative">
+                        <h3 class="text-xl font-black text-slate-900 mb-2">باقة الانطلاق (Starter)</h3>
+                        <p class="text-xs text-slate-500 mb-6">مناسبة للمشاريع الناشئة لبدء التواجد الرقمي</p>
+                        
+                        <div class="text-3xl font-black text-storm mb-6">
+                            تخصيص مرن
+                        </div>
+
+                        <ul class="space-y-3 text-xs font-medium text-slate-700 mb-8 border-t border-slate-100 pt-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pop-emerald"></i> إدارة منصتين تواصل اجتماعي</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pop-emerald"></i> تصميم 8 تصاميم إعلانية احترافية</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pop-emerald"></i> إطلاق حملة مُموّلة واحدة</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pop-emerald"></i> تقرير شهري أساسي للأداء</li>
+                        </ul>
+
+                        <a href="https://wa.me/201203562899?text=أريد%20الاستفسار%20عن%20باقة%20الانطلاق" target="_blank" class="w-full block text-center py-3 rounded-xl bg-slate-100 text-slate-800 font-bold text-sm hover:bg-storm hover:text-white transition-all">
+                            اختر هذه الباقة
+                        </a>
+                    </div>
+
+                    <!-- Pro Growth Package -->
+                    <div class="bg-white rounded-3xl border-2 border-storm p-8 shadow-storm transition-all relative">
+                        <span class="absolute -top-3.5 right-6 px-3 py-1 rounded-full bg-storm text-white font-extrabold text-xs">الأكثر طلباً 🔥</span>
+                        <h3 class="text-xl font-black text-slate-900 mb-2">باقة النمو المتكامل (Growth)</h3>
+                        <p class="text-xs text-slate-500 mb-6">للعلامات التجارية الراغبة في زيادة المبيعات والانتشار</p>
+                        
+                        <div class="text-3xl font-black text-storm mb-6">
+                            حلول متطورة
+                        </div>
+
+                        <ul class="space-y-3 text-xs font-medium text-slate-700 mb-8 border-t border-slate-100 pt-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pop-emerald"></i> إدارة كامل منصات التواصل</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pop-emerald"></i> 16 تصميم إعلاني + 4 فيديوهات Reels</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pop-emerald"></i> إدارة الميديا باينج وتخفيض CPA</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pop-emerald"></i> فحص أمان أسبوعي للموقع والتطبيقات</li>
+                        </ul>
+
+                        <a href="https://wa.me/201203562899?text=أريد%20الاستفسار%20عن%20باقة%20النمو%20المتكامل" target="_blank" class="w-full block text-center py-3 rounded-xl bg-storm text-white font-bold text-sm hover:bg-storm-dark shadow-storm transition-all">
+                            اختر هذه الباقة
+                        </a>
+                    </div>
+
+                    <!-- Enterprise Package -->
+                    <div class="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm hover:shadow-card-hover transition-all relative">
+                        <h3 class="text-xl font-black text-slate-900 mb-2">باقة الشركات (Enterprise)</h3>
+                        <p class="text-xs text-slate-500 mb-6">تغطية شاملة ومصممة خصيصاً للمؤسسات الكبرى</p>
+                        
+                        <div class="text-3xl font-black text-storm mb-6">
+                            عقد مخصص
+                        </div>
+
+                        <ul class="space-y-3 text-xs font-medium text-slate-700 mb-8 border-t border-slate-100 pt-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pop-emerald"></i> فريق تسويق وتقنية مخصص بالكامل</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pop-emerald"></i> إنتاج وصناعة محتوى مرئي وتصوير سينمائي</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pop-emerald"></i> حماية سيبرانية شاملة 24/7 للمتاجر</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pop-emerald"></i> تقارير وتحليلات استراتيجية أسبوعية</li>
+                        </ul>
+
+                        <a href="https://wa.me/201203562899?text=أريد%20استشارة%20خاصة%20لباقة%20الشركات" target="_blank" class="w-full block text-center py-3 rounded-xl bg-slate-100 text-slate-800 font-bold text-sm hover:bg-storm hover:text-white transition-all">
+                            تواصل لاستشارة خاصة
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 6. CONTACT PAGE SECTION                    -->
+        <!-- ========================================== -->
+        <section id="page-contact" class="page-section">
+            <div class="py-12 bg-storm-soft border-b border-slate-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-right">
+                    <h1 class="text-3xl sm:text-4xl font-black text-slate-900">تواصل مع فريق STORM</h1>
+                    <p class="text-slate-600 text-sm mt-2">نحن هنا لمساعدتك في بناء استراتيجيتك القادمة وتحقيق أهدافك الرقمية عبر جميع قنوات التواصل الرسمية.</p>
+                </div>
+            </div>
+
+            <div class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    
+                    <!-- Official Contact Methods -->
+                    <div class="lg:col-span-5 space-y-5 text-right">
+                        
+                        <!-- WhatsApp Card -->
+                        <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm flex items-start gap-4 hover:border-storm transition-all">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-2xl shrink-0 border border-emerald-100">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-extrabold text-slate-900 text-base">تواصل عبر الواتساب المباشر</h4>
+                                <p class="text-xs text-slate-500 mt-1">رد سريع من فريق المبيعات والاستشارات الإعلانية</p>
+                                <a href="https://wa.me/201203562899" target="_blank" class="text-sm font-black text-storm mt-2 inline-block dir-ltr hover:underline">+20 120 356 2899</a>
+                            </div>
+                        </div>
+
+                        <!-- Email Card -->
+                        <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm flex items-start gap-4 hover:border-storm transition-all">
+                            <div class="w-12 h-12 rounded-2xl bg-blue-50 text-storm flex items-center justify-center text-2xl shrink-0 border border-blue-100">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-extrabold text-slate-900 text-base">البريد الإلكتروني الرسمي</h4>
+                                <p class="text-xs text-slate-500 mt-1">لاستقبال خطط المشاريع وطلبات العروض والعقود</p>
+                                <a href="mailto:ads.stormagency@gmail.com" class="text-sm font-black text-storm mt-2 inline-block dir-ltr hover:underline">ads.stormagency@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <!-- Social Media Links Card -->
+                        <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-3">
+                            <h4 class="font-extrabold text-slate-900 text-base">قنوات التواصل الاجتماعي الرسمية</h4>
+                            <p class="text-xs text-slate-500">تابع أحدث أعمالنا وحملاتنا اليومية عبر المنصات التالية:</p>
+
+                            <div class="grid grid-cols-2 gap-3 pt-2">
+                                <a href="https://www.instagram.com/ads_stormagency" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3 rounded-2xl bg-gradient-to-r from-purple-50 to-pink-50 border border-pink-100 text-slate-800 hover:shadow-md transition-all">
+                                    <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-yellow-500 via-red-500 to-purple-600 text-white flex items-center justify-center text-lg">
+                                        <i class="fa-brands fa-instagram"></i>
+                                    </div>
+                                    <div class="text-right overflow-hidden">
+                                        <div class="text-xs font-bold">إنستغرام</div>
+                                        <div class="text-[10px] text-slate-500 truncate dir-ltr">@ads_stormagency</div>
+                                    </div>
+                                </a>
+
+                                <a href="https://www.facebook.com/share/1TFDtkXPCE/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3 rounded-2xl bg-blue-50/60 border border-blue-100 text-slate-800 hover:shadow-md transition-all">
+                                    <div class="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center text-lg">
+                                        <i class="fa-brands fa-facebook-f"></i>
+                                    </div>
+                                    <div class="text-right overflow-hidden">
+                                        <div class="text-xs font-bold">فيسبوك</div>
+                                        <div class="text-[10px] text-slate-500 truncate">الصفحة الرسمية</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Working Hours Card -->
+                        <div class="bg-slate-900 text-white p-6 rounded-3xl shadow-xl flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-white/10 text-pop-yellow flex items-center justify-center text-2xl shrink-0">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-base">ساعات العمل والتغطية</h4>
+                                <p class="text-xs text-slate-300 mt-1">الأحد - الخميس: 9:00 صباحاً - 6:00 مساءً</p>
+                                <p class="text-xs font-bold text-pop-emerald mt-1.5 flex items-center gap-1.5">
+                                    <span class="w-2 h-2 rounded-full bg-pop-emerald animate-pulse"></span>
+                                    <span>الدعم الفني والسيبراني وإدارة الحملات متوفر 24/7</span>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Direct Contact Form -->
+                    <div class="lg:col-span-7 bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                        <div>
+                            <h3 class="text-2xl font-black text-slate-900 text-right">أرسل استفسارك أو طلب استشارتك</h3>
+                            <p class="text-xs text-slate-500 mt-1">أدخل بياناتك وسنقوم بالتواصل معك مباشرة لمناقشة تفاصيل مشروعك.</p>
+                        </div>
+
+                        <form onsubmit="event.preventDefault(); window.open('https://wa.me/201203562899?text=' + encodeURIComponent('الاسم: ' + document.getElementById('contactName').value + '\nالبريد: ' + document.getElementById('contactEmail').value + '\nالرسالة: ' + document.getElementById('contactMsg').value), '_blank');" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1 text-right">الاسم بالكامل</label>
+                                <input type="text" id="contactName" required placeholder="أدخل اسمك" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-storm text-sm">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1 text-right">البريد الإلكتروني</label>
+                                <input type="email" id="contactEmail" required placeholder="example@domain.com" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-storm text-sm dir-ltr text-right">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1 text-right">رسالتك أو تفاصيل المشروع المطلوب</label>
+                                <textarea id="contactMsg" rows="4" required placeholder="كيف يمكن لـ STORM مساعدتك في نمو عملك؟" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-storm text-sm"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-3.5 rounded-xl bg-storm text-white font-bold text-sm hover:bg-storm-dark shadow-storm transition-all flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-pop-emerald text-lg"></i>
+                                <span>إرسال الطلب عبر الواتساب الفوري</span>
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white pt-16 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-slate-800">
+                
+                <!-- Footer Brand Column -->
+                <div class="md:col-span-5 space-y-4 text-right">
+                    <img src="WhatsApp%20Image%202026-07-23%20at%2001.58.02_3.jpeg" 
+                         alt="STORM Agency Logo" 
+                         class="h-12 w-auto object-contain bg-white/10 p-2 rounded-xl"
+                         onerror="this.onerror=null; this.src='https://placehold.co/220x70/1200D6/FFFFFF?text=STORM+AGENCY';">
+                    <p class="text-xs text-slate-400 max-w-sm leading-relaxed">
+                        وكالة تسويق وحلول تكنولوجية متكاملة تدمج بين التخطيط الاستراتيجي، إعلانات السوشيال ميديا (Media Buying)، والحماية السيبرانية للمواقع الإلكترونية.
+                    </p>
+                </div>
+
+                <!-- Footer Quick Nav -->
+                <div class="md:col-span-3 space-y-3 text-right">
+                    <h4 class="text-sm font-extrabold text-white">روابط سريعة</h4>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li><a href="#services" onclick="navigateTo('services')" class="hover:text-pop-cyan transition-colors">خدماتنا والتصاميم</a></li>
+                        <li><a href="#security" onclick="navigateTo('security')" class="hover:text-pop-cyan transition-colors">فحص الأمان والسرعة</a></li>
+                        <li><a href="#portfolio" onclick="navigateTo('portfolio')" class="hover:text-pop-cyan transition-colors">سابقة الأعمال والنتائج</a></li>
+                        <li><a href="#pricing" onclick="navigateTo('pricing')" class="hover:text-pop-cyan transition-colors">الباقات والعروض</a></li>
+                    </ul>
+                </div>
+
+                <!-- Footer Direct Social & Contact -->
+                <div class="md:col-span-4 space-y-4 text-right">
+                    <h4 class="text-sm font-extrabold text-white">تواصل مباشر</h4>
+                    
+                    <div class="space-y-2 text-xs text-slate-300">
+                        <a href="mailto:ads.stormagency@gmail.com" class="flex items-center gap-2 hover:text-pop-cyan transition-colors">
+                            <i class="fa-solid fa-envelope text-storm"></i>
+                            <span class="dir-ltr">ads.stormagency@gmail.com</span>
+                        </a>
+                        <a href="https://wa.me/201203562899" target="_blank" class="flex items-center gap-2 hover:text-pop-emerald transition-colors">
+                            <i class="fa-brands fa-whatsapp text-pop-emerald"></i>
+                            <span class="dir-ltr">+20 120 356 2899</span>
+                        </a>
+                    </div>
+
+                    <div class="pt-2 flex items-center gap-3">
+                        <a href="https://www.instagram.com/ads_stormagency" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-gradient-to-tr hover:from-yellow-500 hover:via-red-500 hover:to-purple-600 text-white flex items-center justify-center transition-all" title="Instagram">
+                            <i class="fa-brands fa-instagram text-base"></i>
+                        </a>
+                        <a href="https://www.facebook.com/share/1TFDtkXPCE/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-blue-600 text-white flex items-center justify-center transition-all" title="Facebook">
+                            <i class="fa-brands fa-facebook-f text-base"></i>
+                        </a>
+                        <a href="https://wa.me/201203562899" target="_blank" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-emerald-600 text-white flex items-center justify-center transition-all" title="WhatsApp">
+                            <i class="fa-brands fa-whatsapp text-base"></i>
+                        </a>
+                        <a href="mailto:ads.stormagency@gmail.com" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-storm text-white flex items-center justify-center transition-all" title="Email">
+                            <i class="fa-solid fa-envelope text-base"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="pt-8 text-center text-xs text-slate-500 font-medium">
+                جميع الحقوق محفوظة &copy; STORM Digital Agency 2026
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Interactive Widget -->
+    <div class="fixed bottom-6 left-6 z-50 flex items-center gap-3">
+        <a href="https://wa.me/201203562899?text=مرحباً%20وكالة%20ستورم،%20أريد%20الاستفسار%20عن%20خدماتكم" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           id="floatingWhatsappBtn"
+           title="تواصل معنا عبر الواتساب"
+           class="floating-wa-btn group flex items-center gap-3 bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-3 sm:px-5 sm:py-3.5 rounded-full shadow-2xl transition-all duration-300">
+            
+            <div class="relative flex items-center justify-center">
+                <i class="fa-brands fa-whatsapp text-2xl sm:text-3xl text-white"></i>
+                <!-- Active Indicator Dot -->
+                <span class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-green-300 rounded-full border-2 border-emerald-600 animate-ping"></span>
+                <span class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-green-400 rounded-full border-2 border-emerald-600"></span>
+            </div>
+
+            <div class="flex flex-col text-right">
+                <span class="font-extrabold text-xs sm:text-sm leading-tight">تحدث معنا الآن</span>
+                <span class="text-[10px] opacity-90 hidden sm:inline-block">متصل الآن لتلقي استفسارك</span>
+            </div>
+        </a>
+    </div>
+
+    <script>
+        let currentLang = 'ar';
+
+        const i18nDict = {
+            ar: {
+                'nav-home': 'الرئيسية',
+                'nav-services': 'خدماتنا والتصاميم',
+                'nav-security': 'فحص الأمان',
+                'nav-portfolio': 'سابقة الأعمال والنتائج',
+                'nav-pricing': 'الباقات والعروض',
+                'nav-contact': 'تواصل معنا'
+            },
+            en: {
+                'nav-home': 'Home',
+                'nav-services': 'Services & Posters',
+                'nav-security': 'Security Audit',
+                'nav-portfolio': 'Portfolio & Results',
+                'nav-pricing': 'Pricing',
+                'nav-contact': 'Contact Us'
+            }
+        };
+
+        function navigateTo(pageId) {
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            const targetSection = document.getElementById(`page-${pageId}`);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                btn.classList.remove('text-storm', 'bg-storm/5');
+                btn.classList.add('text-slate-600');
+            });
+
+            const activeBtn = document.getElementById(`nav-${pageId}`);
+            if (activeBtn) {
+                activeBtn.classList.add('text-storm', 'bg-storm/5');
+                activeBtn.classList.remove('text-slate-600');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            if (menu) {
+                if (menu.classList.contains('hidden')) {
+                    menu.classList.remove('hidden');
+                    if (icon) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-xmark');
+                    }
+                } else {
+                    menu.classList.add('hidden');
+                    if (icon) {
+                        icon.classList.remove('fa-xmark');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+            }
+        }
+
+        function toggleLanguage() {
+            const html = document.documentElement;
+            const langLabel = document.getElementById('langLabel');
+            
+            if (currentLang === 'ar') {
+                currentLang = 'en';
+                html.setAttribute('lang', 'en');
+                html.setAttribute('dir', 'ltr');
+                if (langLabel) langLabel.textContent = 'العربية';
+            } else {
+                currentLang = 'ar';
+                html.setAttribute('lang', 'ar');
+                html.setAttribute('dir', 'rtl');
+                if (langLabel) langLabel.textContent = 'English';
+            }
+
+            // Update registered translation keys
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18nDict[currentLang] && i18nDict[currentLang][key]) {
+                    el.textContent = i18nDict[currentLang][key];
+                }
+            });
+        }
+
+        function runSecurityScan() {
+            const input = document.getElementById('scanTargetUrl');
+            const progressBar = document.getElementById('scanProgressBar');
+            const fillBar = document.getElementById('scanFillBar');
+            const statusText = document.getElementById('scanStatusText');
+            const percentText = document.getElementById('scanPercentText');
+            const resultCard = document.getElementById('scanResultCard');
+            const domainDisplay = document.getElementById('scanResultDomain');
+
+            if (!input || !input.value.trim()) {
+                if (input) {
+                    input.classList.add('border-red-500');
+                    input.focus();
+                }
+                return;
+            }
+
+            input.classList.remove('border-red-500');
+            let url = input.value.trim().replace(/^https?:\/\//, '');
+            if (domainDisplay) domainDisplay.textContent = url;
+
+            if (progressBar) progressBar.classList.remove('hidden');
+            if (resultCard) resultCard.classList.add('hidden');
+            
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 15;
+                if (progress > 100) progress = 100;
+                
+                if (fillBar) fillBar.style.width = progress + '%';
+                if (percentText) percentText.textContent = progress + '%';
+
+                if (statusText) {
+                    if (progress < 40) {
+                        statusText.textContent = 'جاري التحقق من شهادة SSL وتشفير HTTPS...';
+                    } else if (progress < 80) {
+                        statusText.textContent = 'فحص أمان السيرفر واستجابة جدار الحماية (WAF)...';
+                    } else {
+                        statusText.textContent = 'اكتمل الفحص! جاري تجميع التقرير...';
+                    }
+                }
+
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        if (progressBar) progressBar.classList.add('hidden');
+                        if (resultCard) resultCard.classList.remove('hidden');
+                    }, 500);
+                }
+            }, 300);
+        }
+    </script>
+</body>
+</html>
